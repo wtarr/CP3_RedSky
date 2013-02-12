@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="62e56c38-5bab-43a6-bd1a-1d373fcaf7f2"
+  name="RedSky" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="c0ad19c1-c2d7-489e-8540-00c29a72130c"
+        name="Player"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="deade5f7-9ca4-46a5-bc3c-f8fffd48059a"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Fly Aircraft"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b36d9f1e-b4ce-42fb-9941-099c4b72315c"
+              LastKnownName="Fly Aircraft"
+              LastKnownLocation="RedSky.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f2c0e63c-569e-43dd-9e08-ad11e9a4efb6"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6b4e996d-bb4c-4843-b0d5-e5d225b0a229"
+                  name="Fly Aircraft"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="dec4dff5-1e6a-4833-9fc1-2bf9a1fff2e6"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Targeting System"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cb48d861-cccb-4f8d-ac7d-ce7ba3f56b11"
+              LastKnownName="Targeting System"
+              LastKnownLocation="RedSky.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4584086d-50dd-4335-8cef-d176d49eb8b3"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ac597b0f-2e1b-4914-9f2e-139bb2369110"
+                  name="Targeting System"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8c50ee8b-0d89-46ab-b4db-e36f4d428a5a"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Missile Counter Measures"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c0fe9006-f8c6-4986-aed8-8e043a462102"
+              LastKnownName="Missile Counter Measures"
+              LastKnownLocation="RedSky.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9efcf0ee-bc61-47cd-b257-c6d490185e22"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d71432a9-1226-4b32-8d46-79690bcb5efc"
+                  name="Missile Counter Measures"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="df73cdd7-902e-4b15-9a07-4d839d7b9eab"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Launch Missile"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="5749eb9f-740a-49e0-a7d3-9d58ac159dea"
+              LastKnownName="Launch Missile"
+              LastKnownLocation="RedSky.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="97cd3b4e-cea8-4065-989c-557d15314657"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="919c1ea5-d30b-41a4-8e94-6688df44364c"
+                  name="Launch Missile"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b36d9f1e-b4ce-42fb-9941-099c4b72315c"
+        name="Fly Aircraft"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cb48d861-cccb-4f8d-ac7d-ce7ba3f56b11"
+        name="Targeting System"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5749eb9f-740a-49e0-a7d3-9d58ac159dea"
+        name="Launch Missile"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="86c64fce-17c0-473f-bda9-f1ada5b4042f">
+            <useCaseMoniker
+              Id="ab9baf2c-1a6f-4a95-a26d-3a8690ae2ac3"
+              LastKnownName="Missile Guidance"
+              LastKnownLocation="RedSky.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c0fe9006-f8c6-4986-aed8-8e043a462102"
+        name="Missile Counter Measures"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="ea21cdc4-dfa1-4913-8e18-b8fbbf53bc7e"
+        name="Game AI"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="a3f35e5a-78e1-43b5-9403-0f9563080c07"
+            isDerived="false"
+            sourceEndRoleName="AI"
+            targetEndRoleName="Fly Aircraft"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b36d9f1e-b4ce-42fb-9941-099c4b72315c"
+              LastKnownName="Fly Aircraft"
+              LastKnownLocation="RedSky.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="aa209969-8c0a-432e-be80-06b9aa46fe6a"
+                  name="AI"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="98491dbd-e1ce-4645-86a0-c9f78fac42ac"
+                  name="Fly Aircraft"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="afa661eb-9586-4896-9fde-5c6b502ed844"
+            isDerived="false"
+            sourceEndRoleName="Game AI"
+            targetEndRoleName="Targeting System"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cb48d861-cccb-4f8d-ac7d-ce7ba3f56b11"
+              LastKnownName="Targeting System"
+              LastKnownLocation="RedSky.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="041278f3-a420-454d-aac5-f2461cb8ddde"
+                  name="Game AI"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0a516266-82c6-4720-9e44-c8bee8caca70"
+                  name="Targeting System"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="412981d0-4c57-477b-85aa-fd673c421183"
+            isDerived="false"
+            sourceEndRoleName="Game AI"
+            targetEndRoleName="Launch Missile"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="5749eb9f-740a-49e0-a7d3-9d58ac159dea"
+              LastKnownName="Launch Missile"
+              LastKnownLocation="RedSky.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0ffbad74-1795-4a83-adf5-1cdce0c5e069"
+                  name="Game AI"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2f033c42-b9fe-49f2-9817-f5bfa5b56d7a"
+                  name="Launch Missile"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a0245891-6e7b-4c02-be5c-de76cacbb24b"
+            isDerived="false"
+            sourceEndRoleName="Game AI"
+            targetEndRoleName="Missile Counter Measures"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c0fe9006-f8c6-4986-aed8-8e043a462102"
+              LastKnownName="Missile Counter Measures"
+              LastKnownLocation="RedSky.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7997bb28-3abe-49ce-953b-227e8b903042"
+                  name="Game AI"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9f6e349b-3e7b-4ab4-aade-ea3d6a82b04d"
+                  name="Missile Counter Measures"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c64ab38d-6cc7-4df7-9f3f-c5bfee713194"
+        name="Target Tracking"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8c1878e7-2fd9-40fa-83da-74d1668f9f0c"
+        name="Self Monitoring"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="86bc7290-9c35-4479-beff-019b7bc27959"
+        name="Course plotting"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="d99c7b19-e389-46f2-8e0d-b9530d532c56"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ab9baf2c-1a6f-4a95-a26d-3a8690ae2ac3"
+        name="Missile Guidance"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="c89659f7-093e-4920-9f12-047be9a5b658">
+            <useCaseMoniker
+              Id="86bc7290-9c35-4479-beff-019b7bc27959"
+              LastKnownName="Course plotting"
+              LastKnownLocation="RedSky.uml" />
+          </include>
+          <include
+            Id="dc0956f9-45fa-40eb-b63f-cdc3adcc464b">
+            <useCaseMoniker
+              Id="8c1878e7-2fd9-40fa-83da-74d1668f9f0c"
+              LastKnownName="Self Monitoring"
+              LastKnownLocation="RedSky.uml" />
+          </include>
+          <include
+            Id="4618fbbf-aeb0-4a1f-85b0-88438237fb88">
+            <useCaseMoniker
+              Id="c64ab38d-6cc7-4df7-9f3f-c5bfee713194"
+              LastKnownName="Target Tracking"
+              LastKnownLocation="RedSky.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

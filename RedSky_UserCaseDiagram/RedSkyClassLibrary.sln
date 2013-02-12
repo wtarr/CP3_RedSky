@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedSkyClassLibrary", "RedSkyClassLibrary\RedSkyClassLibrary.csproj", "{C1F1B792-FE32-480B-B780-A0F8351C3D38}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "RedSky", "RedSky\RedSky.modelproj", "{C290923C-EB79-4AB3-B5B8-11BF0F93AA6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1F1B792-FE32-480B-B780-A0F8351C3D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F1B792-FE32-480B-B780-A0F8351C3D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F1B792-FE32-480B-B780-A0F8351C3D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F1B792-FE32-480B-B780-A0F8351C3D38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C290923C-EB79-4AB3-B5B8-11BF0F93AA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C290923C-EB79-4AB3-B5B8-11BF0F93AA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C290923C-EB79-4AB3-B5B8-11BF0F93AA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C290923C-EB79-4AB3-B5B8-11BF0F93AA6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

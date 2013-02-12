@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="AbstractFlightBehaviour will have access to Unity's Game engine">
+    <Position X="4.698" Y="0.531" Height="0.917" Width="1.7" />
+  </Comment>
+  <Comment CommentText="GameMaster will be responsible for loading scenes and determining end of scene.  Methods are examples only&#xD;&#xA;">
+    <Position X="7.875" Y="1.337" Height="0.788" Width="2.252" />
+  </Comment>
+  <Class Name="RedSkyClassLibrary.EnemyCraft">
+    <Position X="4.75" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAEAEABAAAAAAAIAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EnemyCraft.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RedSkyClassLibrary.Missile">
+    <Position X="1.75" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAIBAAAAAACAABAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Missile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RedSkyClassLibrary.GameMaster">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAABAAAQAAA=</HashCode>
+      <FileName>GameMaster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RedSkyClassLibrary.PlayerCraft">
+    <Position X="7.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>FAIAAAAAFEBAAAAIAIIAAAAAABABAAAIAAAAAACAAAA=</HashCode>
+      <FileName>PlayerCraft.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RedSkyClassLibrary.AbstractFlightBehaviour">
+    <Position X="4.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAEACAAAAAAARIIBCAIAACGAAGAJAAAAAAAACBAAQ=</HashCode>
+      <FileName>AbstractFlightBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="RedSkyClassLibrary.IFlightBehaviour">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAIAACGAAAAIAAAAAAAAABAAQ=</HashCode>
+      <FileName>IFlightBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RedSkyClassLibrary.IAircraftBehaviour">
+    <Position X="2.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEABAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IAircraftBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,7 @@
+http://en.wikipedia.org/wiki/Infrared_homing
+http://en.wikipedia.org/wiki/Proportional_navigation
+http://gamedev.stackexchange.com/questions/27923/implementing-simple-proportional-navigation-for-a-homing-missile
+http://stackoverflow.com/questions/1202391/how-to-create-an-intercept-missile-for-a-game
+http://www.gamedev.net/blog/796/entry-2255993-math-for-game-developers-video-series/
+http://www.moddb.com/mods/wicmw/features/flint-lead-pursuit-guidance-principles
+http://jaran.de/goodbits/2011/07/17/calculating-an-intercept-course-to-a-target-with-constant-direction-and-velocity-in-a-2-dimensional-plane/
