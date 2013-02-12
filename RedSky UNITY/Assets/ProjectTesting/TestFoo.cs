@@ -8,13 +8,14 @@ namespace RedSkyProjectTesting
 {
 
     [TestFixture]
-    class TestFoo
+    public class TestFoo
     {
         
         [Test]
         public void TestFooScript()
         {
             TestScript t = new TestScript();
+			Console.WriteLine("First Test");
             Assert.IsTrue(t.TestSomething());            
         }
 

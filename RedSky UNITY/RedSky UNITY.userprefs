@@ -1,0 +1,52 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ProjectTesting\TestFoo.cs">
+    <Files>
+      <File FileName="Assets\ProjectTesting\MissileFunctionTesting.cs" Line="29" Column="9" />
+      <File FileName="Assets\ProjectTesting\TestFoo.cs" Line="11" Column="12" />
+      <File FileName="Assets\Test\TestScript.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="ProjectTesting" expanded="True">
+                <Node name="TestFoo.cs" selected="True" />
+              </Node>
+              <Node name="Test" expanded="True" />
+            </Node>
+          </Node>
+          <Node name="Assembly-UnityScript" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="RedSkyProjectTesting" expanded="True">
+              <Node name="MissileFunctionTesting" expanded="True">
+                <Node name="Test_If_Target_Is_Travelling_a_Linear_Course" selected="True" />
+              </Node>
+              <Node name="TestFoo" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
