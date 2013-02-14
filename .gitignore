@@ -26,12 +26,13 @@ build/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
+[Tt]est-[Rr]esult*/
 [Bb]uild[Ll]og.*
 
 *_i.c
 *_p.c
 *.ilk
-# *.meta We need meta files for unity !!!!
+!*.meta
 *.obj
 *.pch
 *.pdb
@@ -160,6 +161,8 @@ $RECYCLE.BIN/
 # Test results
 # ====================
 RedSky UNITY/test-results/
+RedSky UNITY 355f3/test-results/
+
 
 # ====================
 # Explicitly Include

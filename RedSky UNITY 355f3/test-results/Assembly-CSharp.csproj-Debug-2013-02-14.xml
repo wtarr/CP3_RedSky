@@ -18,6 +18,68 @@
       <TotalIgnored>4</TotalIgnored>
       <Time />
     </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-02-14T17:31:47</TestDate>
+      <Status>Success Failure Ignored</Status>
+      <TotalFailures>1</TotalFailures>
+      <TotalSuccess>6</TotalSuccess>
+      <TotalIgnored>4</TotalIgnored>
+      <Time />
+      <Message>Child test failed</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-02-14T18:00:27</TestDate>
+      <Status>Success Failure Ignored</Status>
+      <TotalFailures>1</TotalFailures>
+      <TotalSuccess>6</TotalSuccess>
+      <TotalIgnored>4</TotalIgnored>
+      <Time />
+      <Message>Child test failed</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-02-14T18:08:02</TestDate>
+      <Status>Success Failure Ignored</Status>
+      <TotalFailures>1</TotalFailures>
+      <TotalSuccess>6</TotalSuccess>
+      <TotalIgnored>4</TotalIgnored>
+      <Time />
+      <Message>Child test failed</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-02-14T18:50:43</TestDate>
+      <Status>Success Failure Ignored</Status>
+      <TotalFailures>1</TotalFailures>
+      <TotalSuccess>6</TotalSuccess>
+      <TotalIgnored>4</TotalIgnored>
+      <Time />
+      <Message>Child test failed</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-02-14T19:01:03</TestDate>
+      <Status>Success Failure Ignored</Status>
+      <TotalFailures>1</TotalFailures>
+      <TotalSuccess>6</TotalSuccess>
+      <TotalIgnored>4</TotalIgnored>
+      <Time />
+      <Message>Child test failed</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-02-14T19:01:15</TestDate>
+      <Status>Success Failure Ignored</Status>
+      <TotalFailures>1</TotalFailures>
+      <TotalSuccess>6</TotalSuccess>
+      <TotalIgnored>4</TotalIgnored>
+      <Time />
+      <Message>Child test failed</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-02-14T19:02:36</TestDate>
+      <Status>Success Ignored</Status>
+      <TotalFailures>0</TotalFailures>
+      <TotalSuccess>7</TotalSuccess>
+      <TotalIgnored>4</TotalIgnored>
+      <Time />
+    </UnitTestResult>
   </Results>
   <Tests>
     <TestRecord Name="RedSkyProjectTesting">
@@ -36,6 +98,68 @@
           <Status>Success Ignored</Status>
           <TotalFailures>0</TotalFailures>
           <TotalSuccess>10</TotalSuccess>
+          <TotalIgnored>4</TotalIgnored>
+          <Time />
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-02-14T17:31:47</TestDate>
+          <Status>Success Failure Ignored</Status>
+          <TotalFailures>1</TotalFailures>
+          <TotalSuccess>6</TotalSuccess>
+          <TotalIgnored>4</TotalIgnored>
+          <Time />
+          <Message>Child test failed</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-02-14T18:00:27</TestDate>
+          <Status>Success Failure Ignored</Status>
+          <TotalFailures>1</TotalFailures>
+          <TotalSuccess>6</TotalSuccess>
+          <TotalIgnored>4</TotalIgnored>
+          <Time />
+          <Message>Child test failed</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-02-14T18:08:02</TestDate>
+          <Status>Success Failure Ignored</Status>
+          <TotalFailures>1</TotalFailures>
+          <TotalSuccess>6</TotalSuccess>
+          <TotalIgnored>4</TotalIgnored>
+          <Time />
+          <Message>Child test failed</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-02-14T18:50:43</TestDate>
+          <Status>Success Failure Ignored</Status>
+          <TotalFailures>1</TotalFailures>
+          <TotalSuccess>6</TotalSuccess>
+          <TotalIgnored>4</TotalIgnored>
+          <Time />
+          <Message>Child test failed</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-02-14T19:01:03</TestDate>
+          <Status>Success Failure Ignored</Status>
+          <TotalFailures>1</TotalFailures>
+          <TotalSuccess>6</TotalSuccess>
+          <TotalIgnored>4</TotalIgnored>
+          <Time />
+          <Message>Child test failed</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-02-14T19:01:15</TestDate>
+          <Status>Success Failure Ignored</Status>
+          <TotalFailures>1</TotalFailures>
+          <TotalSuccess>6</TotalSuccess>
+          <TotalIgnored>4</TotalIgnored>
+          <Time />
+          <Message>Child test failed</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-02-14T19:02:36</TestDate>
+          <Status>Success Ignored</Status>
+          <TotalFailures>0</TotalFailures>
+          <TotalSuccess>7</TotalSuccess>
           <TotalIgnored>4</TotalIgnored>
           <Time />
         </UnitTestResult>
@@ -61,7 +185,71 @@
               <Time />
               <Message>Fixture class is not public</Message>
             </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T17:31:47</TestDate>
+              <Status>Ignored</Status>
+              <TotalFailures>0</TotalFailures>
+              <TotalSuccess>0</TotalSuccess>
+              <TotalIgnored>0</TotalIgnored>
+              <Time />
+              <Message>Fixture class is not public</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T18:00:27</TestDate>
+              <Status>Ignored</Status>
+              <TotalFailures>0</TotalFailures>
+              <TotalSuccess>0</TotalSuccess>
+              <TotalIgnored>0</TotalIgnored>
+              <Time />
+              <Message>Fixture class is not public</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T18:08:02</TestDate>
+              <Status>Ignored</Status>
+              <TotalFailures>0</TotalFailures>
+              <TotalSuccess>0</TotalSuccess>
+              <TotalIgnored>0</TotalIgnored>
+              <Time />
+              <Message>Fixture class is not public</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T18:50:43</TestDate>
+              <Status>Ignored</Status>
+              <TotalFailures>0</TotalFailures>
+              <TotalSuccess>0</TotalSuccess>
+              <TotalIgnored>0</TotalIgnored>
+              <Time />
+              <Message>Fixture class is not public</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T19:01:03</TestDate>
+              <Status>Ignored</Status>
+              <TotalFailures>0</TotalFailures>
+              <TotalSuccess>0</TotalSuccess>
+              <TotalIgnored>0</TotalIgnored>
+              <Time />
+              <Message>Fixture class is not public</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T19:01:15</TestDate>
+              <Status>Ignored</Status>
+              <TotalFailures>0</TotalFailures>
+              <TotalSuccess>0</TotalSuccess>
+              <TotalIgnored>0</TotalIgnored>
+              <Time />
+              <Message>Fixture class is not public</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T19:02:36</TestDate>
+              <Status>Ignored</Status>
+              <TotalFailures>0</TotalFailures>
+              <TotalSuccess>0</TotalSuccess>
+              <TotalIgnored>0</TotalIgnored>
+              <Time />
+              <Message>Fixture class is not public</Message>
+            </UnitTestResult>
           </Results>
+          <Tests />
         </TestRecord>
         <TestRecord Name="MissileFunctionTesting">
           <Results>
@@ -76,6 +264,68 @@
             </UnitTestResult>
             <UnitTestResult>
               <TestDate>2013-02-14T15:05:35</TestDate>
+              <Status>Success Ignored</Status>
+              <TotalFailures>0</TotalFailures>
+              <TotalSuccess>7</TotalSuccess>
+              <TotalIgnored>4</TotalIgnored>
+              <Time />
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T17:31:47</TestDate>
+              <Status>Success Failure Ignored</Status>
+              <TotalFailures>1</TotalFailures>
+              <TotalSuccess>6</TotalSuccess>
+              <TotalIgnored>4</TotalIgnored>
+              <Time />
+              <Message>Child test failed</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T18:00:27</TestDate>
+              <Status>Success Failure Ignored</Status>
+              <TotalFailures>1</TotalFailures>
+              <TotalSuccess>6</TotalSuccess>
+              <TotalIgnored>4</TotalIgnored>
+              <Time />
+              <Message>Child test failed</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T18:08:02</TestDate>
+              <Status>Success Failure Ignored</Status>
+              <TotalFailures>1</TotalFailures>
+              <TotalSuccess>6</TotalSuccess>
+              <TotalIgnored>4</TotalIgnored>
+              <Time />
+              <Message>Child test failed</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T18:50:43</TestDate>
+              <Status>Success Failure Ignored</Status>
+              <TotalFailures>1</TotalFailures>
+              <TotalSuccess>6</TotalSuccess>
+              <TotalIgnored>4</TotalIgnored>
+              <Time />
+              <Message>Child test failed</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T19:01:03</TestDate>
+              <Status>Success Failure Ignored</Status>
+              <TotalFailures>1</TotalFailures>
+              <TotalSuccess>6</TotalSuccess>
+              <TotalIgnored>4</TotalIgnored>
+              <Time />
+              <Message>Child test failed</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T19:01:15</TestDate>
+              <Status>Success Failure Ignored</Status>
+              <TotalFailures>1</TotalFailures>
+              <TotalSuccess>6</TotalSuccess>
+              <TotalIgnored>4</TotalIgnored>
+              <Time />
+              <Message>Child test failed</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-02-14T19:02:36</TestDate>
               <Status>Success Ignored</Status>
               <TotalFailures>0</TotalFailures>
               <TotalSuccess>7</TotalSuccess>
@@ -125,7 +375,99 @@ Execution time: 0.01ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_If_Missile_Is_NOT_In_Detonation_Range">
               <Results>
@@ -155,7 +497,99 @@ Execution time: 0.00ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_If_Target_Is_Travelling_a_Linear_Course">
               <Results>
@@ -185,7 +619,99 @@ Execution time: 0.00ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_If_Target_Is_Travelling_a_NON_Linear_Course">
               <Results>
@@ -215,7 +741,99 @@ Execution time: 0.00ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_PredictIntercept">
               <Results>
@@ -261,7 +879,106 @@ Execution time: 0.01ms</Message>
 </ConsoleOutput>
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput>(35.5, 44.0, 19.9)
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput>(35.5, 44.0, 19.9)
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput>(35.5, 44.0, 19.9)
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput>(35.5, 44.0, 19.9)
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput>(35.5, 44.0, 19.9)
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput>(35.5, 44.0, 19.9)
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput>(35.5, 44.0, 19.9)
+</ConsoleOutput>
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_That_Low_Fuel_Function_is_Working_Correctly">
               <Results>
@@ -293,7 +1010,106 @@ Execution time: 0.01ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Low_Fuel_Function_is_Working_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 174</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Low_Fuel_Function_is_Working_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 174</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Low_Fuel_Function_is_Working_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 174</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Low_Fuel_Function_is_Working_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 174</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Low_Fuel_Function_is_Working_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 174</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Low_Fuel_Function_is_Working_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 174</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Low_Fuel_Function_is_Working_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 172</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target">
               <Results>
@@ -325,7 +1141,106 @@ Execution time: 0.01ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 104</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 104</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 104</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 104</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 104</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 104</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 102</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords">
               <Results>
@@ -355,7 +1270,269 @@ Execution time: 0.00ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (34.0, 42.0, 23.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:54</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (0.0, 0.0, 0.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:55</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (0.0, 0.0, 0.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:35:14</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Couldn't create a remote process.</Message>
+                  <StackTrace>   at MonoDevelop.Core.Execution.ProcessHostController.CreateInstance(String assemblyPath, String typeName, String[] addins) in c:\BuildAgent\work\6b3beae2de4b9011\monodevelop\main\src\core\MonoDevelop.Core\MonoDevelop.Core.Execution\ProcessHostController.cs:line 223
+   at MonoDevelop.Core.Execution.ProcessService.CreateExternalProcessObject(Type type, IExecutionHandler executionHandler) in c:\BuildAgent\work\6b3beae2de4b9011\monodevelop\main\src\core\MonoDevelop.Core\MonoDevelop.Core.Execution\ProcessService.cs:line 327
+   at MonoDevelop.NUnit.NUnitAssemblyTestSuite.RunUnitTest(UnitTest test, String suiteName, String pathName, String testName, TestContext testContext) in c:\BuildAgent\work\6b3beae2de4b9011\monodevelop\main\src\addins\NUnit\Services\NUnitAssemblyTestSuite.cs:line 338
+   at MonoDevelop.NUnit.NUnitTestCase.OnRun(TestContext testContext) in c:\BuildAgent\work\6b3beae2de4b9011\monodevelop\main\src\addins\NUnit\Services\NUnitTestCase.cs:line 58
+   at MonoDevelop.NUnit.UnitTest.Run(TestContext testContext) in c:\BuildAgent\work\6b3beae2de4b9011\monodevelop\main\src\addins\NUnit\Services\UnitTest.cs:line 343</StackTrace>
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (34.0, 42.0, 23.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:32</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (0.0, 0.0, 0.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:01:40</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (0.0, 0.0, 0.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (34.0, 42.0, 23.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (34.0, 42.0, 23.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:00:58</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (0.0, 0.0, 0.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (34.0, 42.0, 23.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:09</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (0.0, 0.0, 0.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (34.0, 42.0, 23.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:25</TestDate>
+                  <Status>Failure</Status>
+                  <TotalFailures>1</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>  Expected: (3.0, 0.0, 0.0)
+  But was:  (0.0, 0.0, 0.0)
+</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual, String message, Object[] args)
+   at NUnit.Framework.Assert.AreEqual(Object expected, Object actual)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Can_Calculate_Targets_Velocity_and_Speed_Based_On_Two_Recorded_Position_Coords() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 47</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:31</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_That_Missile_is_Loading">
               <Results>
@@ -385,7 +1562,99 @@ Execution time: 0.00ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Success</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>1</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_That_Missile_Is_Plotting_Course_Correctly">
               <Results>
@@ -417,7 +1686,106 @@ Execution time: 0.00ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Plotting_Course_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 141</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Plotting_Course_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 141</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Plotting_Course_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 141</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Plotting_Course_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 141</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Plotting_Course_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 141</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Plotting_Course_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 141</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Plotting_Course_Correctly() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 139</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="Test_That_Missile_Is_Recording_Its_FuelLoad">
               <Results>
@@ -449,7 +1817,106 @@ Execution time: 0.00ms</Message>
                   <ConsoleOutput />
                   <ConsoleError />
                 </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T17:31:47</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Recording_Its_FuelLoad() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 111</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:00:27</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Recording_Its_FuelLoad() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 111</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:08:02</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Recording_Its_FuelLoad() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 111</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T18:50:43</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Recording_Its_FuelLoad() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 111</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:03</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Recording_Its_FuelLoad() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 111</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:01:15</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Recording_Its_FuelLoad() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 111</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-02-14T19:02:36</TestDate>
+                  <Status>Ignored</Status>
+                  <TotalFailures>0</TotalFailures>
+                  <TotalSuccess>0</TotalSuccess>
+                  <TotalIgnored>1</TotalIgnored>
+                  <Time />
+                  <Message>Not yet implemented</Message>
+                  <StackTrace>   at NUnit.Framework.Assert.Ignore(String message, Object[] args)
+   at NUnit.Framework.Assert.Ignore(String message)
+   at RedSkyProjectTesting.MissileFunctionTesting.Test_That_Missile_Is_Recording_Its_FuelLoad() in c:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Project Testing\MissileFunctionTesting.cs:line 109</StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
           </Tests>
         </TestRecord>
@@ -504,6 +1971,7 @@ Execution time: 0.01ms</Message>
                   <ConsoleError />
                 </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="TestMissileLoad">
               <Results>
@@ -534,6 +2002,7 @@ Execution time: 0.00ms</Message>
                   <ConsoleError />
                 </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
             <TestRecord Name="VelocityAngle">
               <Results>
@@ -564,6 +2033,7 @@ Execution time: 0.00ms</Message>
                   <ConsoleError />
                 </UnitTestResult>
               </Results>
+              <Tests />
             </TestRecord>
           </Tests>
         </TestRecord>

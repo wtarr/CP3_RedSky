@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Missile: AbstractFlightBehaviour
 {
     public List<UnityEngine.Vector3> FlightPath;
-    public Vector3 oldTargetPosition, newMissilePosition, oldMissilePosition;
-    public float timeSinceLastUpdate;
+    public Vector3 oldTargetPosition, newMissilePosition, oldMissilePosition;    
     public float linearDeviationTolerence = 0f; // for now
     public float detonationRange = 30f;
 
@@ -19,51 +18,19 @@ public class Missile: AbstractFlightBehaviour
     public void ObtainRealTimeTargetsPosition()
     {
         // Radar ping and calculate current target position
+
     }
-
-    public void CalculateTargetsVelocityandSpeed()
-    {
-        TargetVelocityVector = TargetPosition - oldTargetPosition;
-
-        FlightPath.Add(TargetVelocityVector);
-
-        float vectorMagnitude = Vector3.Magnitude(TargetVelocityVector);
-
-        TargetSpeedMetersPerSecond = vectorMagnitude / timeSinceLastUpdate;
-    }
-
-    public void PredictIntercept(int timeSlot)
-    {
-        Vector3 targetVelocityPrediction, targetPredictedPositionVector, missileHeadingToIntercept;
-
-        //after 1 time targetPrediction = TargetVelocityVector
-        //after 2 time targetPrediction = 2 * TargetVelocityVector
-        // ...
-
-        // |---->| known
-        // |----------->| predicted
-
-        targetVelocityPrediction = TargetVelocityVector * timeSlot;
-        targetPredictedPositionVector = oldTargetPosition + targetVelocityPrediction;
-
-        missileHeadingToIntercept = targetPredictedPositionVector - newMissilePosition;
-
-        //Now test if this is feasible
-        //if not increase time slot
-
-        
-    }
-
+	
+	
     public Vector3 CalculateInterceptVector()
     {
         // This calculation will be performed by the planes onboard system
         
-        Vector3 o = TargetPosition - newMissilePosition;
-
+        Vector3 o = TargetPosition - newMissilePosition; // for simplification purposes
 
         double a = Math.Pow(TargetVelocityVector.x, 2) + Math.Pow(TargetVelocityVector.y, 2) + Math.Pow(TargetVelocityVector.z, 2) - Math.Pow(MaxSpeed, 2);
 		
-		if (a == 0) a = 0.001; // avoid a div by zero
+		if (a == 0) a = 0.000001f; // avoid a div by zero
 
         double b = (o.x * TargetVelocityVector.x) + (o.y * TargetVelocityVector.y) + (o.z * TargetVelocityVector.z);
 
@@ -77,8 +44,7 @@ public class Missile: AbstractFlightBehaviour
 		double t1 = (-b + Math.Sqrt( Math.Pow(b, 2) - (a * c) )) / a;
 		double t2 = (-b - Math.Sqrt( Math.Pow(b, 2) - (a * c) )) / a;
         
-        //double t1 = (b + (Math.Sqrt(Math.Pow(b, 2) - (4 * a * c)))) / (2 * a);
-        //double t2 = (b - (Math.Sqrt(Math.Pow(b, 2) - (4 * a * c)))) / (2 * a);              
+             
         
 		float t = 1;
 		

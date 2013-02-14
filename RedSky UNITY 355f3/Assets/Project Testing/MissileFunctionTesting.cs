@@ -34,23 +34,17 @@ namespace RedSkyProjectTesting
             //that the missile can calculate the velocity of its target correctly.
                         
             Vector3 targetVectorExpected = new Vector3(3, 0, 0);
-            float targetVectMagnitudeExpected = 3f;
-            float targetSpeedExpected = 180;
-            float targetSpeedExpectedTolerence = 0.0001f;                    
+			Vector3 actualTargetVelVector;                                       
             
-            m.oldMissilePosition = new Vector3(0, 0, 0);
-            m.newMissilePosition = new Vector3(0, 0, 0);
 
-            m.oldTargetPosition = new Vector3(0, 1, 0);
-            m.TargetPosition = new Vector3(3, 1, 0);
+            m.oldTargetPosition = new Vector3(0, 1, 0); // old
+            m.TargetPosition = new Vector3(3, 1, 0); // new
+           
+           	actualTargetVelVector = m.CalculateVelocityVector(m.oldTargetPosition, m.TargetPosition, 1);
 
-            m.timeSinceLastUpdate = 1f / 60f; //assume 1 frame which took 1/60th of a second
-
-            m.CalculateTargetsVelocityandSpeed();
-
-            Assert.AreEqual(targetVectorExpected, m.TargetVelocityVector);
-            Assert.AreEqual(targetVectMagnitudeExpected, Vector3.Magnitude(m.TargetVelocityVector));
-            Assert.AreEqual(targetSpeedExpected, m.TargetSpeedMetersPerSecond, targetSpeedExpectedTolerence);
+            Assert.AreEqual(targetVectorExpected, actualTargetVelVector);
+            
+            
         }
 
         [Test]

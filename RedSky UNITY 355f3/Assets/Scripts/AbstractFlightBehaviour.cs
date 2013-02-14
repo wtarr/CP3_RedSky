@@ -130,4 +130,10 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
     {
         throw new NotImplementedException();
     }
+	
+	public Vector3 CalculateVelocityVector(Vector3 posOld, Vector3 posNew, float delta)
+    {
+        return (posNew - posOld) / delta;  			
+        
+    }
 }
