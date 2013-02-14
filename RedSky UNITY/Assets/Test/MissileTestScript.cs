@@ -21,7 +21,7 @@ public class MissileTestScript : MonoBehaviour
 		
 		m = new Missile ();
 		
-		speed = 10f;
+		speed = 60f;
 		
 		m.MaxSpeed = speed;		
 		
@@ -54,14 +54,14 @@ public class MissileTestScript : MonoBehaviour
 		
 		if (GameObject.Find ("target")) { //check that target still exists
 			
-			m.newMissilePosition = transform.position;
+			m.newMissilePosition = basestation.transform.position;
 
 			m.TargetPosition = target.transform.position;
 			
-			m.newTargetPosition = m.TargetPosition;
-
-			m.CalculateTargetsVelocityandSpeed ();
-
+			//m.CalculateTargetsVelocityandSpeed ();
+			
+			
+			m.TargetVelocityVector = new Vector3(34, 42, 23); //fake it
 
 			if (Input.GetKey (KeyCode.Space)) {
 			            		            			
@@ -79,9 +79,8 @@ public class MissileTestScript : MonoBehaviour
 				fox2 = (GameObject)Instantiate (missile, basestation.transform.position, transform.rotation);
 					
 				Vector3 v = m.CalculateInterceptVector ();
+						
 				to = v;
-				
-				
 			
 				fox2.AddComponent<Rigidbody> ();
 							
@@ -108,7 +107,7 @@ public class MissileTestScript : MonoBehaviour
 			}
 								
 			if (launched)
-				fox2.transform.position += fox2.transform.forward * m.MaxSpeed * Time.deltaTime;
+				fox2.transform.position += to * Time.deltaTime;
 		
 //		if( Input.GetMouseButton(0))
 //		{
@@ -121,10 +120,10 @@ public class MissileTestScript : MonoBehaviour
 			
 			//Debug.DrawLine(new Vector3(0, 0, 0), new Vector3(0, 5, 0), Color.blue, 3, false);
 			if (launched)
-				Debug.DrawLine(m.newMissilePosition, to * 100, Color.blue, 10, false);
+				Debug.DrawLine(basestation.transform.position, to * 1000, Color.blue, 10, false);
 			
 			
-			m.oldTargetPosition = m.newTargetPosition;		
+			m.oldTargetPosition = m.TargetPosition;		
 		}
 	}	
 	

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Missile: AbstractFlightBehaviour
 {
     public List<UnityEngine.Vector3> FlightPath;
-    public Vector3 oldTargetPosition, newTargetPosition, newMissilePosition, oldMissilePosition;
+    public Vector3 oldTargetPosition, newMissilePosition, oldMissilePosition;
     public float timeSinceLastUpdate;
     public float linearDeviationTolerence = 0f; // for now
     public float detonationRange = 30f;
@@ -23,7 +23,7 @@ public class Missile: AbstractFlightBehaviour
 
     public void CalculateTargetsVelocityandSpeed()
     {
-        TargetVelocityVector = newTargetPosition - oldTargetPosition;
+        TargetVelocityVector = TargetPosition - oldTargetPosition;
 
         FlightPath.Add(TargetVelocityVector);
 
@@ -58,7 +58,7 @@ public class Missile: AbstractFlightBehaviour
     {
         // This calculation will be performed by the planes onboard system
         
-        Vector3 o = newTargetPosition - newMissilePosition;
+        Vector3 o = TargetPosition - newMissilePosition;
 
 
         double a = Math.Pow(TargetVelocityVector.x, 2) + Math.Pow(TargetVelocityVector.y, 2) + Math.Pow(TargetVelocityVector.z, 2) - Math.Pow(MaxSpeed, 2);
@@ -90,10 +90,15 @@ public class Missile: AbstractFlightBehaviour
 		
 		if (t1 >= 0 && t2 >= 0)
 			t = (float)Math.Min(t1, t2);		
+		
+		//Debug.Log("T " + t);
         
-        Vector3 intercept = TargetPosition + (TargetVelocityVector * t);
-
-       	return Vector3.Normalize(intercept - newMissilePosition);
+        //Vector3 intercept = TargetPosition + (TargetVelocityVector * t);
+		Vector3 intercept = TargetVelocityVector + (TargetPosition / t);
+		
+		//Console.WriteLine(Vector3.Normalize(intercept));
+		
+       	return intercept;
     }
 
     public bool IsTargetCourseLinear()

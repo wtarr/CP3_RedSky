@@ -42,7 +42,7 @@ namespace RedSkyProjectTesting
             m.newMissilePosition = new Vector3(0, 0, 0);
 
             m.oldTargetPosition = new Vector3(0, 1, 0);
-            m.newTargetPosition = new Vector3(3, 1, 0);
+            m.TargetPosition = new Vector3(3, 1, 0);
 
             m.timeSinceLastUpdate = 1f / 60f; //assume 1 frame which took 1/60th of a second
 
@@ -118,23 +118,23 @@ namespace RedSkyProjectTesting
         [Test]
         public void Test_PredictIntercept()
         {
-            Vector3 expected = new Vector3(0, 1, 0);
+            Vector3 expected = new Vector3(35.53454f, 44.04605f, 19.93092f);
                           
-            m.newMissilePosition = new Vector3(3, 0, 0); //   B
+            m.newMissilePosition = new Vector3(0, 0, 0); //   B
 
-            m.TargetPosition = new Vector3(0, 3, 0); // A
+            m.TargetPosition = new Vector3(150, 200, -300); // A
+						
+            m.TargetVelocityVector = new Vector3(34, 42, 23); // Av
 
-            m.TargetVelocityVector = new Vector3(3, 0, 0); // Av
-
-            m.MaxSpeed = 3f; 
+            m.MaxSpeed = 60f; 
 
             Vector3 intercept = m.CalculateInterceptVector();
 
+			Console.WriteLine(intercept);
 
-
-            Assert.AreEqual(expected.x, intercept.x, 0.001);
-            Assert.AreEqual(expected.y, intercept.y, 0.001);
-            Assert.AreEqual(expected.z, intercept.z, 0.001);
+            Assert.AreEqual(expected.x, intercept.x, 0.001f);
+            Assert.AreEqual(expected.y, intercept.y, 0.001f);
+            Assert.AreEqual(expected.z, intercept.z, 0.001f);
             
         }
 
