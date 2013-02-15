@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class TargetMove : MonoBehaviour {
@@ -6,6 +7,7 @@ public class TargetMove : MonoBehaviour {
 	public float speed;
 	public float thrustVal;
 	public Vector3 velocity, acceleration, oldPos, calculatedVel;
+	public GameObject exp, thisObject;
 	
 	// Use this for initialization
 	void Start () {
@@ -13,7 +15,9 @@ public class TargetMove : MonoBehaviour {
 			
 		velocity = Vector3.zero;	
 		
-		thrustVal = 60f;
+		thrustVal = 600f;
+		
+		thisObject = this.gameObject;
 						
 	}
 
@@ -48,8 +52,32 @@ public class TargetMove : MonoBehaviour {
 	
 	}
 	
+	void OnTriggerEnter(Collider other) {
+       
+		Debug.Log("Triggered");
+		
+		if (other.gameObject.name == "missile(Clone)" || other.gameObject.name == "missilefox2(Clone)" )
+		{
+			try {
+				
+				Instantiate(exp, transform.position, transform.rotation);
+			
+				Destroy(other.gameObject);
+			
+				Destroy(GameObject.Find("target"));
+			}
+			catch (Exception e)
+			{
+				Debug.Log(e.ToString());
+			}
+		}
+    }
+	
+	
+	
 	void OnGUI()
 	{
-		GUI.Label(new Rect(10, 10, 200, 20), "x: " + calculatedVel.x.ToString() + "y: " + calculatedVel.y.ToString() + "z: " + calculatedVel.z.ToString()); 
+		GUI.Label(new Rect(10, 10, 200, 20), "Targets Calculated Velocity"); 
+		GUI.Label(new Rect(10, 30, 200, 20), "X: " + calculatedVel.x.ToString() + "    Y: " + calculatedVel.y.ToString() + "    Z: " + calculatedVel.z.ToString()); 
 	}
 }

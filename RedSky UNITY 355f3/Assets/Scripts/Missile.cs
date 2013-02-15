@@ -22,17 +22,17 @@ public class Missile: AbstractFlightBehaviour
     }
 	
 	
-    public Vector3 CalculateInterceptVector()
+    public Vector3 CalculateInterceptVector(Vector3 targPos, Vector3 targVelocity, Vector3 firingbasePos, float missileMaxSpeed)
     {
         // This calculation will be performed by the planes onboard system
         
-        Vector3 o = TargetPosition - newMissilePosition; // for simplification purposes
+        Vector3 o = targPos - firingbasePos; // for simplification purposes
 
-        double a = Math.Pow(TargetVelocityVector.x, 2) + Math.Pow(TargetVelocityVector.y, 2) + Math.Pow(TargetVelocityVector.z, 2) - Math.Pow(MaxSpeed, 2);
+        double a = Math.Pow(targVelocity.x, 2) + Math.Pow(targVelocity.y, 2) + Math.Pow(targVelocity.z, 2) - Math.Pow(missileMaxSpeed, 2);
 		
 		if (a == 0) a = 0.000001f; // avoid a div by zero
 
-        double b = (o.x * TargetVelocityVector.x) + (o.y * TargetVelocityVector.y) + (o.z * TargetVelocityVector.z);
+        double b = (o.x * targVelocity.x) + (o.y * targVelocity.y) + (o.z * targVelocity.z);
 
         double c = Math.Pow(o.x, 2) + Math.Pow(o.y, 2) + +Math.Pow(o.z, 2);
 
@@ -60,9 +60,7 @@ public class Missile: AbstractFlightBehaviour
 		//Debug.Log("T " + t);
         
         //Vector3 intercept = TargetPosition + (TargetVelocityVector * t);
-		Vector3 intercept = TargetVelocityVector + (TargetPosition / t);
-		
-		//Console.WriteLine(Vector3.Normalize(intercept));
+		Vector3 intercept = targVelocity + (targPos / t);
 		
        	return intercept;
     }

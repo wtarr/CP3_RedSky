@@ -109,28 +109,28 @@ namespace RedSkyProjectTesting
             Assert.Ignore("Not yet implemented");
         }
 
-        [Test]
-        public void Test_PredictIntercept()
-        {
-            Vector3 expected = new Vector3(35.53454f, 44.04605f, 19.93092f);
-                          
-            m.newMissilePosition = new Vector3(0, 0, 0); //   B
-
-            m.TargetPosition = new Vector3(150, 200, -300); // A
-						
-            m.TargetVelocityVector = new Vector3(34, 42, 23); // Av
-
-            m.MaxSpeed = 60f; 
-
-            Vector3 intercept = m.CalculateInterceptVector();
-
-			Console.WriteLine(intercept);
-
-            Assert.AreEqual(expected.x, intercept.x, 0.001f);
-            Assert.AreEqual(expected.y, intercept.y, 0.001f);
-            Assert.AreEqual(expected.z, intercept.z, 0.001f);
-            
-        }
+//        [Test]
+//        public void Test_PredictIntercept()
+//        {
+//            Vector3 expected = new Vector3(35.53454f, 44.04605f, 19.93092f);
+//                          
+//            m.newMissilePosition = new Vector3(0, 0, 0); //   B
+//
+//            m.TargetPosition = new Vector3(150, 200, -300); // A
+//						
+//            m.TargetVelocityVector = new Vector3(34, 42, 23); // Av
+//
+//            m.MaxSpeed = 60f; 
+//
+//            Vector3 intercept = m.CalculateInterceptVector();
+//
+//			Console.WriteLine(intercept);
+//
+//            Assert.AreEqual(expected.x, intercept.x, 0.001f);
+//            Assert.AreEqual(expected.y, intercept.y, 0.001f);
+//            Assert.AreEqual(expected.z, intercept.z, 0.001f);
+//            
+//        }
 
         [Test]
         public void Test_That_Missile_Is_Plotting_Course_Correctly()
