@@ -107,8 +107,10 @@ public class MissileTestScript : MonoBehaviour
 			}
 								
 			if (launched && fox2 != null)
+			{
+				fox2.transform.forward = Vector3.Normalize(to);
 				fox2.transform.position += to * Time.deltaTime;
-		
+			}
 
 			if (launched)
 				Debug.DrawLine(basestation.transform.position, to * 1000, Color.blue, 10, false);
