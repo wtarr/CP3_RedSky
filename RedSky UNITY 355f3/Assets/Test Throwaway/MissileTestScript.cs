@@ -86,7 +86,7 @@ public class MissileTestScript : MonoBehaviour
 						
 				to = v;
 				
-				something = m.CalculateInterceptVector(newRelTarPos, relTargVelocity, m.newMissilePosition, m.MaxSpeed);
+				something = m.CalculateInterceptVector(m.TargetPosition, relTargVelocity, m.newMissilePosition, m.MaxSpeed);
 			
 				fox2.AddComponent<Rigidbody> ();
 							
@@ -116,7 +116,7 @@ public class MissileTestScript : MonoBehaviour
 
 			if (launched)
 			{
-				Debug.DrawLine(basestation.transform.position, to * 1000, Color.blue, 10, false);
+				Debug.DrawLine(basestation.transform.position, something, Color.blue, 10, false);
 				Debug.DrawLine(Vector3.zero, something, Color.white, 10, false);
 			
 			}
