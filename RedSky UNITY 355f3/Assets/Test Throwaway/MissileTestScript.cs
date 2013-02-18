@@ -11,7 +11,7 @@ public class MissileTestScript : MonoBehaviour
 	GameObject target;
 	public float speed;
 	Vector3 interceptforward, to;
-	Vector3 newRelTarPos, oldRelTarPos, relTargVelocity;
+	Vector3 newRelTarPos, oldRelTarPos, relTargVelocity, something;
 	bool launch = false, launched = false;
 	
 	
@@ -82,9 +82,11 @@ public class MissileTestScript : MonoBehaviour
 				
 				fox2 = (GameObject)Instantiate (missile, basestation.transform.position, transform.rotation);
 					
-				Vector3 v = m.CalculateInterceptVector(newRelTarPos, relTargVelocity, Vector3.zero, m.MaxSpeed);
+				Vector3 v = m.CalculateInterceptVector(newRelTarPos, relTargVelocity, m.MaxSpeed);
 						
 				to = v;
+				
+				something = m.CalculateInterceptVector(newRelTarPos, relTargVelocity, m.newMissilePosition, m.MaxSpeed);
 			
 				fox2.AddComponent<Rigidbody> ();
 							
@@ -113,9 +115,11 @@ public class MissileTestScript : MonoBehaviour
 			}
 
 			if (launched)
+			{
 				Debug.DrawLine(basestation.transform.position, to * 1000, Color.blue, 10, false);
+				Debug.DrawLine(Vector3.zero, something, Color.white, 10, false);
 			
-			
+			}
 			oldRelTarPos = newRelTarPos;		
 		}
 	}	

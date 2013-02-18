@@ -5,3 +5,6 @@ http://stackoverflow.com/questions/1202391/how-to-create-an-intercept-missile-fo
 http://www.gamedev.net/blog/796/entry-2255993-math-for-game-developers-video-series/
 http://www.moddb.com/mods/wicmw/features/flint-lead-pursuit-guidance-principles
 http://jaran.de/goodbits/2011/07/17/calculating-an-intercept-course-to-a-target-with-constant-direction-and-velocity-in-a-2-dimensional-plane/
+http://www.moddb.com/mods/wicmw/tutorials/wic-modding-tutorial-leading-a-moving-target-in-python
+http://gamedev.stackexchange.com/questions/27923/implementing-simple-proportional-navigation-for-a-homing-missile
+http://gamedev.stackexchange.com/questions/17313/how-to-prevent-homing-entities-from-orbiting-their-targets/33064#33064
