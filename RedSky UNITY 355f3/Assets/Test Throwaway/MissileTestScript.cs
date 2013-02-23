@@ -11,7 +11,7 @@ public class MissileTestScript : MonoBehaviour
 	GameObject target;
 	public float speed;
 	Vector3 interceptforward, to;
-	Vector3 newRelTarPos, oldRelTarPos, relTargVelocity, something;
+	Vector3 oldTarPos, targVelocity, something;
 	bool launch = false, launched = false;
 	
 	
@@ -28,6 +28,7 @@ public class MissileTestScript : MonoBehaviour
 		
 		target = GameObject.Find ("target");
 		
+		m.newMissilePosition = basestation.transform.position;
 		
 		
 	}
@@ -56,13 +57,16 @@ public class MissileTestScript : MonoBehaviour
 			
 			//basestation.transform.LookAt(target.transform);
 			
-			m.newMissilePosition = basestation.transform.position;
+			if (fox2 == null)
+				m.newMissilePosition = basestation.transform.position;
+			else
+				m.newMissilePosition = fox2.transform.position;
 
 			m.TargetPosition = target.transform.position;
 			
-			newRelTarPos = basestation.transform.InverseTransformDirection(target.transform.position - basestation.transform.position);
+			//newRelTarPos = basestation.transform.InverseTransformDirection(target.transform.position - basestation.transform.position);  //no need to do local anymore
 			
-			relTargVelocity = m.CalculateVelocityVector(oldRelTarPos, newRelTarPos, Time.deltaTime);
+			targVelocity = m.CalculateVelocityVector(oldTarPos, m.TargetPosition, Time.deltaTime);
 			
 			//basestation.transform.LookAt(target.transform);
 			
@@ -78,20 +82,21 @@ public class MissileTestScript : MonoBehaviour
 			if (launch && !launched) {
 				
 				launch = false;
-				launched = true;
+				
 				
 				fox2 = (GameObject)Instantiate (missile, basestation.transform.position, transform.rotation);
 					
-				Vector3 v = m.CalculateInterceptVector(newRelTarPos, relTargVelocity, m.MaxSpeed);
-						
-				to = v;
+				//Vector3 v = m.CalculateInterceptVector(newRelTarPos, relTargVelocity, m.MaxSpeed);
+				Vector3 interceptVector = m.CalculateInterceptVector(m.TargetPosition, targVelocity, m.newMissilePosition, m.MaxSpeed);
 				
-				something = m.CalculateInterceptVector(m.TargetPosition, relTargVelocity, m.newMissilePosition, m.MaxSpeed);
+				Vector3 missileVelocityVectorToIntercept = m.PlotCourse(interceptVector);
+				
+				to = missileVelocityVectorToIntercept;
+				
+				something = m.CalculateInterceptVector(m.TargetPosition, targVelocity, m.newMissilePosition, m.MaxSpeed);
 			
 				fox2.AddComponent<Rigidbody> ();
-							
-				
-				
+						
 				fox2.AddComponent<SphereCollider>();
 				                 
 				
@@ -101,26 +106,53 @@ public class MissileTestScript : MonoBehaviour
 				
 				fox2.rigidbody.useGravity = false;
 				fox2.rigidbody.angularDrag = 0;
-				fox2.rigidbody.mass = 1;
-			
-				fox2.transform.forward = v;
-			
+				fox2.rigidbody.mass = 1;											
 				
+				launched = true;
 			}
 								
 			if (launched && fox2 != null)
 			{
+				//recalculate
+				
+				Vector3 interceptVector = m.CalculateInterceptVector(m.TargetPosition, targVelocity, m.newMissilePosition, m.MaxSpeed);
+				
+				Vector3 missileVelocityVectorToIntercept = m.PlotCourse(interceptVector);
+				
+				
+				// Check if path to intercept is still viable...
+				// if not we will check if in detonation range
+				// if not in detonation range we will continue on old velocity
+				if (interceptVector == Vector3.zero)
+				{
+					
+					// the path is not viable solets check if missile is in detonation range of target					
+					if (m.InDetonationRange())
+					{
+						
+						
+						SphereCollider myCollider = fox2.transform.GetComponent<SphereCollider>();
+						myCollider.radius = m.detonationRange;
+						
+						
+					}				
+					
+				}				
+				else
+				{	
+					// This path is viable so update missile
+					to = missileVelocityVectorToIntercept; 
+				}	
+				
 				fox2.transform.forward = Vector3.Normalize(to);
 				fox2.transform.position += to * Time.deltaTime;
-			}
-
-			if (launched)
-			{
+				
 				Debug.DrawLine(basestation.transform.position, something, Color.blue, 10, false);
 				Debug.DrawLine(Vector3.zero, something, Color.white, 10, false);
-			
 			}
-			oldRelTarPos = newRelTarPos;		
+
+			
+			oldTarPos = m.TargetPosition;		
 		}
 	}	
 	

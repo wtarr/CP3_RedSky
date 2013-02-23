@@ -146,7 +146,7 @@ namespace RedSkyProjectTesting
 
             m.newMissilePosition = new Vector3(0, 1, 0);
 
-            m.TargetPosition = new Vector3(29, 1, 0);
+            m.TargetPosition = new Vector3(14, 1, 0);
 
             Assert.IsTrue(m.InDetonationRange(), string.Format("{0}", Vector3.Distance(m.newMissilePosition, m.TargetPosition)));
             

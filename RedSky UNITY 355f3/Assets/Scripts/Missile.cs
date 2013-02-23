@@ -7,7 +7,7 @@ public class Missile: AbstractFlightBehaviour
     public List<UnityEngine.Vector3> FlightPath;
     public Vector3 oldTargetPosition, newMissilePosition, oldMissilePosition;    
     public float linearDeviationTolerence = 0f; // for now
-    public float detonationRange = 30f;
+    public float detonationRange = 15f;
 
     public Missile()
     {
@@ -24,7 +24,7 @@ public class Missile: AbstractFlightBehaviour
 	
     public Vector3 CalculateInterceptVector(Vector3 targPos, Vector3 targVelocity, float missileMaxSpeed)
     {
-        // This calculation will be performed by the planes onboard system
+        
         
         Vector3 o = targPos - Vector3.zero; // for simplification purposes
 
@@ -100,10 +100,10 @@ public class Missile: AbstractFlightBehaviour
 		if (t1 >= 0 && t2 >= 0)
 			t = (float)Math.Min(t1, t2);		
 		
-		//Debug.Log("T " + t);
+		
         
         Vector3 intercept = targPos + (targVelocity * t);
-		//Vector3 intercept = targVelocity + (targPos / t);
+		
 		
        	return intercept;
     }
@@ -132,9 +132,12 @@ public class Missile: AbstractFlightBehaviour
         
     }
 
-    public void PlotCourse()
+    public Vector3 PlotCourse(Vector3 interceptVector )
     {
-        
+        Vector3 missileVelocity = interceptVector - newMissilePosition;
+		
+		
+		return Vector3.Normalize(missileVelocity) * MaxSpeed;
     }
 
     public void IsRouteFeasible()
