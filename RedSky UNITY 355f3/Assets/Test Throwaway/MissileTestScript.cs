@@ -64,13 +64,8 @@ public class MissileTestScript : MonoBehaviour
 
 			m.TargetPosition = target.transform.position;
 			
-			//newRelTarPos = basestation.transform.InverseTransformDirection(target.transform.position - basestation.transform.position);  //no need to do local anymore
-			
 			targVelocity = m.CalculateVelocityVector(oldTarPos, m.TargetPosition, Time.deltaTime);
 			
-			//basestation.transform.LookAt(target.transform);
-			
-
 			if (Input.GetKey (KeyCode.F)) {
 			            		            			
 						
@@ -83,26 +78,27 @@ public class MissileTestScript : MonoBehaviour
 				
 				launch = false;
 				
-				
+				// my missile
 				fox2 = (GameObject)Instantiate (missile, basestation.transform.position, transform.rotation);
-					
-				//Vector3 v = m.CalculateInterceptVector(newRelTarPos, relTargVelocity, m.MaxSpeed);
+				
+				// calculate the intercept vector which is the target and missile will collide at time t based on missiles maxspeed
 				Vector3 interceptVector = m.CalculateInterceptVector(m.TargetPosition, targVelocity, m.newMissilePosition, m.MaxSpeed);
 				
+				// calculate the velocity vector required for the missile to travel that will reach intercept
 				Vector3 missileVelocityVectorToIntercept = m.PlotCourse(interceptVector);
 				
 				to = missileVelocityVectorToIntercept;
 				
 				something = m.CalculateInterceptVector(m.TargetPosition, targVelocity, m.newMissilePosition, m.MaxSpeed);
-			
+				
+				// create a rigid body for our missile
 				fox2.AddComponent<Rigidbody> ();
-						
-				fox2.AddComponent<SphereCollider>();
-				                 
+				// create a sphere collider for our missile
+				fox2.AddComponent<SphereCollider>();				                 
 				
 				SphereCollider sc = (SphereCollider)fox2.collider;
 				
-				sc.radius = 0.5f;
+				sc.radius = 0.5f; //set its intital det range
 				
 				fox2.rigidbody.useGravity = false;
 				fox2.rigidbody.angularDrag = 0;
@@ -122,11 +118,11 @@ public class MissileTestScript : MonoBehaviour
 				
 				// Check if path to intercept is still viable...
 				// if not we will check if in detonation range
-				// if not in detonation range we will continue on old velocity
+				// if not in detonation range we will continue on old velocity and hope for better intercept chance
 				if (interceptVector == Vector3.zero)
 				{
 					
-					// the path is not viable solets check if missile is in detonation range of target					
+					// the path is not viable so lets check if missile is in detonation range of target					
 					if (m.InDetonationRange())
 					{
 						

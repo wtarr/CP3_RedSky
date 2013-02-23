@@ -108,6 +108,12 @@ namespace RedSkyProjectTesting
             // The missiles fuel must be updated constantly
             Assert.Ignore("Not yet implemented");
         }
+		
+		[Test]
+        public void Test_If_Path_Viable()
+        {            
+            Assert.Ignore("Not yet implemented");
+        }
 
 //        [Test]
 //        public void Test_PredictIntercept()
