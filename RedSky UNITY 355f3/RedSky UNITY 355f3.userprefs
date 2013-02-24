@@ -1,19 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Particle VertexLit Blended.shader">
-    <Files>
-      <File FileName="Assets\Scripts\Missile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AbstractFlightBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\Test Throwaway\TargetMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Test Throwaway\MissileTestScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Test Throwaway\Rotor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Test Throwaway\Camera1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Project Testing\MissileFunctionTesting.cs" Line="54" Column="49" />
-      <File FileName="Assets\Scripts\Particle VertexLit Blended.shader" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Project Testing" expanded="True">
+                <Node name="MissileFunctionTesting.cs" selected="True" />
+              </Node>
+              <Node name="Scripts" expanded="True" />
+              <Node name="Test Throwaway" expanded="True" />
+            </Node>
+          </Node>
+          <Node name="Assembly-UnityScript" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Detonator Explosion Framework" expanded="True">
+                <Node name="TestScene" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
@@ -28,7 +35,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Test Throwaway\TargetMove.cs" line="57" />
+      <Breakpoint file="C:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Test Throwaway\TargetMove.cs" line="75" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

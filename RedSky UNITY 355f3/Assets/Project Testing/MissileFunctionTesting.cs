@@ -150,11 +150,11 @@ namespace RedSkyProjectTesting
         {
             // Test the missile is in close enough proximity that it can afford to detonate
 
-            m.newMissilePosition = new Vector3(0, 1, 0);
+            m.Position = new Vector3(0, 1, 0);
 
             m.TargetPosition = new Vector3(14, 1, 0);
 
-            Assert.IsTrue(m.InDetonationRange(), string.Format("{0}", Vector3.Distance(m.newMissilePosition, m.TargetPosition)));
+            Assert.IsTrue(m.InDetonationRange(), string.Format("{0}", Vector3.Distance(m.Position, m.TargetPosition)));
             
         }
 
@@ -163,11 +163,11 @@ namespace RedSkyProjectTesting
         {
             // Test the missile is in close enough proximity that it can afford to detonate
 
-            m.newMissilePosition = new Vector3(0, 1, 0);
+            m.Position = new Vector3(0, 1, 0);
 
             m.TargetPosition = new Vector3(129, 1, 0);
 
-            Assert.IsFalse(m.InDetonationRange(), string.Format("{0}", Vector3.Distance(m.newMissilePosition, m.TargetPosition)));
+            Assert.IsFalse(m.InDetonationRange(), string.Format("{0}", Vector3.Distance(m.Position, m.TargetPosition)));
 
         }
 

@@ -5,20 +5,76 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 {
 
     #region Class State
-    GameObject gameObject;
+	private GameObject entityObj; // the almighty, bow before it
+	private GameObject primaryTarget;
+	private float health;
+	private Vector3 position;
+	private Quaternion rotation;
+	private Vector3 velocity;
+	private Vector3 acceleration;
+	private Vector3 targetPosition;
+    private Vector3 targetVelocityVector;    
     private float atmosphericDrag;
     private float currentSpeed;
     private float fuelRemaining;
     private float fuelBurnRate;
-    private float maxSpeed;
-    private Transform targetTransform;
-    private Vector3 targetPosition;
-    private Vector3 targetVelocityVector;
+    private float maxSpeed;    
     private float targetSpeedMetersPerSecond;
-    private float thrustValue; 
+    private float thrustValue;
+	private float decelerationValue;
+	private float pitchAngle;
+	private float rollAngle;
+	private float yawAngle;
     #endregion
 
-    #region Properties
+    #region Properties	
+
+	public GameObject EntityObj {
+		get {return this.entityObj;}
+		set {entityObj = value;}
+	}
+
+	public GameObject PrimaryTarget {
+		get {return this.primaryTarget;}
+		set {primaryTarget = value;}
+	}
+	
+	public float Health {
+		get {return this.health;}
+		set {health = value;}
+	}
+	
+	public Vector3 Position {
+		get {return this.EntityObj.transform.position;}
+		set {this.EntityObj.transform.position = value;}
+	}
+
+	public Quaternion Rotation {
+		get {return this.EntityObj.transform.rotation;}
+		set {this.EntityObj.transform.rotation = value;}
+	}
+	public Vector3 Velocity {
+		get {return this.velocity;}
+		set {velocity = value;}
+	}	
+
+	public Vector3 Acceleration {
+		get {return this.acceleration;}
+		set {acceleration = value;}
+	}	
+	
+	public Vector3 TargetPosition
+    {
+        get { return targetPosition; }
+        set { targetPosition = value; }
+    }
+
+    public Vector3 TargetVelocityVector
+    {
+        get { return targetVelocityVector; }
+        set { targetVelocityVector = value; }
+    }
+	
     public float AtmosphericDrag
     {
         get { return atmosphericDrag; }
@@ -47,26 +103,8 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
     {
         get { return maxSpeed; }
         set { maxSpeed = value; }
-    }
-
-    public Transform TargetTransform
-    {
-        get { return targetTransform; }
-        set { targetTransform = value; }
-    }
-
-    public Vector3 TargetPosition
-    {
-        get { return targetPosition; }
-        set { targetPosition = value; }
-    }
-
-    public Vector3 TargetVelocityVector
-    {
-        get { return targetVelocityVector; }
-        set { targetVelocityVector = value; }
-    }
-
+    }  
+    
     public float TargetSpeedMetersPerSecond
     {
         get { return targetSpeedMetersPerSecond; }
@@ -78,47 +116,69 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
         get { return thrustValue; }
         set { thrustValue = value; }
     } 
+
+	public float DecelerationValue {
+		get {return this.decelerationValue;}
+		set {decelerationValue = value;}
+	}
+
+	public float PitchAngle {
+		get {return this.pitchAngle;}
+		set {pitchAngle = value;}
+	}
+	
+	
+
+	public float RollAngle {
+		get {return this.rollAngle;}
+		set {rollAngle = value;}
+	}
+
+	public float YawAngle {
+		get {return this.yawAngle;}
+		set {yawAngle = value;}
+	}
     #endregion
 
     
     public void Accelerate()
     {
-        throw new NotImplementedException();
+        Acceleration += ThrustValue * EntityObj.transform.forward * Time.deltaTime;				
     }
 
     public void Decelerate()
     {
-        throw new NotImplementedException();
+        Acceleration += DecelerationValue * (EntityObj.transform.forward * -1f) * Time.deltaTime;	
     }
 
     public void PitchUp()
     {
-        throw new NotImplementedException();
+        EntityObj.transform.RotateAround(EntityObj.transform.right, PitchAngle);
     }
 
     public void PitchDown()
     {
-        throw new NotImplementedException();
+        EntityObj.transform.RotateAround(EntityObj.transform.right, (PitchAngle * -1));
     }
 
     public void RollLeft()
     {
-        throw new NotImplementedException();
+        EntityObj.transform.RotateAround(EntityObj.transform.forward, (RollAngle));
     }
 
     public void RollRight()
     {
-        throw new NotImplementedException();
+        EntityObj.transform.RotateAround(EntityObj.transform.forward, (RollAngle * -1));
     }
 
     public void YawLeft()
     {
-        throw new NotImplementedException();
+        EntityObj.transform.RotateAround(EntityObj.transform.up, YawAngle);
     }
 
     public void YawRight()
     {
-        throw new NotImplementedException();
+        EntityObj.transform.RotateAround(EntityObj.transform.up, (YawAngle * -1));
     }        
 
     public void PredictTimeToLowFuel()

@@ -3,8 +3,7 @@ using System;
 using System.Collections;
 
 public class TargetMove : MonoBehaviour {
-	
-	public float speed;
+	public EnemyCraft testCraft;	
 	public float thrustVal;
 	public Vector3 velocity, acceleration, oldPos, calculatedVel;
 	public GameObject exp, thisObject;
@@ -12,43 +11,76 @@ public class TargetMove : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
+		testCraft = new EnemyCraft();
+		
+		testCraft.EntityObj = this.gameObject;
+				
+		testCraft.Velocity = Vector3.zero;
 			
-		velocity = Vector3.zero;	
+		testCraft.ThrustValue = 600f;
 		
-		thrustVal = 600f;
+		testCraft.DecelerationValue = 300f;
 		
-		thisObject = this.gameObject;
+		testCraft.PitchAngle = 0.01f;
+		
+		testCraft.YawAngle = 0.01f;
 						
-	}
-
-	Vector3 CalculateVelocity (float delta)
-	{
-		return (transform.position - oldPos) / delta;
-	}
+	}	
 	
 	// Update is called once per frame
 	void Update () {
 		
 		
 		
-		acceleration = Vector3.zero;
+		testCraft.Acceleration = Vector3.zero;
 		
 		
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(KeyCode.D)) // forward
 		{
-			acceleration += thrustVal * transform.forward * Time.deltaTime;
+			testCraft.Accelerate();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.W)) // pitch up
+		{
+			testCraft.PitchUp();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.S)) // pitch down
+		{
+			testCraft.PitchDown();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.A)) // break/reverse
+		{
+			testCraft.Decelerate();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.Q)) // yaw left
+		{
+			testCraft.YawLeft();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.E)) // yaw right
+		{
+			testCraft.YawRight();
 			
 		}
 		
 		
-		velocity += acceleration * Time.deltaTime;
+		//testCraft.Acceleration += testCraft.ThrustValue * (testCraft.EntityObj.transform.up * -1) * Time.deltaTime;
 		
+		testCraft.Velocity += testCraft.Acceleration * Time.deltaTime;
 		
-		transform.position += velocity * Time.deltaTime;
+		testCraft.EntityObj.transform.position += testCraft.Velocity * Time.deltaTime;
 		
-		calculatedVel = CalculateVelocity(Time.deltaTime);
+		calculatedVel = testCraft.CalculateVelocityVector(oldPos, testCraft.Position, Time.deltaTime);
 		
-		oldPos = transform.position;
+		oldPos = testCraft.Position;
 	
 	}
 	
@@ -60,7 +92,7 @@ public class TargetMove : MonoBehaviour {
 		{
 			try {
 				
-				Instantiate(exp, transform.position, transform.rotation);
+				Instantiate(exp, testCraft.Position, testCraft.EntityObj.transform.rotation);
 			
 				Destroy(other.gameObject);
 			
