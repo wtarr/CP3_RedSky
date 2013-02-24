@@ -1,16 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Test Throwaway\LauncherCraft.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Missile.cs" Line="121" Column="2" />
+      <File FileName="Assets\Scripts\AbstractFlightBehaviour.cs" Line="179" Column="27" />
+      <File FileName="Assets\Test Throwaway\TargetMove.cs" Line="31" Column="18" />
+      <File FileName="Assets\Test Throwaway\LauncherCraft.cs" Line="90" Column="45" />
+      <File FileName="Assets\Test Throwaway\Rotor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Test Throwaway\Camera1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Project Testing\MissileFunctionTesting.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Project Testing" expanded="True">
-                <Node name="MissileFunctionTesting.cs" selected="True" />
-              </Node>
+              <Node name="Project Testing" expanded="True" />
               <Node name="Scripts" expanded="True" />
-              <Node name="Test Throwaway" expanded="True" />
+              <Node name="Test Throwaway" expanded="True">
+                <Node name="LauncherCraft.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
           <Node name="Assembly-UnityScript" expanded="True">
@@ -35,7 +44,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Test Throwaway\TargetMove.cs" line="75" />
+      <Breakpoint file="C:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Test Throwaway\TargetMove.cs" line="89" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

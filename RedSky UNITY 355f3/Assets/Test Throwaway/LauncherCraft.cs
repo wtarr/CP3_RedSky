@@ -10,8 +10,7 @@ public class LauncherCraft : MonoBehaviour
 	public GameObject explosion, missile; // prefabs
 	
 	
-	Vector3 interceptforward, to;
-	Vector3 oldTarPos, targVelocity, something;
+	Vector3 interceptforward, to;	
 	bool launch = false, launched = false;
 	
 	
@@ -26,6 +25,8 @@ public class LauncherCraft : MonoBehaviour
 		//set other player attributes here ,,, not releavant for now
 		
 		m = new Missile ();
+		
+		m.MaxSpeed = 60f;
 		
 //		m.MaxSpeed = speed;		
 				
@@ -86,9 +87,7 @@ public class LauncherCraft : MonoBehaviour
 				// calculate the velocity vector required for the missile to travel that will reach intercept
 				Vector3 missileVelocityVectorToIntercept = m.PlotCourse(interceptVector);
 				
-				to = missileVelocityVectorToIntercept;
-				
-				something = m.CalculateInterceptVector(m.TargetPosition, targVelocity, m.Position, m.MaxSpeed); // for debug only!!!
+				to = missileVelocityVectorToIntercept;		
 				
 				// create a rigid body for our missile
 				m.EntityObj.AddComponent<Rigidbody> ();
@@ -140,11 +139,8 @@ public class LauncherCraft : MonoBehaviour
 				}	
 				
 				m.EntityObj.transform.forward = Vector3.Normalize(to);
-				m.EntityObj.transform.position += to * Time.deltaTime;
+				m.EntityObj.transform.position += to * Time.deltaTime;				
 				
-				// Debug onlu
-				Debug.DrawLine(playerCraft.Position, something, Color.blue, 10, false); 
-				Debug.DrawLine(Vector3.zero, something, Color.white, 10, false);
 			}
 
 			
