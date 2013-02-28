@@ -23,6 +23,16 @@ public class LauncherCraft : MonoBehaviour
 		playerCraft.EntityObj = this.gameObject;
 		
 		//set other player attributes here ,,, not releavant for now
+				
+		playerCraft.Velocity = Vector3.zero;
+			
+		playerCraft.ThrustValue = 600f;
+		
+		playerCraft.DecelerationValue = 300f;
+		
+		playerCraft.PitchAngle = 0.01f;
+		
+		playerCraft.YawAngle = 0.01f;
 		
 		m = new Missile ();
 		
@@ -53,6 +63,54 @@ public class LauncherCraft : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		
+		playerCraft.Acceleration = Vector3.zero;
+		
+		
+		if (Input.GetKey(KeyCode.Keypad7)) // forward
+		{
+			playerCraft.Accelerate();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.Keypad8)) // pitch up
+		{
+			playerCraft.PitchUp();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.Keypad2)) // pitch down
+		{
+			playerCraft.PitchDown();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.Keypad9)) // break/reverse
+		{
+			playerCraft.Decelerate();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.Keypad6)) // yaw left
+		{
+			playerCraft.YawLeft();
+			
+		}
+		
+		if (Input.GetKey(KeyCode.Keypad4)) // yaw right
+		{
+			playerCraft.YawRight();
+			
+		}
+		
+		
+		//testCraft.Acceleration += testCraft.ThrustValue * (testCraft.EntityObj.transform.up * -1) * Time.deltaTime;
+		
+		playerCraft.Velocity += playerCraft.Acceleration * Time.deltaTime;
+		
+		playerCraft.EntityObj.transform.position += playerCraft.Velocity * Time.deltaTime;
+		
+		
 		
 		//m.MaxSpeed = speed;
 		

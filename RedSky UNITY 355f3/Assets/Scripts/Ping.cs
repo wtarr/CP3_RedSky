@@ -12,7 +12,7 @@ public class Ping : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		sent = false;
-		scale = new Vector3(10, 10, 10);
+		scale = new Vector3(150, 150, 150);
 	}
 	
 	// Update is called once per frame

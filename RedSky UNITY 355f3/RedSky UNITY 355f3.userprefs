@@ -1,22 +1,28 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AbstractFlightBehaviour.cs">
     <Files>
-      <File FileName="Assets\Scripts\Missile.cs" Line="17" Column="5" />
       <File FileName="Assets\Scripts\Missile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AbstractFlightBehaviour.cs" Line="130" Column="2" />
-      <File FileName="Assets\Test Throwaway\TargetMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Test Throwaway\LauncherCraft.cs" Line="90" Column="45" />
+      <File FileName="Assets\Scripts\AbstractFlightBehaviour.cs" Line="154" Column="17" />
+      <File FileName="Assets\Test Throwaway\TargetMove.cs" Line="17" Column="3" />
+      <File FileName="Assets\Test Throwaway\LauncherCraft.cs" Line="78" Column="20" />
       <File FileName="Assets\Test Throwaway\Rotor.cs" Line="1" Column="1" />
       <File FileName="Assets\Test Throwaway\Camera1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Project Testing\MissileFunctionTesting.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\RedSkyClassDiagram.cd" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ping.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Reply.cs" Line="17" Column="34" />
+      <File FileName="Assets\Scripts\Radar.cs" Line="55" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Assets" expanded="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="AbstractFlightBehaviour.cs" selected="True" />
+              </Node>
+              <Node name="Test Throwaway" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -27,21 +33,14 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="RedSkyProjectTesting" expanded="True">
-              <Node name="MissileFunctionTesting" expanded="True">
-                <Node name="Test_If_Missile_Is_In_Detonation_Range" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="C:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Test Throwaway\TargetMove.cs" line="89" />
+      <Breakpoint file="C:\Users\William\Documents\GitHub\CP3_RedSky\RedSky UNITY 355f3\Assets\Test Throwaway\LauncherCraft.cs" line="72" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

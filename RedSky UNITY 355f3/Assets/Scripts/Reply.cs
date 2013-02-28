@@ -14,7 +14,7 @@ public class Reply : MonoBehaviour {
 	void Start () {
 		reply = false;
 		tick = 1;
-		scale = new Vector3(10, 10, 10);
+		scale = new Vector3(150, 150, 150);
 		message = string.Empty;
 	}
 	
@@ -69,7 +69,7 @@ public class Reply : MonoBehaviour {
 			Debug.Log("Pinged");	
 			
 			if (message == string.Empty)
-				message = "reply"; //  + gameObject.name + " to " + other.gameObject.name + " reliers coords " + gameObject.transform.position.ToString();
+				message = "replyTo_" + other.gameObject.name; // + " to " + other.gameObject.name + " reliers coords " + gameObject.transform.position.ToString();
 			
 			reply = true;
 		
