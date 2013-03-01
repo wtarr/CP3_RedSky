@@ -3,14 +3,15 @@ using System.Collections;
 
 public class Radar : MonoBehaviour {
 	
-	public Texture image, friendly, targetimg;
+	public Texture image, friendly, targetimg, rotateBeam;
 	public GameObject me, target;
 	Vector3 local;
+	float offset, clock;
 	
-	int textureHeightWidth, padding, radarLeft, radarTop, radarCenterX, radarCenterY;
+	int textureHeightWidth, padding, radarLeft, radarTop, radarCenterX, radarCenterY, delay, cycle;
 	
 	
-	int scale = 10;
+	int scale = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -22,9 +23,14 @@ public class Radar : MonoBehaviour {
 		radarLeft = 10;
 		radarTop = Screen.height - (textureHeightWidth + padding);
 		
+		radarCenterX = radarLeft + (textureHeightWidth / 2);
+		radarCenterY = radarTop + (textureHeightWidth / 2);
 		
+		offset = 0.0833f;
 		
+		delay = 3;
 		
+		cycle = 1;
 			
 	}
 	
@@ -33,13 +39,13 @@ public class Radar : MonoBehaviour {
 		GUI.DrawTexture(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), image); 
 		
 		
-		GUI.DrawTexture(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), friendly);
+
+		//GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), rotateBeam, new Rect(0, 0.5f , 1,  0.3332f));
+		//GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), rotateBeam, new Rect(offset * (cycle - 1),0, offset * cycle, 1));
+		GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), rotateBeam, new Rect(offset * cycle, 0, offset, 1));
 		
-		
-		
-		
-		
-		GUI.DrawTexture(new Rect((local.x / scale), radarTop, textureHeightWidth, textureHeightWidth), targetimg);
+		if (target != null)
+			GUI.DrawTexture(new Rect(radarCenterX + (local.x / scale) - (textureHeightWidth /2), radarCenterY - (local.z / scale) - (textureHeightWidth /2), textureHeightWidth, textureHeightWidth), targetimg);
 		
 		//GUI.Box(
 	}
@@ -49,6 +55,17 @@ public class Radar : MonoBehaviour {
 	
 		if (target != null)
 			local = me.transform.InverseTransformDirection(target.transform.position - me.transform.position);
+		
+		clock++;
+		
+		if (clock >= delay)
+		{
+			clock = 0;
+			cycle++;
+			
+			if (cycle > 12)
+				cycle = 1;
+		}
 		
 	}
 }
