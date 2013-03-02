@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Radar : MonoBehaviour {
 	
-	public Texture image, friendly, targetimg, rotateBeam;
+	public Texture radarScreenImage, friendlyImage, targetImage, rotateBeamSpriteSheet;
 	public GameObject me, target;
 	Vector3 local;
 	float offset, clock;
@@ -15,6 +15,7 @@ public class Radar : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		me = GameObject.Find("helicopter");
 		target = GameObject.Find("target");
 		
@@ -36,16 +37,16 @@ public class Radar : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		GUI.DrawTexture(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), image); 
+		GUI.DrawTexture(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), radarScreenImage); 
 		
 		
 
 		//GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), rotateBeam, new Rect(0, 0.5f , 1,  0.3332f));
 		//GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), rotateBeam, new Rect(offset * (cycle - 1),0, offset * cycle, 1));
-		GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), rotateBeam, new Rect(offset * cycle, 0, offset, 1));
+		GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), rotateBeamSpriteSheet, new Rect(offset * cycle, 0, offset, 1));
 		
 		if (target != null)
-			GUI.DrawTexture(new Rect(radarCenterX + (local.x / scale) - (textureHeightWidth /2), radarCenterY - (local.z / scale) - (textureHeightWidth /2), textureHeightWidth, textureHeightWidth), targetimg);
+			GUI.DrawTexture(new Rect(radarCenterX + (local.x / scale) - (textureHeightWidth /2), radarCenterY - (local.z / scale) - (textureHeightWidth /2), textureHeightWidth, textureHeightWidth), targetImage);
 		
 		//GUI.Box(
 	}

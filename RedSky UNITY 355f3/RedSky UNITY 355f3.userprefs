@@ -1,26 +1,24 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AbstractFlightBehaviour.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Radar.cs">
     <Files>
       <File FileName="Assets\Scripts\Missile.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\AbstractFlightBehaviour.cs" Line="154" Column="17" />
-      <File FileName="Assets\Test Throwaway\TargetMove.cs" Line="17" Column="3" />
-      <File FileName="Assets\Test Throwaway\LauncherCraft.cs" Line="78" Column="20" />
+      <File FileName="Assets\Test Throwaway\TargetMove.cs" Line="1" Column="1" />
+      <File FileName="Assets\Test Throwaway\LauncherCraft.cs" Line="1" Column="1" />
       <File FileName="Assets\Test Throwaway\Rotor.cs" Line="1" Column="1" />
       <File FileName="Assets\Test Throwaway\Camera1.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\RedSkyClassDiagram.cd" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Ping.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Reply.cs" Line="17" Column="34" />
-      <File FileName="Assets\Scripts\Radar.cs" Line="55" Column="1" />
+      <File FileName="Assets\Scripts\Reply.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Radar.cs" Line="29" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="AbstractFlightBehaviour.cs" selected="True" />
-              </Node>
+            <Node name="Assets" expanded="True" selected="True">
+              <Node name="Scripts" expanded="True" />
               <Node name="Test Throwaway" expanded="True" />
             </Node>
           </Node>
