@@ -8,3 +8,4 @@ http://jaran.de/goodbits/2011/07/17/calculating-an-intercept-course-to-a-target-
 http://www.moddb.com/mods/wicmw/tutorials/wic-modding-tutorial-leading-a-moving-target-in-python
 http://gamedev.stackexchange.com/questions/27923/implementing-simple-proportional-navigation-for-a-homing-missile
 http://gamedev.stackexchange.com/questions/17313/how-to-prevent-homing-entities-from-orbiting-their-targets/33064#33064
+http://www.asawicki.info/Mirror/Car%20Physics%20for%20Games/Car%20Physics%20for%20Games.html
