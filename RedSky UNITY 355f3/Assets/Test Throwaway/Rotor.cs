@@ -12,7 +12,7 @@ public class Rotor : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		
 		verticalaxis = Vector3.Cross(transform.up, transform.right);
 		

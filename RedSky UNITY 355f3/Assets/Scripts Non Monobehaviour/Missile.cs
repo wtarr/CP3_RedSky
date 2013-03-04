@@ -11,7 +11,7 @@ public class Missile: AbstractFlightBehaviour
 
     public Missile()
     {        
-        MaxSpeed = 60f;
+        MaxSpeed = 100f;
     }
     
     public void ObtainRealTimeTargetsPosition()
