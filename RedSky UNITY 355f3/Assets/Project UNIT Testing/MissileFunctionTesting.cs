@@ -46,54 +46,7 @@ namespace RedSkyProjectTesting
             
             
         }
-
-        [Test]
-        public void Test_If_Target_Is_Travelling_a_Linear_Course()
-        {
-
-            //*----*----*----* Known linear path
-
-            Vector3 pos1 = new Vector3(0, 1, 0);
-            Vector3 pos2 = new Vector3(1, 1, 0);
-            Vector3 pos3 = new Vector3(2, 1, 0);
-            Vector3 pos4 = new Vector3(3, 1, 0);
-
-            Vector3 vel1 = pos2 - pos1;
-            Vector3 vel2 = pos3 - pos2;
-            Vector3 vel3 = pos4 - pos3;
-                        
-            m.FlightPath.Add(vel1);
-            m.FlightPath.Add(vel2);
-            m.FlightPath.Add(vel3);
-            
-            Assert.IsTrue(m.IsTargetCourseLinear(), string.Format("{0} {1} {2} {3}" ,m.FlightPath[m.FlightPath.Count -1], m.FlightPath[m.FlightPath.Count -2], m.FlightPath[m.FlightPath.Count -3],  m.FlightPath.Count.ToString()));            
-            
-        }
-
-        [Test]
-        public void Test_If_Target_Is_Travelling_a_NON_Linear_Course()
-        {
-            //          *
-            //          |
-            //*----*----* Known non linear path
-
-            Vector3 pos1 = new Vector3(0, 1, 0);
-            Vector3 pos2 = new Vector3(1, 1, 0);
-            Vector3 pos3 = new Vector3(2, 1, 0);
-            Vector3 pos4 = new Vector3(3, 2, 0);
-
-            Vector3 vel1 = pos2 - pos1;
-            Vector3 vel2 = pos3 - pos2;
-            Vector3 vel3 = pos4 - pos3;
-            
-            m.FlightPath.Add(vel1);
-            m.FlightPath.Add(vel2);
-            m.FlightPath.Add(vel3);
-            
-            Assert.IsFalse(m.IsTargetCourseLinear(), string.Format("{0} {1} {2} {3}", m.FlightPath[m.FlightPath.Count - 1], m.FlightPath[m.FlightPath.Count - 2], m.FlightPath[m.FlightPath.Count - 3], m.FlightPath.Count.ToString()));
-
-        }
-
+               
         
         [Test]
         public void Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target()

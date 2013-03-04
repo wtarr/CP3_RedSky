@@ -96,7 +96,7 @@ public class TargetMove : MonoBehaviour {
 			
 				Destroy(other.gameObject);
 			
-				Destroy(GameObject.Find("target"));
+				Destroy(gameObject);
 			}
 			catch (Exception e)
 			{
