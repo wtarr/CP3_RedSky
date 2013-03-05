@@ -26,7 +26,7 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 	private float pitchAngle;
 	private float rollAngle;
 	private float yawAngle;
-    private List<GameObject> targets;
+    private List<TargetInfo> targets;
     #endregion
 
     #region Properties	
@@ -141,7 +141,7 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 		set {yawAngle = value;}
 	}
 
-    public List<GameObject> Targets
+    public List<TargetInfo> Targets
     {
         get { return targets; }
         set { targets = value; }
@@ -207,9 +207,14 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
         
     }
 
-    public void FindAllTargetsByTag(string tag)
+    public void Ping()
     {
-        targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("enemy"));
+
+    }
+
+    public void Reply()
+    {
+
     }
 
 
