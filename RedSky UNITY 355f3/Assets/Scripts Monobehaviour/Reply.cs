@@ -37,7 +37,7 @@ public class Reply : MonoBehaviour
 
         r.material = transparent;
 
-        gameObject.name = "reply" + message;
+        gameObject.name = "" + message + "_reply";
     }
 
     // Update is called once per frame

@@ -11,7 +11,16 @@ public class RadarHUD : MonoBehaviour {
     Vector3 targetRelToScreen;
 	float offset, clock;
 	
-	int textureHeightWidth, padding, radarLeft, radarTop, radarCenterX, radarCenterY, delay, cycle;
+	int radarScreenTextureHeightWidth, // radar screen/ radar sweep 
+        targetHUDHighlight,
+        targetRadarBlip,
+        padding,
+        radarLeft,
+        radarTop,
+        radarCenterX,
+        radarCenterY,
+        delay,
+        cycle;
 	
 	
 	int scale = 5;
@@ -21,13 +30,15 @@ public class RadarHUD : MonoBehaviour {
 
         camera = GameObject.Find("Camera").camera;
 
-		textureHeightWidth = 200;
+		radarScreenTextureHeightWidth = 200;
+        targetHUDHighlight = 100;
+        targetRadarBlip = 100;
 		padding = 10;
 		radarLeft = 10;
-		radarTop = Screen.height - (textureHeightWidth + padding);
+		radarTop = Screen.height - (radarScreenTextureHeightWidth + padding);
 		
-		radarCenterX = radarLeft + (textureHeightWidth / 2);
-		radarCenterY = radarTop + (textureHeightWidth / 2);
+		radarCenterX = radarLeft + (radarScreenTextureHeightWidth / 2);
+		radarCenterY = radarTop + (radarScreenTextureHeightWidth / 2);
 		
 		offset = 0.0833f;
 		
@@ -40,22 +51,22 @@ public class RadarHUD : MonoBehaviour {
     	
 	void OnGUI()
 	{
-		GUI.DrawTexture(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), radarScreenImage); 
+		GUI.DrawTexture(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), radarScreenImage); 
 				
-		GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, textureHeightWidth, textureHeightWidth), rotateBeamSpriteSheet, new Rect(offset * cycle, 0, offset, 1));
+		GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), rotateBeamSpriteSheet, new Rect(offset * cycle, 0, offset, 1));
 
         if (pc.Targets.Count > 0)
         {
             foreach (TargetInfo tar in pc.Targets)
             {
-                if (tar.targetName != string.Empty)
+                if (tar.TargetName != string.Empty)
                 {
-                    Vector3 local = pc.EntityObj.transform.InverseTransformDirection(tar.targetPosition - pc.EntityObj.transform.position);
-                    targetRelToScreen = camera.WorldToScreenPoint(tar.targetPosition);
+                    Vector3 local = pc.EntityObj.transform.InverseTransformDirection(tar.TargetPosition - pc.EntityObj.transform.position);
+                    targetRelToScreen = camera.WorldToScreenPoint(tar.TargetPosition);
 
                     // 
-                    GUI.DrawTexture(new Rect(radarCenterX + (local.x / scale) - (textureHeightWidth / 2), radarCenterY - (local.z / scale) - (textureHeightWidth / 2), textureHeightWidth, textureHeightWidth), targetImage);
-                    GUI.DrawTexture(new Rect(targetRelToScreen.x - 50, Screen.height - targetRelToScreen.y - 50, 100, 100), targetHighlight);
+                    GUI.DrawTexture(new Rect(radarCenterX + (local.x / scale) - (targetRadarBlip / 2), radarCenterY - (local.z / scale) - (targetRadarBlip / 2), targetRadarBlip, targetRadarBlip), targetImage);
+                    GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight/2, Screen.height - targetRelToScreen.y - targetHUDHighlight/2, targetHUDHighlight, targetHUDHighlight), targetHighlight);
                 }
             }
         }	

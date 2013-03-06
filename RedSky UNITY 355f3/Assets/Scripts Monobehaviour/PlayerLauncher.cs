@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class PlayerLauncher : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class PlayerLauncher : MonoBehaviour
     
 	Vector3 interceptforward;
 
-    float sweepAngleRate = 2000;
+    float sweepAngleRate = 1000;
 
-    int targetIndex = 0, missileSelection = 0, coolDown = 0;
+    int targetIndex = 0, missileSelection = 0, coolDown = 0, listCleanTimer;
 	
 	
 	// Use this for initialization
@@ -22,12 +23,17 @@ public class PlayerLauncher : MonoBehaviour
 		playerCraft = new PlayerCraft();
                 		
 		playerCraft.EntityObj = this.gameObject;
+		
+		playerCraft.Targets = new List<TargetInfo>();
 
         goRadar = (GameObject)Instantiate(radarHUDPrefab, playerCraft.Position, playerCraft.Rotation);
-
         goRadar.transform.parent = playerCraft.EntityObj.transform;
-
         goRadar.GetComponent<RadarHUD>().pc = playerCraft;
+
+        sweeper = (GameObject)Instantiate(sweeper);
+        sweeper.transform.parent = playerCraft.EntityObj.transform;
+		
+		//Physics.IgnoreCollision(sweeper.GetComponent<Collider>(), 
 				
 		playerCraft.Velocity = Vector3.zero;
 			
@@ -41,12 +47,12 @@ public class PlayerLauncher : MonoBehaviour
 
         playerCraft.RollAngle = 0.01f;
 
-        playerCraft.AtmosphericDrag = -0.05f;
+        playerCraft.AtmosphericDrag = -0.03f;
 
         playerCraft.Targets = new List<TargetInfo>();
 
-        sweeper = GameObject.Find("RadarSweep");
-                
+        
+        
 	}
        
 
@@ -151,13 +157,20 @@ public class PlayerLauncher : MonoBehaviour
 
             if (coolDown > 0)
                 coolDown--;
-
-            playerCraft.missileStock[missileSelection].oldTargetPosition = playerCraft.missileStock[missileSelection].TargetPosition;
+			
+			if (missileSelection < playerCraft.missileStock.Length)
+            	playerCraft.missileStock[missileSelection].oldTargetPosition = playerCraft.missileStock[missileSelection].TargetPosition;
         } 
         #endregion
         
         //Clean the target list
+        listCleanTimer++;
 
+        if (listCleanTimer > 200)
+        {
+            listCleanTimer = 0;
+            CleanTargetList(); // keep the list fresh
+        }
 
 	} // update
 
@@ -177,11 +190,14 @@ public class PlayerLauncher : MonoBehaviour
 
     private void ToggleTarget()
     {
+        
 
         if (playerCraft.Targets.Count > 0 && targetIndex < playerCraft.Targets.Count)
         {
 
-            //playerCraft.PrimaryTarget = playerCraft.Targets[targetIndex];
+            string[] splitname = playerCraft.Targets[targetIndex].TargetName.Split('_');
+            
+            playerCraft.PrimaryTarget = GameObject.Find(splitname[0]);
                         
             targetIndex++;
         }
@@ -193,34 +209,33 @@ public class PlayerLauncher : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        int index = -1;
-
-        TargetInfo t = new TargetInfo(other.gameObject.name, other.gameObject.transform.position);
-       
-       
         
+
         if (other.gameObject.name.Contains("reply"))
-        {
-            //Debug.Log("target" + other.gameObject.transform.position);
+        {          
 
-            foreach (var item in playerCraft.Targets)
-            {                
-                if (other.gameObject.name == item.targetName)
-                {
-                    index = playerCraft.Targets.IndexOf(item);
-                    break;
-                }
-            }
+            TargetInfo t = new TargetInfo(other.gameObject.name, other.gameObject.transform.position); 
+			
+			int indexOfitem = playerCraft.Targets.FindIndex(tar => tar.TargetName == t.TargetName); // -1 means its new
+			
+            if (indexOfitem < 0)
+			{
+                playerCraft.Targets.Add(t);
+			} 
+			
+			if (indexOfitem >= 0)
+			{
+				playerCraft.Targets[indexOfitem].TargetPosition = t.TargetPosition;               
+			}
 
-            if (index >= 0)
-            {
-                playerCraft.Targets[index] = t;
-            }
             
-            playerCraft.Targets.Add(t);
-
         }
                
+    }
+
+    void CleanTargetList()
+    {
+        playerCraft.Targets.Clear();
     }
        	
 }

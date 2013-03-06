@@ -8,8 +8,7 @@ public class EnemyLauncher : MonoBehaviour {
     public EnemyCraft testCraft;
     public float thrustVal;
     public Vector3 velocity, acceleration, oldPos, calculatedVel;
-    public GameObject explosionPrefab, pingReplyPrefab;
-    public List<GameObject> pingReplyList;
+    public GameObject explosionPrefab, pingReplyPrefab;   
 
     // Use this for initialization
     void Start()
@@ -28,9 +27,7 @@ public class EnemyLauncher : MonoBehaviour {
         testCraft.PitchAngle = 0.01f;
 
         testCraft.YawAngle = 0.01f;
-
-        pingReplyList = new List<GameObject>();
-
+                
     }
 
     // Update is called once per frame
@@ -89,7 +86,7 @@ public class EnemyLauncher : MonoBehaviour {
 
         oldPos = testCraft.Position;
 
-        CleanPingReplyList();
+       
 
     }
 
@@ -98,18 +95,13 @@ public class EnemyLauncher : MonoBehaviour {
 
         //Debug.Log(other.name);
 
-        if (other.gameObject.name.Contains("RadarSweep") && !other.gameObject.name.Contains("reply"))
+        if (other.gameObject.name.Contains("RadarSweep(Clone)") && !other.gameObject.name.Contains("reply"))
         {
-           // Debug.Log("Pinged by");
-           // Debug.Log(other.gameObject.name.ToString());
-             
-            //Debug.Log("Pinged");
-            // Reply to sender
-
+           
             GameObject temp = (GameObject)Instantiate(pingReplyPrefab, testCraft.Position, testCraft.Rotation);
             //Debug.Log(other.name.ToString());
-            temp.GetComponent<Reply>().message = "reply_to_" + other.name.ToString() + Time.timeSinceLevelLoad.ToString();
-            pingReplyList.Add(temp);
+            temp.GetComponent<Reply>().message = gameObject.name;//"reply_to_" + other.name.ToString() + Time.timeSinceLevelLoad.ToString();
+            
 
             
         }
@@ -132,9 +124,5 @@ public class EnemyLauncher : MonoBehaviour {
         }
     }
 
-    void CleanPingReplyList()
-    {
-        pingReplyList.RemoveAll(replies => replies == null); 
-    }
 
 }

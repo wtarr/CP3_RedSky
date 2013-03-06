@@ -4,18 +4,6 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public struct TargetInfo
-{
-    public TargetInfo(string name, Vector3 pos)
-    {
-        this.targetName = name;
-        this.targetPosition = pos;
-    }
-
-    public String targetName;
-    public Vector3 targetPosition;
-}
-
 public class PlayerCraft : AbstractFlightBehaviour, IAircraftBehaviour
 {
         public Missile[] missileStock;        
