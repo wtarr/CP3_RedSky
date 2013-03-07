@@ -7,7 +7,7 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 
     #region Class State
 	private GameObject entityObj; // the almighty, bow before it
-	private GameObject primaryTarget;
+	private TargetInfo primaryTarget;
 	private float health;
 	private Vector3 position;
 	private Quaternion rotation;
@@ -36,7 +36,7 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 		set {entityObj = value;}
 	}
 
-	public GameObject PrimaryTarget {
+	public TargetInfo PrimaryTarget {
 		get {return this.primaryTarget;}
 		set {primaryTarget = value;}
 	}

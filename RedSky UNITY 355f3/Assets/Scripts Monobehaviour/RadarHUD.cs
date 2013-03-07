@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class RadarHUD : MonoBehaviour {
 
 
-    public PlayerCraft pc;
+    public PlayerCraft pc;    
     Camera camera;
 	public Texture radarScreenImage, friendlyImage, targetImage, rotateBeamSpriteSheet, targetHighlight;	    
     Vector3 targetRelToScreen;

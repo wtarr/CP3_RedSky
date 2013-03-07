@@ -30,7 +30,7 @@ public class PlayerLauncher : MonoBehaviour
         goRadar.transform.parent = playerCraft.EntityObj.transform;
         goRadar.GetComponent<RadarHUD>().pc = playerCraft;
 
-        sweeper = (GameObject)Instantiate(sweeper);
+        sweeper = (GameObject)Instantiate(sweeper, playerCraft.Position, playerCraft.Rotation);
         sweeper.transform.parent = playerCraft.EntityObj.transform;
 		
 		//Physics.IgnoreCollision(sweeper.GetComponent<Collider>(), 
@@ -59,15 +59,42 @@ public class PlayerLauncher : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        
         sweeper.transform.RotateAround(this.transform.position, this.transform.up, sweepAngleRate * Time.deltaTime);
-
-
+        
         //playerCraft.FindAllTargetsByTag("enemy");
 
 		playerCraft.Acceleration = Vector3.zero;
+                
+        CheckForUserInput();
+
+        PlayerMovement(); 
+        			        
+        PrimeMissile();
         
-        #region MovementControls
+        //Clean the target list
+        listCleanTimer++;
+
+        if (listCleanTimer > 200)
+        {
+            listCleanTimer = 0;
+            CleanTargetList(); // keep the list fresh
+        }
+
+	} // update
+
+    private void PlayerMovement()
+    {
+        playerCraft.Velocity += playerCraft.Acceleration * Time.deltaTime;
+
+        Vector3 resistance = playerCraft.AtmosphericDrag * playerCraft.Velocity * Vector3.Magnitude(playerCraft.Velocity);
+
+        playerCraft.Velocity += resistance * Time.deltaTime;
+
+        playerCraft.EntityObj.transform.position += playerCraft.Velocity * Time.deltaTime;
+    }
+
+    private void CheckForUserInput()
+    {
         if (Input.GetKey(KeyCode.Keypad7)) // forward
         {
             playerCraft.Accelerate();
@@ -119,25 +146,16 @@ public class PlayerLauncher : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             ToggleTarget();
-        } 
-        #endregion
+        }
+    }
 
-        #region Physics
-        playerCraft.Velocity += playerCraft.Acceleration * Time.deltaTime;
-
-        Vector3 resistance = playerCraft.AtmosphericDrag * playerCraft.Velocity * Vector3.Magnitude(playerCraft.Velocity);
-
-        playerCraft.Velocity += resistance * Time.deltaTime;
-
-        playerCraft.EntityObj.transform.position += playerCraft.Velocity * Time.deltaTime; 
-        #endregion
-				
-        #region MissilePrimer
+    private void PrimeMissile()
+    {
         if (playerCraft.PrimaryTarget != null && missileSelection < playerCraft.missileStock.Length)
         { //check that target still exists
 
 
-            playerCraft.missileStock[missileSelection].TargetPosition = playerCraft.PrimaryTarget.transform.position;
+            playerCraft.missileStock[missileSelection].TargetPosition = playerCraft.PrimaryTarget.TargetPosition;
 
             playerCraft.missileStock[missileSelection].TargetVelocityVector = playerCraft.missileStock[missileSelection].CalculateVelocityVector(playerCraft.missileStock[missileSelection].oldTargetPosition, playerCraft.missileStock[missileSelection].TargetPosition, Time.deltaTime); // who should do this the players craft or the missile???
 
@@ -157,22 +175,11 @@ public class PlayerLauncher : MonoBehaviour
 
             if (coolDown > 0)
                 coolDown--;
-			
-			if (missileSelection < playerCraft.missileStock.Length)
-            	playerCraft.missileStock[missileSelection].oldTargetPosition = playerCraft.missileStock[missileSelection].TargetPosition;
-        } 
-        #endregion
-        
-        //Clean the target list
-        listCleanTimer++;
 
-        if (listCleanTimer > 200)
-        {
-            listCleanTimer = 0;
-            CleanTargetList(); // keep the list fresh
+            if (missileSelection < playerCraft.missileStock.Length)
+                playerCraft.missileStock[missileSelection].oldTargetPosition = playerCraft.missileStock[missileSelection].TargetPosition;
         }
-
-	} // update
+    }
 
     private void PreLaunchInitialize()
     {
@@ -182,7 +189,7 @@ public class PlayerLauncher : MonoBehaviour
 
         //Missile preflight initialisation
         playerCraft.missileStock[missileSelection].EntityObj = (GameObject)Instantiate(missilePrefab, playerCraft.Position, playerCraft.Rotation);
-        playerCraft.missileStock[missileSelection].EntityObj.GetComponent<MissileLauncher>().me = playerCraft.missileStock[missileSelection]; // whoa!! ,,, crazy stuff here man 
+        playerCraft.missileStock[missileSelection].EntityObj.GetComponent<MissileLauncher>().me = playerCraft.missileStock[missileSelection]; 
         playerCraft.missileStock[missileSelection].EntityObj.GetComponent<MissileLauncher>().me.PrimaryTarget = playerCraft.PrimaryTarget;
 
         //If You Love Someone, Set Them Free. If They Come Back, RUN!!!
@@ -195,9 +202,9 @@ public class PlayerLauncher : MonoBehaviour
         if (playerCraft.Targets.Count > 0 && targetIndex < playerCraft.Targets.Count)
         {
 
-            string[] splitname = playerCraft.Targets[targetIndex].TargetName.Split('_');
-            
-            playerCraft.PrimaryTarget = GameObject.Find(splitname[0]);
+            //string[] splitname = playerCraft.Targets[targetIndex].TargetName.Split('_');
+
+            playerCraft.PrimaryTarget = playerCraft.Targets[targetIndex];
                         
             targetIndex++;
         }

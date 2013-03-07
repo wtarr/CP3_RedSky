@@ -84,8 +84,11 @@ public class EnemyLauncher : MonoBehaviour {
 
         calculatedVel = testCraft.CalculateVelocityVector(oldPos, testCraft.Position, Time.deltaTime);
 
-        oldPos = testCraft.Position;
+        Debug.Log("CalcVel" + calculatedVel);
 
+
+        oldPos = testCraft.Position;
+        
        
 
     }
@@ -95,7 +98,7 @@ public class EnemyLauncher : MonoBehaviour {
 
         //Debug.Log(other.name);
 
-        if (other.gameObject.name.Contains("RadarSweep(Clone)") && !other.gameObject.name.Contains("reply"))
+        if ((other.gameObject.name.Contains("RadarSweep(Clone)") || other.gameObject.name.Contains("MissileRadar(Clone)")) && !other.gameObject.name.Contains("reply"))
         {
            
             GameObject temp = (GameObject)Instantiate(pingReplyPrefab, testCraft.Position, testCraft.Rotation);
@@ -106,7 +109,7 @@ public class EnemyLauncher : MonoBehaviour {
             
         }
 
-        if (other.gameObject.name == "missile(Clone)" || other.gameObject.name == "missilefox2(Clone)")
+        if (other.gameObject.name == "AIM9Missile(Clone)")
         {
             try
             {
