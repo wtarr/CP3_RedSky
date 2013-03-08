@@ -6,15 +6,16 @@ public class MissileLauncher : MonoBehaviour
 
     public Missile me;
     public GameObject missileRadar, missileRadarPrefab;
-    Vector3 to, interceptVector;
+    Vector3 missileVelocityVectorToIntercept;
+    Vector3 commonInterceptVector;
     float sweepAngleRate = 100;
     bool locked = false;
     Vector3 launched;
     Vector3 Cached;
 
-    float lastcall;
-    float now;
-    float diff;
+    float timeOfLastCall;
+    float timeNow;
+    
   
     // Use this for initialization
     void Start()
@@ -27,13 +28,11 @@ public class MissileLauncher : MonoBehaviour
         launched = transform.position;
 
         // calculate the intercept vector which is the target and missile will collide at time t based on missiles maxspeed
-        interceptVector = me.CalculateInterceptVector(me.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
+        commonInterceptVector = me.CalculateInterceptVector(me.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
 
         // calculate the velocity vector required for the missile to travel that will reach intercept
-        Vector3 missileVelocityVectorToIntercept = me.PlotCourse(interceptVector);
-
-        to = missileVelocityVectorToIntercept;
-
+        missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector);
+               
         // create a rigid body for our missile
         me.EntityObj.AddComponent<Rigidbody>();
         // create a sphere collider for our missile
@@ -61,27 +60,17 @@ public class MissileLauncher : MonoBehaviour
 
         if (me.PrimaryTarget != null && locked == true)
         {
+                       
+            commonInterceptVector = me.CalculateInterceptVector(me.PrimaryTarget.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
 
-            //inflight
-            //recalculate
+            Debug.DrawLine(launched, commonInterceptVector, Color.blue, 1, false);
 
-            //Debug.Log("old" + me.oldTargetPosition);
-            //Debug.Log("curr" + me.PrimaryTarget.TargetPosition);
-           
-            //me.TargetVelocityVector = me.CalculateVelocityVector(me.oldTargetPosition, me.PrimaryTarget.TargetPosition, Time.deltaTime);
-
-            
-
-            interceptVector = me.CalculateInterceptVector(me.PrimaryTarget.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
-
-            Debug.DrawLine(launched, interceptVector, Color.blue, 1, false);
-
-            Vector3 missileVelocityVectorToIntercept = me.PlotCourse(interceptVector);
+            missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector);
             
             // Check if path to intercept is still viable...
             // if not we will check if in detonation range
             // if not in detonation range we will continue on old velocity and hope for better intercept chance
-            if (interceptVector == Vector3.zero)
+            if (commonInterceptVector == Vector3.zero)
             {
 
                  //the path is not viable so lets check if missile is in detonation range of target					
@@ -94,21 +83,12 @@ public class MissileLauncher : MonoBehaviour
                 }
 
             }
-            else
-            {
-                 //This path is viable so update missile
-                to = missileVelocityVectorToIntercept;
-                Debug.Log(Vector3.Magnitude(missileVelocityVectorToIntercept));
-            }
-
+            
         }
          
-        me.EntityObj.transform.forward = Vector3.Normalize(to);
-        me.EntityObj.transform.position += to * Time.deltaTime;
-
-
+        me.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
+        me.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
         
-
     }
         
 
@@ -122,13 +102,13 @@ public class MissileLauncher : MonoBehaviour
 
             if (other.gameObject.transform.position != me.PrimaryTarget.TargetPosition)
             {
-                now = Time.realtimeSinceStartup;
+                timeNow = Time.realtimeSinceStartup;
                 me.oldTargetPosition = me.PrimaryTarget.TargetPosition;
                 me.PrimaryTarget.TargetPosition = other.gameObject.transform.position;
-                if (now > 0 && lastcall > 0)
-                    me.TargetVelocityVector = me.CalculateVelocityVector(me.oldTargetPosition, me.PrimaryTarget.TargetPosition, (now - lastcall));
+                if (timeNow > 0 && timeOfLastCall > 0)
+                    me.TargetVelocityVector = me.CalculateVelocityVector(me.oldTargetPosition, me.PrimaryTarget.TargetPosition, (timeNow - timeOfLastCall));
                 Debug.Log("Vel" + me.TargetVelocityVector);
-                lastcall = now;
+                timeOfLastCall = timeNow;
             }
             
 
