@@ -13,7 +13,7 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 	private Quaternion rotation;
 	private Vector3 velocity;
 	private Vector3 acceleration;
-	private Vector3 targetPosition;
+	//private Vector3 targetPosition;
     private Vector3 targetVelocityVector;    
     private float atmosphericDrag;
     private float currentSpeed;
@@ -65,11 +65,11 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 		set {acceleration = value;}
 	}	
 	
-	public Vector3 TargetPosition
-    {
-        get { return targetPosition; }
-        set { targetPosition = value; }
-    }
+    //public Vector3 TargetPosition
+    //{
+    //    get { return targetPosition; }
+    //    set { targetPosition = value; }
+    //}
 
     public Vector3 TargetVelocityVector
     {

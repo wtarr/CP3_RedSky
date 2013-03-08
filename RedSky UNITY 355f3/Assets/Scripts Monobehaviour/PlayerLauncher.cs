@@ -155,9 +155,9 @@ public class PlayerLauncher : MonoBehaviour
         { //check that target still exists
 
 
-            playerCraft.missileStock[missileSelection].TargetPosition = playerCraft.PrimaryTarget.TargetPosition;
+            playerCraft.missileStock[missileSelection].PrimaryTarget.TargetPosition = playerCraft.PrimaryTarget.TargetPosition;
 
-            playerCraft.missileStock[missileSelection].TargetVelocityVector = playerCraft.missileStock[missileSelection].CalculateVelocityVector(playerCraft.missileStock[missileSelection].oldTargetPosition, playerCraft.missileStock[missileSelection].TargetPosition, Time.deltaTime); // who should do this the players craft or the missile???
+            playerCraft.missileStock[missileSelection].TargetVelocityVector = playerCraft.missileStock[missileSelection].CalculateVelocityVector(playerCraft.missileStock[missileSelection].oldTargetPosition, playerCraft.missileStock[missileSelection].PrimaryTarget.TargetPosition, Time.deltaTime); // who should do this the players craft or the missile???
 
             if (Input.GetKey(KeyCode.F))
             {
@@ -177,7 +177,7 @@ public class PlayerLauncher : MonoBehaviour
                 coolDown--;
 
             if (missileSelection < playerCraft.missileStock.Length)
-                playerCraft.missileStock[missileSelection].oldTargetPosition = playerCraft.missileStock[missileSelection].TargetPosition;
+                playerCraft.missileStock[missileSelection].oldTargetPosition = playerCraft.missileStock[missileSelection].PrimaryTarget.TargetPosition;
         }
     }
 
@@ -197,13 +197,15 @@ public class PlayerLauncher : MonoBehaviour
 
     private void ToggleTarget()
     {
-        
+
+        foreach (TargetInfo t in playerCraft.Targets)
+        {
+            t.IsPrimary = false;
+        }
 
         if (playerCraft.Targets.Count > 0 && targetIndex < playerCraft.Targets.Count)
         {
-
-            //string[] splitname = playerCraft.Targets[targetIndex].TargetName.Split('_');
-
+            playerCraft.Targets[targetIndex].IsPrimary = true;
             playerCraft.PrimaryTarget = playerCraft.Targets[targetIndex];
                         
             targetIndex++;
@@ -232,6 +234,14 @@ public class PlayerLauncher : MonoBehaviour
 			
 			if (indexOfitem >= 0)
 			{
+                if (playerCraft.PrimaryTarget != null)
+                {
+                    if (playerCraft.PrimaryTarget.TargetName.Equals(t.TargetName))
+                    {
+                        playerCraft.Targets[indexOfitem].IsPrimary = true;
+                    }
+                }
+
 				playerCraft.Targets[indexOfitem].TargetPosition = t.TargetPosition;               
 			}
 

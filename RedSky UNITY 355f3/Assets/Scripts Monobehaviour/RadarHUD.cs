@@ -6,8 +6,8 @@ public class RadarHUD : MonoBehaviour {
 
 
     public PlayerCraft pc;    
-    Camera camera;
-	public Texture radarScreenImage, friendlyImage, targetImage, rotateBeamSpriteSheet, targetHighlight;	    
+    Camera cam;
+	public Texture radarScreenImage, friendlyImage, targetImage, rotateBeamSpriteSheet, targetHighlight, primaryTargetHighlighter;	    
     Vector3 targetRelToScreen;
 	float offset, clock;
 	
@@ -28,7 +28,7 @@ public class RadarHUD : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        camera = GameObject.Find("Camera").camera;
+        cam = GameObject.Find("Camera").camera;
 
 		radarScreenTextureHeightWidth = 200;
         targetHUDHighlight = 100;
@@ -62,14 +62,17 @@ public class RadarHUD : MonoBehaviour {
                 if (tar.TargetName != string.Empty)
                 {
                     Vector3 local = pc.EntityObj.transform.InverseTransformDirection(tar.TargetPosition - pc.EntityObj.transform.position);
-                    targetRelToScreen = camera.WorldToScreenPoint(tar.TargetPosition);
+                    targetRelToScreen = cam.WorldToScreenPoint(tar.TargetPosition);
 
                     // 
                     GUI.DrawTexture(new Rect(radarCenterX + (local.x / scale) - (targetRadarBlip / 2), radarCenterY - (local.z / scale) - (targetRadarBlip / 2), targetRadarBlip, targetRadarBlip), targetImage);
                     GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight/2, Screen.height - targetRelToScreen.y - targetHUDHighlight/2, targetHUDHighlight, targetHUDHighlight), targetHighlight);
+                    if (tar.IsPrimary)
+                        GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight / 2, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), primaryTargetHighlighter);
                 }
             }
-        }	
+        }
+
 	}
 	
 	// Update is called once per frame

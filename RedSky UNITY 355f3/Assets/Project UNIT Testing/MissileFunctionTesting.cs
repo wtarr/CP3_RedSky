@@ -34,13 +34,15 @@ namespace RedSkyProjectTesting
             //that the missile can calculate the velocity of its target correctly.
                         
             Vector3 targetVectorExpected = new Vector3(3, 0, 0);
-			Vector3 actualTargetVelVector;                                       
+			Vector3 actualTargetVelVector;
+            TargetInfo test = new TargetInfo("", new Vector3(0, 1, 0));
+            
+            m.oldTargetPosition = new Vector3(0, 1, 0); // old
+            
+            m.PrimaryTarget.TargetPosition = new Vector3(3, 1, 0); // new
             
 
-            m.oldTargetPosition = new Vector3(0, 1, 0); // old
-            m.TargetPosition = new Vector3(3, 1, 0); // new
-           
-           	actualTargetVelVector = m.CalculateVelocityVector(m.oldTargetPosition, m.TargetPosition, 1);
+           	actualTargetVelVector = m.CalculateVelocityVector(m.oldTargetPosition, m.PrimaryTarget.TargetPosition, 1);
 
             Assert.AreEqual(targetVectorExpected, actualTargetVelVector);
             
@@ -68,34 +70,55 @@ namespace RedSkyProjectTesting
             Assert.Ignore("Not yet implemented");
         }
 
-//        [Test]
-//        public void Test_PredictIntercept()
-//        {
-//            Vector3 expected = new Vector3(35.53454f, 44.04605f, 19.93092f);
-//                          
-//            m.newMissilePosition = new Vector3(0, 0, 0); //   B
-//
-//            m.TargetPosition = new Vector3(150, 200, -300); // A
-//						
-//            m.TargetVelocityVector = new Vector3(34, 42, 23); // Av
-//
-//            m.MaxSpeed = 60f; 
-//
-//            Vector3 intercept = m.CalculateInterceptVector();
-//
-//			Console.WriteLine(intercept);
-//
-//            Assert.AreEqual(expected.x, intercept.x, 0.001f);
-//            Assert.AreEqual(expected.y, intercept.y, 0.001f);
-//            Assert.AreEqual(expected.z, intercept.z, 0.001f);
-//            
-//        }
+        [Test]
+        public void Test_PredictIntercept()
+        {
+            Vector3 expected = new Vector3(3473.5f, 4305.5f, 1948.2f);                          
+            
+            Vector3 missilePositionMock = new Vector3(0, 0, 0); //   B
+
+
+            TargetInfo test = new TargetInfo("", new Vector3(150, 200, -300)); // A
+            m.PrimaryTarget = test;
+						
+            m.TargetVelocityVector = new Vector3(34, 42, 23); // Av
+
+            m.MaxSpeed = 60f;
+
+            Vector3 intercept = m.CalculateInterceptVector(m.PrimaryTarget.TargetPosition, m.TargetVelocityVector, missilePositionMock, m.MaxSpeed);
+
+			Console.WriteLine(intercept);
+
+            Assert.AreEqual(expected.x, intercept.x, 0.1f);
+            Assert.AreEqual(expected.y, intercept.y, 0.1f);
+            Assert.AreEqual(expected.z, intercept.z, 0.1f);
+            
+        }
 
         [Test]
         public void Test_That_Missile_Is_Plotting_Course_Correctly()
         {
             //Test that the missile has the correct path and satisfies the fuel required demand before plotting its course.
-            Assert.Ignore("Not yet implemented");
+            
+            Vector3 expected = Vector3.Normalize(new Vector3(3473.5f, 4305.5f, 1948.2f)) * 60;
+
+            Vector3 missilePositionMock = new Vector3(0, 0, 0); //   B
+
+
+            TargetInfo test = new TargetInfo("", new Vector3(150, 200, -300)); // A
+            m.PrimaryTarget = test;
+
+            m.TargetVelocityVector = new Vector3(34, 42, 23); // Av
+
+            m.MaxSpeed = 60f;
+
+            Vector3 intercept = m.CalculateInterceptVector(m.PrimaryTarget.TargetPosition, m.TargetVelocityVector, missilePositionMock, m.MaxSpeed);
+
+            Vector3 plotInterceptVector = m.PlotCourse(intercept, missilePositionMock);
+
+            Assert.AreEqual(expected.x, plotInterceptVector.x, 0.1f);
+            Assert.AreEqual(expected.y, plotInterceptVector.y, 0.1f);
+            Assert.AreEqual(expected.z, plotInterceptVector.z, 0.1f);
         }
 
         [Test]
@@ -103,11 +126,16 @@ namespace RedSkyProjectTesting
         {
             // Test the missile is in close enough proximity that it can afford to detonate
 
-            m.Position = new Vector3(0, 1, 0);
+            Vector3 missileMockPosition = new Vector3(0, 1, 0);
 
-            m.TargetPosition = new Vector3(14, 1, 0);
+            TargetInfo test = new TargetInfo("test", new Vector3(14, 1, 0));
 
-            Assert.IsTrue(m.InDetonationRange(), string.Format("{0}", Vector3.Distance(m.Position, m.TargetPosition)));
+            m.PrimaryTarget = test;
+
+            Assert.IsTrue(m.InDetonationRange(missileMockPosition, 
+                m.PrimaryTarget.TargetPosition), string.Format("{0}",
+                Vector3.Distance(missileMockPosition,
+                m.PrimaryTarget.TargetPosition)));
             
         }
 
@@ -116,11 +144,17 @@ namespace RedSkyProjectTesting
         {
             // Test the missile is in close enough proximity that it can afford to detonate
 
-            m.Position = new Vector3(0, 1, 0);
+            Vector3 missileMockPosition = new Vector3(0, 1, 0);
 
-            m.TargetPosition = new Vector3(129, 1, 0);
-
-            Assert.IsFalse(m.InDetonationRange(), string.Format("{0}", Vector3.Distance(m.Position, m.TargetPosition)));
+            TargetInfo test = new TargetInfo("test", new Vector3(129, 1, 0));
+           
+            m.PrimaryTarget = test;
+            
+            Assert.IsFalse(m.InDetonationRange(missileMockPosition,
+                m.PrimaryTarget.TargetPosition),
+                string.Format("{0}",
+                Vector3.Distance(missileMockPosition,
+                m.PrimaryTarget.TargetPosition)));
 
         }
 

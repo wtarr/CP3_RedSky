@@ -9,6 +9,13 @@ public class TargetInfo : IComparable<TargetInfo>
 
     private String targetName;
     private Vector3 targetPosition;
+    private bool isPrimary;
+
+    public bool IsPrimary
+    {
+        get { return isPrimary; }
+        set { isPrimary = value; }
+    }
     
     public String TargetName
     {

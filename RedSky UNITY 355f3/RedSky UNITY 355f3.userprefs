@@ -1,13 +1,28 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts Monobehaviour\PlayerLauncher.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Project UNIT Testing\MissileFunctionTesting.cs">
     <Files>
-      <File FileName="Assets\Scripts Monobehaviour\PlayerLauncher.cs" Line="71" Column="11" />
+      <File FileName="Assets\Scripts Monobehaviour\PlayerLauncher.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts Non Monobehaviour\TargetInfo.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts Monobehaviour\RadarHUD.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts Non Monobehaviour\AbstractFlightBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts Monobehaviour\MissileLauncher.cs" Line="40" Column="31" />
+      <File FileName="Assets\Scripts Monobehaviour\MissileLauncher.cs" Line="1" Column="1" />
+      <File FileName="Assets\Project UNIT Testing\MissileFunctionTesting.cs" Line="38" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

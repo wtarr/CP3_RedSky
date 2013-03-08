@@ -5,13 +5,13 @@ using UnityEngine;
 public class Missile: AbstractFlightBehaviour
 {
     
-    public Vector3 oldTargetPosition;    
-    public float linearDeviationTolerence = 0f; // for now
+    public Vector3 oldTargetPosition;        
     public float detonationRange = 15f;
 
     public Missile()
     {        
         MaxSpeed = 60f;
+        PrimaryTarget = new TargetInfo("unknown", Vector3.zero);
     }
     
     public void ObtainRealTimeTargetsPosition()
@@ -24,7 +24,12 @@ public class Missile: AbstractFlightBehaviour
 	public Vector3 CalculateInterceptVector(Vector3 targPos, Vector3 targVelocity, Vector3 firingbasePos, float missileMaxSpeed)
     {
         // This calculation will be performed by the planes onboard system
+
+        // Source for information on leading a target in a 2D plane
+        // http://jaran.de/goodbits/2011/07/17/calculating-an-intercept-course-to-a-target-with-constant-direction-and-velocity-in-a-2-dimensional-plane/
         
+        //What follows is modified to work in a 3D environment 
+
         Vector3 o = targPos - firingbasePos; // for simplification purposes
 
         double a = Math.Pow(targVelocity.x, 2) + Math.Pow(targVelocity.y, 2) + Math.Pow(targVelocity.z, 2) - Math.Pow(missileMaxSpeed, 2);
@@ -55,18 +60,16 @@ public class Missile: AbstractFlightBehaviour
 		
 		if (t1 >= 0 && t2 >= 0)
 			t = (float)Math.Min(t1, t2);		
-		
-        
+		        
         Vector3 intercept = targPos + (targVelocity * t);
-		
-		
+				
        	return intercept;
     }
         
 
-    public Vector3 PlotCourse(Vector3 interceptVector )
+    public Vector3 PlotCourse(Vector3 interceptVector, Vector3 missilePosition )
     {
-        Vector3 missileVelocity = interceptVector - Position;
+        Vector3 missileVelocity = interceptVector - missilePosition;
 		
 		
 		return Vector3.Normalize(missileVelocity) * MaxSpeed;
@@ -77,10 +80,10 @@ public class Missile: AbstractFlightBehaviour
         //based on fuel load and speed is it possible to make this intercept
     }
 
-    public bool InDetonationRange()
+    public bool InDetonationRange(Vector3 missilePosition, Vector3 targetPosition)
     {
         
-        float distance = Vector3.Distance(TargetPosition, Position);
+        float distance = Vector3.Distance(targetPosition, missilePosition);
 
         if (distance <= detonationRange)
             return true;

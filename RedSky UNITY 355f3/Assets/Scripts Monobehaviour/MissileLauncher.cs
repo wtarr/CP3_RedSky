@@ -28,10 +28,10 @@ public class MissileLauncher : MonoBehaviour
         launched = transform.position;
 
         // calculate the intercept vector which is the target and missile will collide at time t based on missiles maxspeed
-        commonInterceptVector = me.CalculateInterceptVector(me.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
+        commonInterceptVector = me.CalculateInterceptVector(me.PrimaryTarget.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
 
         // calculate the velocity vector required for the missile to travel that will reach intercept
-        missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector);
+        missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector, me.Position);
                
         // create a rigid body for our missile
         me.EntityObj.AddComponent<Rigidbody>();
@@ -63,9 +63,9 @@ public class MissileLauncher : MonoBehaviour
                        
             commonInterceptVector = me.CalculateInterceptVector(me.PrimaryTarget.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
 
-            Debug.DrawLine(launched, commonInterceptVector, Color.blue, 1, false);
+            Debug.DrawLine(launched, commonInterceptVector, Color.blue, 0.25f, false);
 
-            missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector);
+            missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector, me.Position);
             
             // Check if path to intercept is still viable...
             // if not we will check if in detonation range
@@ -74,7 +74,7 @@ public class MissileLauncher : MonoBehaviour
             {
 
                  //the path is not viable so lets check if missile is in detonation range of target					
-                if (me.InDetonationRange())
+                if (me.InDetonationRange(me.Position, me.PrimaryTarget.TargetPosition))
                 {
 
                     SphereCollider myCollider = me.EntityObj.transform.GetComponent<SphereCollider>();
