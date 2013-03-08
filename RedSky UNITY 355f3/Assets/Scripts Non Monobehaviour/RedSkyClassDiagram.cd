@@ -3,8 +3,8 @@
   <Class Name="AbstractFlightBehaviour">
     <Position X="5.25" Y="1.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>EAAAEAAAABAIAARIEBCEMAACGAAIAJAQAoCAIBCBACQ=</HashCode>
-      <FileName>Assets\Scripts\AbstractFlightBehaviour.cs</FileName>
+      <HashCode>EwAACAMAgBQAAYRoEFCEMAACmBBAENQQQJTEIBCFACw=</HashCode>
+      <FileName>Assets\Scripts Non Monobehaviour\AbstractFlightBehaviour.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -12,51 +12,94 @@
     <Position X="8.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\GameMaster.cs</FileName>
+      <FileName>Assets\Test Throwaway\GameMaster.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Missile">
-    <Position X="2.25" Y="9.75" Width="2.5" />
+    <Position X="1.75" Y="14" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AACAABAAACIAAAAAAACBAhAAAAFAAQACAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Missile.cs</FileName>
+      <HashCode>AACAAAAAAAAAEAAAAACAQhAAAAAAAQACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts Non Monobehaviour\Missile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EnemyCraft">
-    <Position X="5.5" Y="9.75" Width="1.75" />
+    <Position X="5.5" Y="14" Width="2" />
     <TypeIdentifier>
       <HashCode>EAAAAAEAEABAAAAAAAIAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\EnemyCraft.cs</FileName>
+      <FileName>Assets\Scripts Non Monobehaviour\EnemyCraft.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PlayerCraft">
-    <Position X="9" Y="9.75" Width="1.75" />
+    <Position X="8.25" Y="14" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>FAIAAAAAFEBAAAAIAIIAAAAAABABAAAIAAAAAACAAAA=</HashCode>
-      <FileName>Assets\Scripts\PlayerCraft.cs</FileName>
+      <HashCode>EAAAAAAAEABAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts Non Monobehaviour\PlayerCraft.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="duck">
-    <Position X="10.25" Y="7" Width="1.5" />
+  <Class Name="TargetInfo" Collapsed="true">
+    <Position X="17.25" Y="14.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\duck.cs</FileName>
+      <HashCode>AQAAMAEAAAAAAAQAAAAAAAAAAAAAAIAwAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts Non Monobehaviour\TargetInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EnemyLauncher" Collapsed="true">
+    <Position X="5.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACEAAAgAAAAAAAAAIAAAAAQgQAQAAoAAAAA=</HashCode>
+      <FileName>Assets\Scripts Monobehaviour\EnemyLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MissileLauncher" Collapsed="true">
+    <Position X="2" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAIgACAAIAAIAIAAAQAAAAAAAAAAQAAIAgCAAAA=</HashCode>
+      <FileName>Assets\Scripts Monobehaviour\MissileLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ping" Collapsed="true">
+    <Position X="13" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QARAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts Monobehaviour\Ping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerLauncher" Collapsed="true">
+    <Position X="8.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IASAEAAAIjAAAEAAAAQIAAAAAAGAAAAAWAAAAIBAEAA=</HashCode>
+      <FileName>Assets\Scripts Monobehaviour\PlayerLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadarHUD" Collapsed="true">
+    <Position X="11" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCJBAACAiAAAAAAgAAAAYkDAgAABAAACACCACQCAAA=</HashCode>
+      <FileName>Assets\Scripts Monobehaviour\RadarHUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reply" Collapsed="true">
+    <Position X="15.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QARAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAAAAAAACQ=</HashCode>
+      <FileName>Assets\Scripts Monobehaviour\Reply.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="IFlightBehaviour">
     <Position X="1.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABIABAAIAACGAAAAIAAAAAAAAABAAQ=</HashCode>
-      <FileName>Assets\Scripts\IFlightBehaviour.cs</FileName>
+      <FileName>Assets\Scripts Non Monobehaviour\IFlightBehaviour.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="IAircraftBehaviour">
     <Position X="3.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEABAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\IAircraftBehaviour.cs</FileName>
+      <FileName>Assets\Scripts Non Monobehaviour\IAircraftBehaviour.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
