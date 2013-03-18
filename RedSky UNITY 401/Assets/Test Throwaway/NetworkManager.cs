@@ -8,6 +8,7 @@ public class NetworkManager : MonoBehaviour
     float btnX, btnY, btnW, btnH;
     string gameName = "MultiplayerTestforRedSky", password = "Openup";
     bool wait;
+    int playerCounter = -1; // -1 will go to server
     List<HostData> hostdata;
 
 
@@ -76,9 +77,8 @@ public class NetworkManager : MonoBehaviour
     private void OnServerInitialized()
     {
         Debug.Log("Server initialized!");
-        Network.Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, 0);
-
-        
+        if (Network.isServer)
+            SpawnPlayer();
                 
     }
 
@@ -105,15 +105,16 @@ public class NetworkManager : MonoBehaviour
     }
 
     void OnConnectedToServer()
-    {
+    {           
         SpawnPlayer();
     }
 
+    
     private void SpawnPlayer()
-    {
-        Debug.Log("Spawn player");
-        Network.Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, 0);
-        
-        
+    {        
+        GameObject player = (GameObject)Network.Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, 0);            
     }
+
+    
+   
 }

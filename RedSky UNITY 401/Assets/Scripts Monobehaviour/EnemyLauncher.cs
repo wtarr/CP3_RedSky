@@ -109,24 +109,34 @@ public class EnemyLauncher : MonoBehaviour {
             
         }
 
+
         if (other.gameObject.name.Equals("Aim9(Clone)"))
         {
             Debug.Log(other.name);
 
             try
             {
-
-                Instantiate(explosionPrefab, testCraft.Position, testCraft.EntityObj.transform.rotation);
-
-                Destroy(other.gameObject);
-
-                Destroy(gameObject);
+                networkView.RPC("DestroyTarget", RPCMode.All, other.gameObject.name);
+                
             }
             catch (Exception e)
             {
                 Debug.Log(e.ToString());
             }
         }
+    }
+
+    
+    [RPC]
+    void DestroyTarget(string markedForDestruction)
+    { 
+                Network.Instantiate(explosionPrefab, testCraft.Position, testCraft.EntityObj.transform.rotation, 0);
+
+                GameObject marked = GameObject.Find(markedForDestruction);
+                
+                Destroy(marked.gameObject);
+
+                Destroy(gameObject);
     }
 
 

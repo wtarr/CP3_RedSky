@@ -21,77 +21,82 @@ public class MissileLauncher : MonoBehaviour
     void Start()
     {
 
+        if (networkView.isMine)
+        {
+            missileRadar = (GameObject)Instantiate(missileRadarPrefab, transform.position, transform.rotation);
+            missileRadar.transform.parent = transform;
 
-        missileRadar = (GameObject)Instantiate(missileRadarPrefab, transform.position, transform.rotation);
-        missileRadar.transform.parent = transform;
+            launched = transform.position;
 
-        launched = transform.position;
+            // calculate the intercept vector which is the target and missile will collide at time t based on missiles maxspeed
 
-        // calculate the intercept vector which is the target and missile will collide at time t based on missiles maxspeed
-        commonInterceptVector = me.CalculateInterceptVector(me.PrimaryTarget.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
+            commonInterceptVector = me.CalculateInterceptVector(me.PrimaryTarget.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
 
-        // calculate the velocity vector required for the missile to travel that will reach intercept
-        missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector, me.Position);
-               
-        // create a rigid body for our missile
-        me.EntityObj.AddComponent<Rigidbody>();
-        // create a sphere collider for our missile
-        me.EntityObj.AddComponent<SphereCollider>();
+            // calculate the velocity vector required for the missile to travel that will reach intercept
+            missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector, me.Position);
 
-        SphereCollider sc = (SphereCollider)me.EntityObj.collider;
+            // create a rigid body for our missile
+            me.EntityObj.AddComponent<Rigidbody>();
+            // create a sphere collider for our missile
+            me.EntityObj.AddComponent<SphereCollider>();
 
-        sc.radius = 0.5f; //set its intital det range
-        sc.isTrigger = true;
+            SphereCollider sc = (SphereCollider)me.EntityObj.collider;
 
-        sc.transform.parent = transform;
+            sc.radius = 0.5f; //set its intital det range
+            sc.isTrigger = true;
 
-        me.EntityObj.rigidbody.useGravity = false;
-        me.EntityObj.rigidbody.angularDrag = 0;
-        me.EntityObj.rigidbody.mass = 1;
+            sc.transform.parent = transform;
 
+            me.EntityObj.rigidbody.useGravity = false;
+            me.EntityObj.rigidbody.angularDrag = 0;
+            me.EntityObj.rigidbody.mass = 1;
 
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Start sweeping
-        missileRadar.transform.RotateAround(this.transform.position, this.transform.up, sweepAngleRate * Time.deltaTime);
-
-        //If missile can lock on same target as player craft then launch!!!
-
-
-        if (me.PrimaryTarget != null && locked == true)
+        if (networkView.isMine)
         {
-                       
-            commonInterceptVector = me.CalculateInterceptVector(me.PrimaryTarget.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
+            //Start sweeping
+            missileRadar.transform.RotateAround(this.transform.position, this.transform.up, sweepAngleRate * Time.deltaTime);
 
-            Debug.DrawLine(launched, commonInterceptVector, Color.blue, 0.25f, false);
+            //If missile can lock on same target as player craft then launch!!!
 
-            missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector, me.Position);
-            
-            // Check if path to intercept is still viable...
-            // if not we will check if in detonation range
-            // if not in detonation range we will continue on old velocity and hope for better intercept chance
-            if (commonInterceptVector == Vector3.zero)
+        
+            if (me.PrimaryTarget != null && locked == true)
             {
 
-                 //the path is not viable so lets check if missile is in detonation range of target					
-                if (me.InDetonationRange(me.Position, me.PrimaryTarget.TargetPosition))
+                commonInterceptVector = me.CalculateInterceptVector(me.PrimaryTarget.TargetPosition, me.TargetVelocityVector, me.Position, me.MaxSpeed);
+
+                Debug.DrawLine(launched, commonInterceptVector, Color.blue, 0.25f, false);
+
+                missileVelocityVectorToIntercept = me.PlotCourse(commonInterceptVector, me.Position);
+
+                // Check if path to intercept is still viable...
+                // if not we will check if in detonation range
+                // if not in detonation range we will continue on old velocity and hope for better intercept chance
+                if (commonInterceptVector == Vector3.zero)
                 {
 
-                    SphereCollider myCollider = me.EntityObj.transform.GetComponent<SphereCollider>();
-                    myCollider.radius = me.detonationRange;
+                    //the path is not viable so lets check if missile is in detonation range of target					
+                    if (me.InDetonationRange(me.Position, me.PrimaryTarget.TargetPosition))
+                    {
+
+                        SphereCollider myCollider = me.EntityObj.transform.GetComponent<SphereCollider>();
+                        myCollider.radius = me.detonationRange;
+
+                    }
 
                 }
 
             }
-            
+
+
+            me.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
+            me.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
         }
-         
-        me.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
-        me.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
-        
     }
         
 

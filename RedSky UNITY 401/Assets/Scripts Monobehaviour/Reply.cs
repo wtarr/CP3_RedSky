@@ -50,8 +50,11 @@ public class Reply : MonoBehaviour
         gameObject.transform.localScale = scale * tick;
         tick++;
 
-        if (TTL <= 0)
-            Destroy(gameObject);
+        if (TTL <= 0 && networkView.isMine)
+            Network.Destroy(gameObject);
+
+        //if (message == string.Empty)
+        //    Network.Destroy(gameObject);
 
     }
 
