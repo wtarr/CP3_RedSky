@@ -21,8 +21,6 @@ public class NetworkManager : MonoBehaviour
         btnW = Screen.width * 0.1f;
         btnH = Screen.width * 0.1f;
 
-
-
     }
 
     void OnGUI()

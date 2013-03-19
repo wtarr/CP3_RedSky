@@ -44,17 +44,18 @@ public class Reply : MonoBehaviour
     void Update()
     {
         
+        if (transform.position == Vector3.zero)
+            Destroy(gameObject);
 
         TTL--;
                 
         gameObject.transform.localScale = scale * tick;
         tick++;
 
-        if (TTL <= 0 && networkView.isMine)
-            Network.Destroy(gameObject);
+        if (TTL <= 0 && networkView)
+            Destroy(gameObject);
 
-        //if (message == string.Empty)
-        //    Network.Destroy(gameObject);
+        
 
     }
 

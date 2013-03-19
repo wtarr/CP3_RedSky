@@ -12,7 +12,7 @@ public class PlayerLauncher : MonoBehaviour
 
     Vector3 interceptforward;
 
-    float sweepAngleRate = 500;
+    float sweepAngleRate = 1000;
 
     int thisPlayersNumber = -1, targetIndex = 0, missileSelection = 0, coolDown = 0, listCleanTimer; 
     #endregion
@@ -56,12 +56,15 @@ public class PlayerLauncher : MonoBehaviour
             goRadar = (GameObject)Instantiate(radarHUDPrefab, playerCraft.Position, playerCraft.Rotation);
             goRadar.transform.parent = playerCraft.EntityObj.transform;
             goRadar.GetComponent<RadarHUD>().pc = playerCraft;
+        
+
+            sweeper = (GameObject)Instantiate(sweeper, playerCraft.Position, playerCraft.Rotation);
+            sweeper.transform.parent = playerCraft.EntityObj.transform;
+            Physics.IgnoreCollision(sweeper.GetComponent<Collider>(), playerCraft.EntityObj.GetComponent<Collider>());
+
         }
 
-        sweeper = (GameObject)Instantiate(sweeper, playerCraft.Position, playerCraft.Rotation);
-        sweeper.transform.parent = playerCraft.EntityObj.transform;
-
-        //Physics.IgnoreCollision(sweeper.GetComponent<Collider>(), 
+        
 
         playerCraft.Velocity = Vector3.zero;
 
@@ -87,25 +90,28 @@ public class PlayerLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sweeper.transform.RotateAround(this.transform.position, this.transform.up, sweepAngleRate * Time.deltaTime);
-
-        //playerCraft.FindAllTargetsByTag("enemy");
-
-        playerCraft.Acceleration = Vector3.zero;
-
-        CheckForUserInput();
-
-        PlayerMovement();
-
-        PrimeMissile();
-
-        //Clean the target list
-        listCleanTimer++;
-
-        if (listCleanTimer > 200)
+        if (networkView.isMine)
         {
-            listCleanTimer = 0;
-            CleanTargetList(); // keep the list fresh
+            sweeper.transform.RotateAround(this.transform.position, this.transform.up, sweepAngleRate * Time.deltaTime);
+
+            //playerCraft.FindAllTargetsByTag("enemy");
+
+            playerCraft.Acceleration = Vector3.zero;
+
+            CheckForUserInput();
+
+            PlayerMovement();
+
+            PrimeMissile();
+
+            //Clean the target list
+            listCleanTimer++;
+
+            if (listCleanTimer > 200)
+            {
+                listCleanTimer = 0;
+                CleanTargetList(); // keep the list fresh
+            }
         }
 
     } // update
@@ -246,77 +252,72 @@ public class PlayerLauncher : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.name.Contains("reply") && other.gameObject.name.Contains("player"))
-        {
-
-            int id = int.Parse(other.gameObject.name.Split('_').First());
-
-            Debug.Log("Captured Id " + id);
-
-
-            if (id != ThisPlayersNumber) // it is not me
+        
+         if (other.gameObject.name.Contains("reply") && other.gameObject.name.Contains("player"))
             {
 
-                TargetInfo t = new TargetInfo(other.gameObject.name, other.gameObject.transform.position);
+                int id = int.Parse(other.gameObject.name.Split('_').First());
 
-                int indexOfitem = playerCraft.Targets.FindIndex(tar => tar.TargetName == t.TargetName); // -1 means its new
-
-                if (indexOfitem < 0)
+                if (id != ThisPlayersNumber) // it is not me
                 {
-                    playerCraft.Targets.Add(t);
-                }
 
-                if (indexOfitem >= 0)
-                {
-                    if (playerCraft.PrimaryTarget != null)
+                    TargetInfo t = new TargetInfo(other.gameObject.name, other.gameObject.transform.position);
+
+                    int indexOfitem = playerCraft.Targets.FindIndex(tar => tar.TargetName == t.TargetName); // -1 means its new
+
+                    if (indexOfitem < 0)
                     {
-                        if (playerCraft.PrimaryTarget.TargetName.Equals(t.TargetName))
-                        {
-                            playerCraft.Targets[indexOfitem].IsPrimary = true;
-                        }
+                        playerCraft.Targets.Add(t);
                     }
 
-                    playerCraft.Targets[indexOfitem].TargetPosition = t.TargetPosition;
+                    if (indexOfitem >= 0)
+                    {
+                        if (playerCraft.PrimaryTarget != null)
+                        {
+                            if (playerCraft.PrimaryTarget.TargetName.Equals(t.TargetName))
+                            {
+                                playerCraft.Targets[indexOfitem].IsPrimary = true;
+                            }
+                        }
+
+                        playerCraft.Targets[indexOfitem].TargetPosition = t.TargetPosition;
+
+                    }
 
                 }
 
+
             }
 
 
-        }
 
 
+            if ((other.gameObject.name.Contains("RadarSweep(Clone)") || other.gameObject.name.Contains("MissileRadar(Clone)")) && !other.gameObject.name.Contains("reply"))
+            {
+                if (ThisPlayersNumber > 0)
+                {
+                    pingReplyPrefab.GetComponent<Reply>().message = string.Format("{0}_player", ThisPlayersNumber);
+                    GameObject temp = (GameObject)Instantiate(pingReplyPrefab, transform.position, playerCraft.Rotation);
+                    temp.transform.parent = playerCraft.EntityObj.transform;
+                }
+            }
+
+
+            if (other.gameObject.name.Equals("Aim9(Clone)"))
+            {
+                Debug.Log(other.name);
+
+                try
+                {
+                    networkView.RPC("DestroyTarget", RPCMode.AllBuffered, other.gameObject.name);
+
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e.ToString());
+                }
+            }
         
-
-        if ((other.gameObject.name.Contains("RadarSweep(Clone)") || other.gameObject.name.Contains("MissileRadar(Clone)")) && !other.gameObject.name.Contains("reply"))
-        {
-            if (ThisPlayersNumber > 0)
-            {
-                pingReplyPrefab.GetComponent<Reply>().message = string.Format("{0}_player", ThisPlayersNumber);
-                GameObject temp = (GameObject)Network.Instantiate(pingReplyPrefab, playerCraft.Position, playerCraft.Rotation, 0);
-            }             
-        }
-
-
-        if (other.gameObject.name.Equals("Aim9(Clone)"))
-        {
-            Debug.Log(other.name);
-
-            try
-            {
-                networkView.RPC("DestroyTarget", RPCMode.AllBuffered, other.gameObject.name);
-
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.ToString());
-            }
-        }
-
-
-        
-
     }
 
 
