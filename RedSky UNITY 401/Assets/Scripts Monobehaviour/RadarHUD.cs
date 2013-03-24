@@ -61,7 +61,7 @@ public class RadarHUD : MonoBehaviour
         {
             foreach (TargetInfo tar in pc.Targets)
             {
-                if (tar.TargetName != string.Empty)
+                if (tar.TargetID.ToString() != string.Empty)
                 {
 
                     Vector3 local = pc.EntityObj.transform.InverseTransformDirection(tar.TargetPosition - pc.EntityObj.transform.position);

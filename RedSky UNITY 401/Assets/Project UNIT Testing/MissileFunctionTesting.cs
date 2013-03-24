@@ -35,7 +35,7 @@ namespace RedSkyProjectTesting
                         
             Vector3 targetVectorExpected = new Vector3(3, 0, 0);
 			Vector3 actualTargetVelVector;
-            TargetInfo test = new TargetInfo("", new Vector3(0, 1, 0));
+            TargetInfo test = new TargetInfo(new NetworkViewID(), new Vector3(0, 1, 0));
             
             m.oldTargetPosition = new Vector3(0, 1, 0); // old
             
@@ -78,7 +78,7 @@ namespace RedSkyProjectTesting
             Vector3 missilePositionMock = new Vector3(0, 0, 0); //   B
 
 
-            TargetInfo test = new TargetInfo("", new Vector3(150, 200, -300)); // A
+            TargetInfo test = new TargetInfo(new NetworkViewID(), new Vector3(150, 200, -300)); // A
             m.PrimaryTarget = test;
 						
             m.TargetVelocityVector = new Vector3(34, 42, 23); // Av
@@ -105,7 +105,7 @@ namespace RedSkyProjectTesting
             Vector3 missilePositionMock = new Vector3(0, 0, 0); //   B
 
 
-            TargetInfo test = new TargetInfo("", new Vector3(150, 200, -300)); // A
+            TargetInfo test = new TargetInfo(new NetworkViewID(), new Vector3(150, 200, -300)); // A
             m.PrimaryTarget = test;
 
             m.TargetVelocityVector = new Vector3(34, 42, 23); // Av
@@ -128,7 +128,7 @@ namespace RedSkyProjectTesting
 
             Vector3 missileMockPosition = new Vector3(0, 1, 0);
 
-            TargetInfo test = new TargetInfo("test", new Vector3(14, 1, 0));
+            TargetInfo test = new TargetInfo(new NetworkViewID(), new Vector3(14, 1, 0));
 
             m.PrimaryTarget = test;
 
@@ -146,7 +146,7 @@ namespace RedSkyProjectTesting
 
             Vector3 missileMockPosition = new Vector3(0, 1, 0);
 
-            TargetInfo test = new TargetInfo("test", new Vector3(129, 1, 0));
+            TargetInfo test = new TargetInfo(new NetworkViewID(), new Vector3(129, 1, 0));
            
             m.PrimaryTarget = test;
             

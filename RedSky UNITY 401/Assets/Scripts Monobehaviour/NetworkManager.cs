@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 public class NetworkManager : MonoBehaviour
 {
-    public GameObject playerPrefab, playerActual, spawnPoint;
+    public GameObject playerPrefab, spawnPoint;
     float btnX, btnY, btnW, btnH;
     string gameName = "MultiplayerTestforRedSky", password = "Openup";
-    bool wait;
-    int playerCounter = -1; // -1 will go to server
+    bool waitForServerResponse;
     List<HostData> hostdata;
 
 
@@ -25,7 +24,7 @@ public class NetworkManager : MonoBehaviour
 
     void OnGUI()
     {
-        if (!Network.isClient && !Network.isServer)
+        if (!Network.isClient && !Network.isServer) // NObody is connected
         {
 
             if (GUI.Button(new Rect(btnX, btnY, btnW, btnH), "Start Server"))
@@ -37,7 +36,8 @@ public class NetworkManager : MonoBehaviour
             if (GUI.Button(new Rect(btnX, btnY * 1.2f + btnH, btnW, btnH), "Refresh Hosts"))
             {
                 Debug.Log("Refreshing");
-                RefreshHostList();
+                if (!Network.isServer)
+                    RefreshHostList();
             }
 
             if (hostdata != null)
@@ -59,7 +59,7 @@ public class NetworkManager : MonoBehaviour
     private void RefreshHostList()
     {
         MasterServer.RequestHostList(gameName);
-        wait = true;
+        waitForServerResponse = true;
 
     }
 
@@ -76,7 +76,9 @@ public class NetworkManager : MonoBehaviour
     {
         Debug.Log("Server initialized!");
         if (Network.isServer)
+        {
             SpawnPlayer();
+        }
                 
     }
 
@@ -84,33 +86,40 @@ public class NetworkManager : MonoBehaviour
     private void OnMasterServerEvent(MasterServerEvent e)
     {
         if (e == MasterServerEvent.RegistrationSucceeded)
+        {
             Debug.Log("Server registered");
+            Debug.Log("Master Server Info:" + MasterServer.ipAddress + ":" + MasterServer.port);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (wait)
-        {
-            if (MasterServer.PollHostList().Length > 0)
+        
+            if (!Network.isServer && waitForServerResponse)
             {
-                wait = false;
-                Debug.Log(MasterServer.PollHostList().Length);
-                hostdata = new List<HostData>(MasterServer.PollHostList());
+                if (MasterServer.PollHostList().Length > 0)
+                {
+                    waitForServerResponse = false;
+                    Debug.Log(MasterServer.PollHostList().Length);
+                    hostdata = new List<HostData>(MasterServer.PollHostList());
+                }
             }
-        }
+        
 
     }
 
     void OnConnectedToServer()
-    {           
+    {
         SpawnPlayer();
     }
 
-    
+   
     private void SpawnPlayer()
-    {        
-        GameObject player = (GameObject)Network.Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, 0);            
+    {
+        
+        Network.Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, 0);
+                
     }
 
     

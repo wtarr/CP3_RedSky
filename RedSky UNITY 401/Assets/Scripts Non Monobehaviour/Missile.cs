@@ -11,7 +11,7 @@ public class Missile: AbstractFlightBehaviour
     public Missile()
     {        
         MaxSpeed = 60f;
-        PrimaryTarget = new TargetInfo("unknown", Vector3.zero);
+        PrimaryTarget = new TargetInfo(new NetworkViewID(), Vector3.zero);
     }
     
     public void ObtainRealTimeTargetsPosition()

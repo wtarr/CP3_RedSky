@@ -7,7 +7,7 @@ using UnityEngine;
 public class TargetInfo : IComparable<TargetInfo>
 {
 
-    private String targetName;
+    private NetworkViewID targetID;
     private Vector3 targetPosition;
     private bool isPrimary;
 
@@ -17,10 +17,10 @@ public class TargetInfo : IComparable<TargetInfo>
         set { isPrimary = value; }
     }
     
-    public String TargetName
+    public NetworkViewID TargetID
     {
-        get { return targetName; }
-        set { targetName = value; }
+        get { return targetID; }
+        set { targetID = value; }
     }
 
     public Vector3 TargetPosition
@@ -29,15 +29,15 @@ public class TargetInfo : IComparable<TargetInfo>
         set { targetPosition = value; }
     }
        
-    public TargetInfo(string name, Vector3 pos)
+    public TargetInfo(NetworkViewID name, Vector3 pos)
     {
-        this.targetName = name;
+        this.targetID = name;
         this.targetPosition = pos;
     }
 
     public int CompareTo(TargetInfo other) 
     {      
-        if (other.targetName.Equals(this.targetName))
+        if (other.TargetID.ToString().Equals(this.TargetID.ToString()))
             return 0;
         else
             return -1;

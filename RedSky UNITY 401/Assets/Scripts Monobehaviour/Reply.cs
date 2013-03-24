@@ -52,7 +52,7 @@ public class Reply : MonoBehaviour
         gameObject.transform.localScale = scale * tick;
         tick++;
 
-        if (TTL <= 0 && networkView)
+        if (TTL <= 0)
             Destroy(gameObject);
 
         
