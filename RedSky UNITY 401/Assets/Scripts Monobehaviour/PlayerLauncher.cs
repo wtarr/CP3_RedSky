@@ -29,6 +29,7 @@ public class PlayerLauncher : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        DontDestroyOnLoad(this);
 
         ThisPlayersNumber = int.Parse(networkView.viewID.ToString().Split(' ').Last());
 
@@ -61,8 +62,8 @@ public class PlayerLauncher : MonoBehaviour
 
         sweeper = (GameObject)Instantiate(sweeper, playerCraft.Position, playerCraft.Rotation);
         sweeper.transform.parent = playerCraft.EntityObj.transform;
-        
-        
+
+
         playerCraft.Velocity = Vector3.zero;
 
         playerCraft.ThrustValue = 600f;
@@ -195,7 +196,10 @@ public class PlayerLauncher : MonoBehaviour
 
                 if (coolDown <= 0)
                 {
-                    PreLaunchInitialize();
+                    if (networkView.isMine && Network.isClient)
+                        networkView.RPC("PreLaunchInitialize", RPCMode.Server, playerCraft.PrimaryTarget.TargetID, playerCraft.PrimaryTarget.TargetPosition);
+                    if (networkView.isMine && Network.isServer)
+                        PreLaunchInitialize(playerCraft.PrimaryTarget.TargetID, playerCraft.PrimaryTarget.TargetPosition);
 
                     missileSelection++; // next missile on the rack
 
@@ -212,16 +216,19 @@ public class PlayerLauncher : MonoBehaviour
         }
     }
 
-    private void PreLaunchInitialize()
+    [RPC]
+    private void PreLaunchInitialize(NetworkViewID primTarget, Vector3 primPosition)
     {
         // Go for launch!
-
+        Debug.Log(primTarget + " " + primPosition);
         // Check that it can hit the target first by checking for a zero vector!!!!!
 
         //Missile preflight initialisation
+
         playerCraft.missileStock[missileSelection].EntityObj = (GameObject)Network.Instantiate(missilePrefab, playerCraft.Position, playerCraft.Rotation, 0);
+        Debug.Log(playerCraft.missileStock[missileSelection].EntityObj.networkView.viewID);
         playerCraft.missileStock[missileSelection].EntityObj.GetComponent<MissileLauncher>().ThisMissile = playerCraft.missileStock[missileSelection];
-        playerCraft.missileStock[missileSelection].EntityObj.GetComponent<MissileLauncher>().ThisMissile.PrimaryTarget = playerCraft.PrimaryTarget;
+        playerCraft.missileStock[missileSelection].EntityObj.GetComponent<MissileLauncher>().ThisMissile.PrimaryTarget = new TargetInfo(primTarget, primPosition);
         playerCraft.missileStock[missileSelection].EntityObj.GetComponent<MissileLauncher>().Owner = gameObject;
 
     }
@@ -319,15 +326,19 @@ public class PlayerLauncher : MonoBehaviour
     }
 
 
-    
-    
+
+
     void DestroyTarget(Collider other)
     {
         Network.Instantiate(explosionPrefab, playerCraft.Position, playerCraft.Rotation, 0);
-        
+
         networkView.RPC("RespawnTarget", RPCMode.AllBuffered);
 
-        Network.Destroy(other.gameObject);
+        if (Network.isServer)
+        {
+            Debug.Log("Destroy " + other.gameObject.name);
+            Network.Destroy(other.networkView.viewID);
+        }
     }
 
     [RPC]
@@ -336,10 +347,10 @@ public class PlayerLauncher : MonoBehaviour
         //NetworkView nV = NetworkView.Find(target);
         //GameObject targ = nV.gameObject;
         GameObject spawn = GameObject.Find("SpawnPoint");
-        
+
         playerCraft.EntityObj.transform.position = spawn.transform.position;
         playerCraft.Velocity = Vector3.zero;
-       
+
 
     }
 

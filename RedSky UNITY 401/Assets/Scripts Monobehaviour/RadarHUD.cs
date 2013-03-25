@@ -30,7 +30,7 @@ public class RadarHUD : MonoBehaviour
     void Start()
     {
 
-        cam = GameObject.Find("Camera").camera;
+        cam = GameObject.FindGameObjectWithTag("MainCamera").camera;
 
         radarScreenTextureHeightWidth = 200;
         targetHUDHighlight = 100;

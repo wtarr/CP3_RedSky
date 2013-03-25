@@ -35,7 +35,7 @@ public class MissileLauncher : MonoBehaviour
     void Start()
     {
 
-        if (networkView.isMine)
+        if (Network.isServer)
         {
             missileRadar = (GameObject)Instantiate(missileRadarPrefab, transform.position, transform.rotation);
             missileRadar.transform.parent = transform;
@@ -67,19 +67,20 @@ public class MissileLauncher : MonoBehaviour
             thisMissile.EntityObj.rigidbody.mass = 1;
 
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (networkView.isMine)
+        if (Network.isServer)
         {
             //Start sweeping
             missileRadar.transform.RotateAround(this.transform.position, this.transform.up, sweepAngleRate * Time.deltaTime);
 
             //If missile can lock on same target as player craft then launch!!!
 
-        
+
             if (thisMissile.PrimaryTarget != null && locked == true)
             {
 
@@ -109,36 +110,50 @@ public class MissileLauncher : MonoBehaviour
             }
 
 
-            thisMissile.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
-            thisMissile.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
+            networkView.RPC("MissileMovement", RPCMode.All);
+
         }
+        
+        
+        
+    }
+
+    [RPC]
+    private void MissileMovement()
+    {
+        Debug.Log(missileVelocityVectorToIntercept);
+        thisMissile.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
+        thisMissile.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
     }
         
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent != null)
-            Debug.Log("outer" + other.name + " " + other.gameObject.transform.parent.networkView.viewID.ToString().Split(' ').Last());
-
-        if (other.gameObject.name.Contains("player_replying_to") &&
-            other.gameObject.name.Contains("MissileRadar(Clone)") &&
-            other.gameObject.transform.parent.networkView.viewID.ToString().Equals(thisMissile.PrimaryTarget.TargetID.ToString()))
+        if (Network.isServer)
         {
-            Debug.Log("Recieving reply");
-            locked = true;
+            if (other.transform.parent != null)
+                Debug.Log("outer" + other.name + " " + other.gameObject.transform.parent.networkView.viewID.ToString().Split(' ').Last());
 
-            if (other.gameObject.transform.position != thisMissile.PrimaryTarget.TargetPosition)
+            if (other.gameObject.name.Contains("player_replying_to") &&
+                other.gameObject.name.Contains("MissileRadar(Clone)") &&
+                other.gameObject.transform.parent.networkView.viewID.ToString().Equals(thisMissile.PrimaryTarget.TargetID.ToString()))
             {
-                timeNow = Time.realtimeSinceStartup;
-                thisMissile.oldTargetPosition = thisMissile.PrimaryTarget.TargetPosition;
-                thisMissile.PrimaryTarget.TargetPosition = other.gameObject.transform.position;
-                if (timeNow > 0 && timeOfLastCall > 0)
-                    thisMissile.TargetVelocityVector = thisMissile.CalculateVelocityVector(thisMissile.oldTargetPosition, thisMissile.PrimaryTarget.TargetPosition, (timeNow - timeOfLastCall));
-                Debug.Log("Vel" + thisMissile.TargetVelocityVector);
-                timeOfLastCall = timeNow;
+                Debug.Log("Recieving reply");
+                locked = true;
+
+                if (other.gameObject.transform.position != thisMissile.PrimaryTarget.TargetPosition)
+                {
+                    timeNow = Time.realtimeSinceStartup;
+                    thisMissile.oldTargetPosition = thisMissile.PrimaryTarget.TargetPosition;
+                    thisMissile.PrimaryTarget.TargetPosition = other.gameObject.transform.position;
+                    if (timeNow > 0 && timeOfLastCall > 0)
+                        thisMissile.TargetVelocityVector = thisMissile.CalculateVelocityVector(thisMissile.oldTargetPosition, thisMissile.PrimaryTarget.TargetPosition, (timeNow - timeOfLastCall));
+                    //Debug.Log("Vel" + thisMissile.TargetVelocityVector);
+                    timeOfLastCall = timeNow;
+                }
+
+
             }
-
-
         }
         
     }
