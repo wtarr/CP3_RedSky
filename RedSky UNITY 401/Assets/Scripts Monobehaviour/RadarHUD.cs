@@ -5,14 +5,15 @@ using System.Collections.Generic;
 public class RadarHUD : MonoBehaviour
 {
 
-
-    public PlayerCraft pc;
-    Camera cam;
     public Texture radarScreenImage, friendlyImage, targetImage, rotateBeamSpriteSheet, targetHighlight, primaryTargetHighlighter;
-    Vector3 targetRelToScreen;
-    float offset, clock;
+    private PlayerCraft playerCraft; // pointer to the owner
+    private Camera cam;
+    
+    private Vector3 targetRelToScreen;
+    private float offset, clock;
 
-    int radarScreenTextureHeightWidth, // radar screen/ radar sweep 
+    private int 
+        radarScreenTextureHeightWidth, // radar screen/ radar sweep 
         targetHUDHighlight,
         targetRadarBlip,
         padding,
@@ -23,8 +24,14 @@ public class RadarHUD : MonoBehaviour
         delay,
         cycle;
 
+    private int scale = 5;
 
-    int scale = 5;
+    #region Properties
+    public PlayerCraft PlayerCraft
+    {        
+        set { playerCraft = value; }
+    } 
+    #endregion
 
     // Use this for initialization
     void Start()
@@ -57,21 +64,35 @@ public class RadarHUD : MonoBehaviour
 
         GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), rotateBeamSpriteSheet, new Rect(offset * cycle, 0, offset, 1));
 
-        if (pc.Targets.Count > 0)
+        if (playerCraft.Targets.Count > 0)
         {
-            foreach (TargetInfo tar in pc.Targets)
+            foreach (TargetInfo tar in playerCraft.Targets)
             {
                 if (tar.TargetID.ToString() != string.Empty)
                 {
-
-                    Vector3 local = pc.EntityObj.transform.InverseTransformDirection(tar.TargetPosition - pc.EntityObj.transform.position);
+                    // Convert global position to a local positon for displaying on radar screen
+                    Vector3 local = playerCraft.EntityObj.transform.InverseTransformDirection(tar.TargetPosition - playerCraft.EntityObj.transform.position);
+                    // Convert the targets positon to a screen position for positioning the highlighter 
                     targetRelToScreen = cam.WorldToScreenPoint(tar.TargetPosition);
-                    
-                    // 
+
+                    // Always draw
                     GUI.DrawTexture(new Rect(radarCenterX + (local.x / scale) - (targetRadarBlip / 2), radarCenterY - (local.z / scale) - (targetRadarBlip / 2), targetRadarBlip, targetRadarBlip), targetImage);
-                    GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight / 2, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), targetHighlight);
-                    if (tar.IsPrimary)
-                        GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight / 2, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), primaryTargetHighlighter);
+
+                    //check that we are facing the target
+                    Vector3 meToTarget = tar.TargetPosition - playerCraft.Position;
+
+                    if (Vector3.Dot(meToTarget, playerCraft.EntityObj.transform.forward) > 0)
+                    {
+
+                        PlayerInfo pi = NetworkManagerSplashScreen.playerInfoList.Find(p => p.ViewID == tar.TargetID);
+
+                        if (pi != null)
+                            GUI.Label(new Rect(targetRelToScreen.x, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), pi.PlayerName);
+                        GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight / 2, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), targetHighlight);
+                        
+                        if (tar.IsPrimary)
+                            GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight / 2, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), primaryTargetHighlighter);
+                    }
                 }
             }
         }

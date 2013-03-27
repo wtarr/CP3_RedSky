@@ -81,7 +81,7 @@ public class MissileLauncher : MonoBehaviour
             //If missile can lock on same target as player craft then launch!!!
 
 
-            if (thisMissile.PrimaryTarget != null && locked == true)
+            if (thisMissile.PrimaryTarget != null)// && locked == true)
             {
 
                 commonInterceptVector = thisMissile.CalculateInterceptVector(thisMissile.PrimaryTarget.TargetPosition, thisMissile.TargetVelocityVector, thisMissile.Position, thisMissile.MaxSpeed);
@@ -131,8 +131,8 @@ public class MissileLauncher : MonoBehaviour
     {
         if (Network.isServer)
         {
-            if (other.transform.parent != null)
-                Debug.Log("outer" + other.name + " " + other.gameObject.transform.parent.networkView.viewID.ToString().Split(' ').Last());
+            //if (other.transform.parent != null)
+            //    Debug.Log("outer" + other.name + " " + other.gameObject.transform.parent.networkView.viewID.ToString().Split(' ').Last());
 
             if (other.gameObject.name.Contains("player_replying_to") &&
                 other.gameObject.name.Contains("MissileRadar(Clone)") &&
@@ -153,6 +153,10 @@ public class MissileLauncher : MonoBehaviour
                 }
 
 
+            }
+            else
+            {
+                locked = false;
             }
         }
         
