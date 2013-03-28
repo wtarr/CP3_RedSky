@@ -18,7 +18,7 @@ public class PlayerInfo
 
     string playerName;
     NetworkViewID viewID;
-
+   
     public string PlayerName
     {
         get { return playerName; }
@@ -37,21 +37,26 @@ public class PlayerInfo
 public class NetworkManagerSplashScreen : MonoBehaviour
 {
 
-   
-    public GameObject playerPrefab, spawnPoint;
-    float btnX, btnY, btnW, btnH, textfieldH, textfieldW, textfieldX, textfieldY, playerNameLabelX, playerNameLabelY, playerNameLabelH, playerNameLabelW;
-    string gameName = "RedSky", password = "Openup", playerName = string.Empty;
-    bool waitForServerResponse;
-    List<HostData> hostdata;
-
+    public static List<GameObject> spawnPoints;
+    public GameObject playerPrefab, spawnPointsPrefab;
     public static List<PlayerInfo> playerInfoList;
 
+    private float btnX, btnY, btnW, btnH, textfieldH, textfieldW, textfieldX, textfieldY, playerNameLabelX, playerNameLabelY, playerNameLabelH, playerNameLabelW;
+    private string gameName = "RedSky", password = "Openup", playerName = string.Empty;
+    private bool waitForServerResponse;
+    private List<HostData> hostdata;
 
     // Use this for initialization
     void Start()
     {
 
         playerInfoList = new List<PlayerInfo>();
+        spawnPoints = new List<GameObject>();
+
+        foreach (Transform child in spawnPointsPrefab.transform)
+        {
+            spawnPoints.Add(child.gameObject);
+        }
 
         DontDestroyOnLoad(this); // This game object needs to stay alive to maintain the network view records
 
@@ -77,6 +82,8 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     {
         if (!Network.isClient && !Network.isServer) // NObody is connected
         {
+                        
+
             GUI.Label(new Rect(playerNameLabelX, playerNameLabelY, playerNameLabelW, playerNameLabelH), "Username *required");
             playerName = GUI.TextField(new Rect(textfieldX, textfieldY, textfieldW, textfieldH), playerName);
 
@@ -184,14 +191,18 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     
     void SpawnPlayer()
     {
-        GameObject go = (GameObject)Network.Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, 0);
+        System.Random r = new System.Random();
+        int ranNum = r.Next(0, spawnPoints.Count);
+
+
+        GameObject go = (GameObject)Network.Instantiate(playerPrefab, spawnPoints[ranNum].transform.position, spawnPoints[ranNum].transform.rotation, 0);
+        
         //go.GetComponent<PlayerLauncher>().PlayerCraft.PlayerInfoList = null;
                        
-        networkView.RPC("AddToPlayerList", RPCMode.AllBuffered, playerName, go.networkView.viewID);
-        
+        networkView.RPC("AddToPlayerList", RPCMode.AllBuffered, playerName, go.networkView.viewID);               
+                
+        //networkView.RPC("RespawnTarget", RPCMode.AllBuffered, go.networkView.viewID);
 
-        //go.GetComponent<PlayerLauncher>().playerCraft.Position;
-        
 
     }
 
@@ -201,4 +212,6 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         //GameObject go = NetworkView.g
         NetworkManagerSplashScreen.playerInfoList.Add(new PlayerInfo(playerName, viewID));
     }
+        
+    
 }

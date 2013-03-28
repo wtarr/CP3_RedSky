@@ -10,13 +10,14 @@ public class PlayerLauncher : MonoBehaviour
     public GameObject explosionPrefab, missilePrefab, radarHUDPrefab, goRadar, sweeper, pingReplyPrefab; // prefabs
 
     private PlayerCraft playerCraft;
-        
+
     private Vector3 interceptforward;
 
     private float sweepAngleRate = 1500;
 
-    private int thisPlayersNumber = -1, targetIndex = 0, missileSelection = 0, coolDown = 0, listCleanTimer;
-                
+    private int thisPlayersNumber = -1, targetIndex = 0, missileSelection = 0, coolDown = 0, listCleanTimer, respawnTimer;
+
+    private bool respawn = false;
     #endregion
 
     #region Class properties
@@ -24,11 +25,11 @@ public class PlayerLauncher : MonoBehaviour
     {
         get { return thisPlayersNumber; }
         set { thisPlayersNumber = value; }
-    }    
+    }
 
     public PlayerCraft PlayerCraft
     {
-        get { return playerCraft; }        
+        get { return playerCraft; }
     }
 
     #endregion
@@ -58,7 +59,7 @@ public class PlayerLauncher : MonoBehaviour
 
         playerCraft.EntityObj = this.gameObject;
 
-        playerCraft.Targets = new List<TargetInfo>();               
+        playerCraft.Targets = new List<TargetInfo>();
 
         if (networkView.isMine)
         {
@@ -66,10 +67,12 @@ public class PlayerLauncher : MonoBehaviour
             goRadar.transform.parent = playerCraft.EntityObj.transform;
             goRadar.GetComponent<RadarHUD>().PlayerCraft = playerCraft;
 
+            sweeper = (GameObject)Instantiate(sweeper, playerCraft.Position, playerCraft.Rotation);
+            sweeper.transform.parent = playerCraft.EntityObj.transform;
+
         }
 
-        sweeper = (GameObject)Instantiate(sweeper, playerCraft.Position, playerCraft.Rotation);
-        sweeper.transform.parent = playerCraft.EntityObj.transform;
+
 
 
         playerCraft.Velocity = Vector3.zero;
@@ -117,7 +120,13 @@ public class PlayerLauncher : MonoBehaviour
             {
                 listCleanTimer = 0;
                 CleanTargetList(); // keep the list fresh
-            }            
+            }
+
+            if (respawn)
+                SetToRespawn();
+
+            if (respawnTimer > 0)
+                respawnTimer--;
         }
 
     } // update
@@ -230,7 +239,7 @@ public class PlayerLauncher : MonoBehaviour
         // Go for launch!
         Debug.Log(primTarget + " " + primPosition);
         // Check that it can hit the target first by checking for a zero vector!!!!!
-
+        Debug.Log("who is seeing this?");
         //Missile preflight initialisation
 
         playerCraft.MissileStock[missileSelection].EntityObj = (GameObject)Network.Instantiate(missilePrefab, playerCraft.Position, playerCraft.Rotation, 0);
@@ -266,7 +275,7 @@ public class PlayerLauncher : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.transform.name);
+        Debug.Log(other.transform.name);
 
         if (other.gameObject.name.Contains("reply") && other.gameObject.name.Contains("player"))
         {
@@ -302,7 +311,7 @@ public class PlayerLauncher : MonoBehaviour
         }
 
 
-        if ((other.gameObject.name.Contains("RadarSweep(Clone)") || other.gameObject.name.Contains("MissileRadar(Clone)")) && !other.gameObject.name.Contains("reply"))
+        if (other.gameObject.name.Contains("RadarSweep(Clone)") && !other.gameObject.name.Contains("reply"))
         {
             //Debug.Log("Reply to sweep " + other.gameObject.name);
             if (ThisPlayersNumber > 0)
@@ -313,17 +322,26 @@ public class PlayerLauncher : MonoBehaviour
             }
         }
 
-        if (other.gameObject.name.Contains("Aim9") &&
+        if (Network.isServer && other.gameObject.name.Contains("MissileRadar(Clone)") && !other.gameObject.name.Contains("reply"))
+        {
+            if (ThisPlayersNumber > 0)
+            {
+                pingReplyPrefab.GetComponent<Reply>().message = string.Format("{0}_player_replying_to_{1}", ThisPlayersNumber, other.gameObject.name);
+                GameObject temp = (GameObject)Instantiate(pingReplyPrefab, transform.position, playerCraft.Rotation);
+                temp.transform.parent = playerCraft.EntityObj.transform;
+            }
+        }
+
+        if (Network.isServer &&
+            other.gameObject.name.Contains("Aim9") &&
             other.gameObject.transform.parent == null
             && other.gameObject.GetComponent<MissileLauncher>().Owner.transform.networkView.viewID != networkView.viewID) // dont blow myself up :-o
         {
             Debug.Log("inner" + other.name + " " + other.gameObject.networkView.viewID.ToString().Split(' ').Last());
 
             try
-            {
-                //networkView.RPC("DestroyTarget", RPCMode.AllBuffered, other.gameObject.name);
+            {              
                 DestroyTarget(other);
-
             }
             catch (Exception e)
             {
@@ -331,16 +349,42 @@ public class PlayerLauncher : MonoBehaviour
             }
         }
 
+        if (other.gameObject.name.Contains("MainLevelTerrain") ||
+            other.gameObject.name.Contains("Ocean"))
+        {
+
+            TerrainCollision();
+        }
+
     }
 
+    void TerrainCollision()
+    {
+        Debug.Log("TerrainCollision");
+        Network.Instantiate(explosionPrefab, playerCraft.Position, playerCraft.Rotation, 0);
+        respawn = true;
+        respawnTimer = 30;
+    }
 
+    void SetToRespawn()
+    {        
+        if (respawnTimer <= 0)
+        {
+            respawn = false;
+            networkView.RPC("RespawnTarget", RPCMode.AllBuffered);
+        }
+    
+    }
 
 
     void DestroyTarget(Collider other)
     {
+
+        Debug.Log("DestroyTarget");
         Network.Instantiate(explosionPrefab, playerCraft.Position, playerCraft.Rotation, 0);
 
-        networkView.RPC("RespawnTarget", RPCMode.AllBuffered);
+        respawn = true;
+        respawnTimer = 30;
 
         if (Network.isServer)
         {
@@ -352,11 +396,12 @@ public class PlayerLauncher : MonoBehaviour
     [RPC]
     void RespawnTarget()
     {
-        //NetworkView nV = NetworkView.Find(target);
-        //GameObject targ = nV.gameObject;
-        GameObject spawn = GameObject.Find("SpawnPoint");
+        playerCraft.Velocity = Vector3.zero;
+        
+        System.Random r = new System.Random();
+        int ranNum = r.Next(0, NetworkManagerSplashScreen.spawnPoints.Count);
 
-        playerCraft.EntityObj.transform.position = spawn.transform.position;
+        playerCraft.EntityObj.transform.position = NetworkManagerSplashScreen.spawnPoints[ranNum].transform.position;
         playerCraft.Velocity = Vector3.zero;
 
 
@@ -366,5 +411,6 @@ public class PlayerLauncher : MonoBehaviour
     {
         playerCraft.Targets.Clear();
     }
+
 
 }

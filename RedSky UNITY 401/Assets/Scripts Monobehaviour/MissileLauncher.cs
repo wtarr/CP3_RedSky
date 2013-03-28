@@ -109,23 +109,16 @@ public class MissileLauncher : MonoBehaviour
 
             }
 
-
-            networkView.RPC("MissileMovement", RPCMode.All);
+            Debug.Log(missileVelocityVectorToIntercept);
+            thisMissile.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
+            thisMissile.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
+            
 
         }
         
         
         
-    }
-
-    [RPC]
-    private void MissileMovement()
-    {
-        Debug.Log(missileVelocityVectorToIntercept);
-        thisMissile.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
-        thisMissile.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
-    }
-        
+    }          
 
     void OnTriggerEnter(Collider other)
     {
@@ -159,7 +152,7 @@ public class MissileLauncher : MonoBehaviour
                 locked = false;
             }
         }
-        
+
     }
 
     

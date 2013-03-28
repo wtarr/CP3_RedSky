@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Reply : MonoBehaviour
 {
-    int TTL = 30;    
+    int TTL = 10;    
     float tick;
     Vector3 scale;    
     public string message;

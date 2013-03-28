@@ -3,16 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RadarHUD : MonoBehaviour
-{
-
+{    
     public Texture radarScreenImage, friendlyImage, targetImage, rotateBeamSpriteSheet, targetHighlight, primaryTargetHighlighter;
     private PlayerCraft playerCraft; // pointer to the owner
     private Camera cam;
-    
+
     private Vector3 targetRelToScreen;
     private float offset, clock;
 
-    private int 
+    private int
         radarScreenTextureHeightWidth, // radar screen/ radar sweep 
         targetHUDHighlight,
         targetRadarBlip,
@@ -28,9 +27,9 @@ public class RadarHUD : MonoBehaviour
 
     #region Properties
     public PlayerCraft PlayerCraft
-    {        
+    {
         set { playerCraft = value; }
-    } 
+    }
     #endregion
 
     // Use this for initialization
@@ -63,7 +62,7 @@ public class RadarHUD : MonoBehaviour
         GUI.DrawTexture(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), radarScreenImage);
 
         GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), rotateBeamSpriteSheet, new Rect(offset * cycle, 0, offset, 1));
-
+                
         if (playerCraft.Targets.Count > 0)
         {
             foreach (TargetInfo tar in playerCraft.Targets)
@@ -87,9 +86,13 @@ public class RadarHUD : MonoBehaviour
                         PlayerInfo pi = NetworkManagerSplashScreen.playerInfoList.Find(p => p.ViewID == tar.TargetID);
 
                         if (pi != null)
-                            GUI.Label(new Rect(targetRelToScreen.x, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), pi.PlayerName);
+                        {
+                            GUI.contentColor = Color.green;
+                            GUI.Label(new Rect(targetRelToScreen.x - (targetHUDHighlight / 2), (Screen.height - targetRelToScreen.y - (targetHUDHighlight / 2)) - 10, targetHUDHighlight, targetHUDHighlight), pi.PlayerName);
+                            GUI.contentColor = Color.black;
+                        }
                         GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight / 2, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), targetHighlight);
-                        
+
                         if (tar.IsPrimary)
                             GUI.DrawTexture(new Rect(targetRelToScreen.x - targetHUDHighlight / 2, Screen.height - targetRelToScreen.y - targetHUDHighlight / 2, targetHUDHighlight, targetHUDHighlight), primaryTargetHighlighter);
                     }
