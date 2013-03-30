@@ -59,9 +59,14 @@ public class RadarHUD : MonoBehaviour
 
     void OnGUI()
     {
+        // Radar overlay
         GUI.DrawTexture(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), radarScreenImage);
 
+        //Radar sprite sheet
         GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), rotateBeamSpriteSheet, new Rect(offset * cycle, 0, offset, 1));
+        
+        //Missiles remaining
+        GUI.Label(new Rect(10, 10, 200, 20), string.Format("Missiles Remaining: {0}", playerCraft.MissileTotal - playerCraft.MissileSelection));
                 
         if (playerCraft.Targets.Count > 0)
         {

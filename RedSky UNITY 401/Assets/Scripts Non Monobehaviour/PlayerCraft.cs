@@ -7,7 +7,10 @@ using UnityEngine;
 public class PlayerCraft : AbstractFlightBehaviour, IAircraftBehaviour
 {
     #region Class State
-    private Missile[] missileStock;    
+    private Missile[] missileStock;
+    private int missileTotal = 4;    
+    private int missileSelection = 0;
+        
     #endregion
 
     #region Properties 
@@ -15,24 +18,29 @@ public class PlayerCraft : AbstractFlightBehaviour, IAircraftBehaviour
     {
         get { return missileStock; }
         set { missileStock = value; }
-    } 
+    }
+
+    public int MissileSelection
+    {
+        get { return missileSelection; }
+        set { missileSelection = value; }
+    }
+
+    public int MissileTotal
+    {
+        get { return missileTotal; }
+        set { missileTotal = value; }
+    }
     #endregion
 
     public PlayerCraft()
     {
-        missileStock = new Missile[4];
+        missileStock = new Missile[missileTotal];
 
-
-
-        Missile m1 = new Missile();
-        Missile m2 = new Missile();
-        Missile m3 = new Missile();
-        Missile m4 = new Missile();
-
-        missileStock[0] = m1;
-        missileStock[1] = m2;
-        missileStock[2] = m3;
-        missileStock[3] = m4;
+        for (int i = 0; i < missileTotal; i++)
+        {            
+            MissileStock[i] = new Missile();
+        }
 
     }
 
@@ -42,7 +50,7 @@ public class PlayerCraft : AbstractFlightBehaviour, IAircraftBehaviour
     }
 
     public void FireMissile()
-    {
+    {        
         throw new NotImplementedException();
     }
 

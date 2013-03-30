@@ -101,7 +101,7 @@ public class MissileLauncher : MonoBehaviour
                     {
                         Debug.Log("In det range");
                         SphereCollider myCollider = thisMissile.EntityObj.transform.GetComponent<SphereCollider>();
-                        myCollider.radius = thisMissile.detonationRange;
+                        myCollider.radius = thisMissile.DetonationRange;
 
                     }
 
@@ -109,7 +109,7 @@ public class MissileLauncher : MonoBehaviour
 
             }
 
-            Debug.Log(missileVelocityVectorToIntercept);
+            //Debug.Log(missileVelocityVectorToIntercept);
             thisMissile.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
             thisMissile.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
             
@@ -131,7 +131,7 @@ public class MissileLauncher : MonoBehaviour
                 other.gameObject.name.Contains("MissileRadar(Clone)") &&
                 other.gameObject.transform.parent.networkView.viewID.ToString().Equals(thisMissile.PrimaryTarget.TargetID.ToString()))
             {
-                Debug.Log("Recieving reply");
+                //Debug.Log("Recieving reply");
                 locked = true;
 
                 if (other.gameObject.transform.position != thisMissile.PrimaryTarget.TargetPosition)
