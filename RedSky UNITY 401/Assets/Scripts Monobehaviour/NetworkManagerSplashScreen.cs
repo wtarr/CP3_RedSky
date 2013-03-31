@@ -32,8 +32,8 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     private UdpClient udpClient_broadcast, udpClient_listen;
     private IPEndPoint local_ipEP, remote_ipEP;
     private IPAddress multiCastAddress;
-    private int multiCastPort = 2222;
-    private string multicastAddressAsString = "239.0.0.222";
+    private int multiCastPort = 2225;
+    private string multicastAddressAsString = "224.0.0.251";
     private string myIPPrivateAddress;
 
 
@@ -70,20 +70,21 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         btnH = Screen.width * 0.05f;
 
         
-        udpClient_listen = new UdpClient();
+        //udpClient_listen = new UdpClient();
 
         multiCastAddress = IPAddress.Parse(multicastAddressAsString);
 
         local_ipEP = new IPEndPoint(IPAddress.Any, multiCastPort);
+
         remote_ipEP = new IPEndPoint(multiCastAddress, multiCastPort);
 
-        udpClient_listen.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+        //udpClient_listen.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
-        udpClient_listen.ExclusiveAddressUse = false;
+        //udpClient_listen.ExclusiveAddressUse = false;
 
-        udpClient_listen.Client.Bind(local_ipEP);
+        //udpClient_listen.Client.Bind(local_ipEP);
 
-        udpClient_listen.JoinMulticastGroup(multiCastAddress);
+        //udpClient_listen.JoinMulticastGroup(multiCastAddress);
 
     }
 
@@ -184,15 +185,26 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
     void UDPListen()
     {
+        udpClient_listen = new UdpClient();              
+
+        udpClient_listen.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+
+        udpClient_listen.ExclusiveAddressUse = false;
+
+        udpClient_listen.Client.Bind(local_ipEP);
+
+        udpClient_listen.JoinMulticastGroup(multiCastAddress);
+
         Debug.Log("Listener Started");
         while (listen)
         {
             byte[] data = udpClient_listen.Receive(ref local_ipEP);
             string strData = Encoding.Unicode.GetString(data);
-            Debug.Log(strData);
+            
             if (strData.Equals("game_request") && iamserver)
             {
-                BroadcastMessage(string.Format("RedSky_ServerIP_hosted_by_{0}_at_{1}", playerName, myIPPrivateAddress), 1);               
+                Debug.Log(strData);
+                BroadcastMessage(string.Format("RedSky_ServerIP_hosted_by_{0}_at_{1}", playerName, myIPPrivateAddress), 10);               
             }
 
             if (strData.Contains("RedSky_ServerIP"))
@@ -203,7 +215,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
                 }
             }
 
-            Thread.Sleep(100);
+            Thread.Sleep(10);
         }              
 
     }
@@ -252,25 +264,36 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
     private void BroadcastMessage(string msg, int timestosend)
     {
-        udpClient_broadcast = new UdpClient();
-
-        udpClient_broadcast.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-
-        udpClient_broadcast.ExclusiveAddressUse = false;
-
-        udpClient_broadcast.Client.Bind(local_ipEP);
-
-        udpClient_broadcast.JoinMulticastGroup(multiCastAddress);
-
-        byte[] buffer = null;
-
-        for (int i = 0; i < timestosend; i++)
+        try
         {
-            buffer = Encoding.Unicode.GetBytes(msg);
-            udpClient_broadcast.Send(buffer, buffer.Length, remote_ipEP);
-        }
 
-        udpClient_broadcast.Close();
+            udpClient_broadcast = new UdpClient();
+            Debug.Log("Here2");
+            //udpClient_broadcast.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            Debug.Log("Here3");
+            //udpClient_broadcast.ExclusiveAddressUse = false;
+            Debug.Log("Here4");
+            //udpClient_broadcast.Client.Bind(remote_ipEP);
+            Debug.Log("Here5");
+            udpClient_broadcast.JoinMulticastGroup(multiCastAddress);
+            Debug.Log("Here6");
+            byte[] buffer = null;
+            Debug.Log("Here7");
+            for (int i = 0; i < timestosend; i++)
+            {
+                Debug.Log("Here8");
+
+                buffer = Encoding.Unicode.GetBytes(msg);
+                udpClient_broadcast.Send(buffer, buffer.Length, remote_ipEP);
+            }
+
+            udpClient_broadcast.Close();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.ToString());
+            udpClient_broadcast.Close();
+        }
     }
 
     private void OnServerInitialized()
