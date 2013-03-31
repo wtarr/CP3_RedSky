@@ -134,14 +134,16 @@ public class NetworkManagerSplashScreen : MonoBehaviour
                 }                
             }
 
+            
+
             if (lanHosts.Count > 0)
-            {
+            {                
                 int x = 0;
                 foreach (var item in lanHosts)
-                {
+                {                    
                     if (GUI.Button(new Rect((btnX * 1.5f + btnW), (btnY * 4f + (btnH * x)), btnW * 3f, btnH), item.ToString()) && playerName != string.Empty)
                     {
-                        string ipaddress = item.Split('_').GetValue(6).ToString();
+                        string ipaddress = item.Split('_').GetValue(6).ToString();                        
                         Network.Connect(ipaddress, port, password);
                     }
                 }
@@ -208,7 +210,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             }
 
             if (strData.Contains("RedSky_ServerIP"))
-            {
+            {                
                 if (!lanHosts.Contains(strData))
                 {
                     lanHosts.Add(strData);
@@ -268,21 +270,19 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         {
 
             udpClient_broadcast = new UdpClient();
-            Debug.Log("Here2");
-            //udpClient_broadcast.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            Debug.Log("Here3");
+            //Debug.Log("Here2");
+            udpClient_broadcast.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            //Debug.Log("Here3");
             //udpClient_broadcast.ExclusiveAddressUse = false;
-            Debug.Log("Here4");
+            //Debug.Log("Here4");
             //udpClient_broadcast.Client.Bind(remote_ipEP);
-            Debug.Log("Here5");
+            //Debug.Log("Here5");
             udpClient_broadcast.JoinMulticastGroup(multiCastAddress);
-            Debug.Log("Here6");
+            //Debug.Log("Here6");
             byte[] buffer = null;
-            Debug.Log("Here7");
+            //Debug.Log("Here7");
             for (int i = 0; i < timestosend; i++)
             {
-                Debug.Log("Here8");
-
                 buffer = Encoding.Unicode.GetBytes(msg);
                 udpClient_broadcast.Send(buffer, buffer.Length, remote_ipEP);
             }
