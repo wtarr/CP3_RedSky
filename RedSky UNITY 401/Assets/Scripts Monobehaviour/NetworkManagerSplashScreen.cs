@@ -33,7 +33,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     private IPEndPoint local_ipEP, remote_ipEP;
     private IPAddress multiCastAddress;
     private int multiCastPort = 2225;
-    private string multicastAddressAsString = "224.0.0.251";
+    private string multicastAddressAsString = "239.255.40.40";
     private string myIPPrivateAddress;
 
 
@@ -137,11 +137,13 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             
 
             if (lanHosts.Count > 0)
-            {                
+            {      
+                
                 int x = 0;
                 foreach (var item in lanHosts)
-                {                    
-                    if (GUI.Button(new Rect((btnX * 1.5f + btnW), (btnY * 4f + (btnH * x)), btnW * 3f, btnH), item.ToString()) && playerName != string.Empty)
+                {
+                    Debug.Log(item);
+                    if (GUI.Button(new Rect((btnX * 1.5f + btnW), (btnY * 2f + (btnH * x)), btnW * 2f, btnH), item.ToString()) && playerName != string.Empty)
                     {
                         string ipaddress = item.Split('_').GetValue(6).ToString();                        
                         Network.Connect(ipaddress, port, password);
@@ -213,6 +215,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             {                
                 if (!lanHosts.Contains(strData))
                 {
+                    Debug.Log("Recieved Reply");
                     lanHosts.Add(strData);
                 }
             }
