@@ -64,12 +64,6 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 		get {return this.acceleration;}
 		set {acceleration = value;}
 	}	
-	
-    //public Vector3 TargetPosition
-    //{
-    //    get { return targetPosition; }
-    //    set { targetPosition = value; }
-    //}
 
     public Vector3 TargetVelocityVector
     {

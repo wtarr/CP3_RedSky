@@ -68,29 +68,19 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         btnY = Screen.width * 0.12f;
         btnW = Screen.width * 0.2f;
         btnH = Screen.width * 0.05f;
-
-        
-        //udpClient_listen = new UdpClient();
-
+                
+        // Intialise the multicast properties that will be common to both a (LAN) server and client.
         multiCastAddress = IPAddress.Parse(multicastAddressAsString);
-
         local_ipEP = new IPEndPoint(IPAddress.Any, multiCastPort);
-
         remote_ipEP = new IPEndPoint(multiCastAddress, multiCastPort);
 
-        //udpClient_listen.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-
-        //udpClient_listen.ExclusiveAddressUse = false;
-
-        //udpClient_listen.Client.Bind(local_ipEP);
-
-        //udpClient_listen.JoinMulticastGroup(multiCastAddress);
 
     }
 
+    // Used for displaying GUI items such as buttons, labels, textfields....
     void OnGUI()
     {
-        if (!Network.isClient && !Network.isServer) // NObody is connected
+        if (!Network.isClient && !Network.isServer) // Nobody is connected so display the options to the user
         {
 
             GUI.Label(new Rect(playerNameLabelX, playerNameLabelY, playerNameLabelW, playerNameLabelH), "Username *required");
@@ -109,18 +99,24 @@ public class NetworkManagerSplashScreen : MonoBehaviour
                     RefreshHostList();
             }
 
-            if (GUI.Button(new Rect(btnX, btnY * 1.8f + btnH, btnW, btnH), "Start LAN") && playerName != string.Empty)
+
+            if (!Application.isWebPlayer) // This is standalone only as webplayer security wont allow multicast 
             {
-                StartLANServer();
-                iamserver = true;
+                if (GUI.Button(new Rect(btnX, btnY * 1.8f + btnH, btnW, btnH), "Start LAN") && playerName != string.Empty)
+                {
+                    StartLANServer();
+                    iamserver = true;
+                }
+
+                if (GUI.Button(new Rect(btnX, btnY * 2.4f + btnH, btnW, btnH), "Search For LAN game"))
+                {
+                    SearchForLANServers();
+                    iamclient = true;
+                }
+
             }
 
-            if (GUI.Button(new Rect(btnX, btnY * 2.4f + btnH, btnW, btnH), "Search For LAN game"))
-            {
-                SearchForLANServers();
-                iamclient = true;
-            }
-
+            // This will display a list of web hosts available if the (WEB) refresh is hit
             if (hostdata != null)
             {
                 int i = 0;
@@ -134,8 +130,8 @@ public class NetworkManagerSplashScreen : MonoBehaviour
                 }                
             }
 
-            
 
+            // This will display a list of LAN hosts available if the (LAN) refresh is hit
             if (lanHosts.Count > 0)
             {      
                 
@@ -273,17 +269,13 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         {
 
             udpClient_broadcast = new UdpClient();
-            //Debug.Log("Here2");
+            
             udpClient_broadcast.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            //Debug.Log("Here3");
-            //udpClient_broadcast.ExclusiveAddressUse = false;
-            //Debug.Log("Here4");
-            //udpClient_broadcast.Client.Bind(remote_ipEP);
-            //Debug.Log("Here5");
+            
             udpClient_broadcast.JoinMulticastGroup(multiCastAddress);
-            //Debug.Log("Here6");
+            
             byte[] buffer = null;
-            //Debug.Log("Here7");
+            
             for (int i = 0; i < timestosend; i++)
             {
                 buffer = Encoding.Unicode.GetBytes(msg);
@@ -377,6 +369,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     {
         // Pick a random spawn point
         System.Random r = new System.Random();
+
         int ranNum = r.Next(0, spawnPoints.Count);
 
         GameObject go = (GameObject)Network.Instantiate(playerPrefab, spawnPoints[ranNum].transform.position, spawnPoints[ranNum].transform.rotation, 0);
@@ -387,8 +380,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
     [RPC]
     private void AddToPlayerList(string playerName, NetworkViewID viewID)
-    {
-        //GameObject go = NetworkView.g
+    {        
         NetworkManagerSplashScreen.playerInfoList.Add(new PlayerInfo(playerName, viewID));
     }
 

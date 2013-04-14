@@ -43,7 +43,6 @@ public class MissileLauncher : MonoBehaviour
             launched = transform.position;
 
             // calculate the intercept vector which is the target and missile will collide at time t based on missiles maxspeed
-
             commonInterceptVector = thisMissile.CalculateInterceptVector(thisMissile.PrimaryTarget.TargetPosition, thisMissile.TargetVelocityVector, thisMissile.Position, thisMissile.MaxSpeed);
 
             // calculate the velocity vector required for the missile to travel that will reach intercept
@@ -59,8 +58,6 @@ public class MissileLauncher : MonoBehaviour
             sc.radius = 0.5f; //set its intital det range
             sc.isTrigger = true;
             
-
-            //sc.transform.parent = transform;
 
             thisMissile.EntityObj.rigidbody.useGravity = false;
             thisMissile.EntityObj.rigidbody.angularDrag = 0;
@@ -128,7 +125,7 @@ public class MissileLauncher : MonoBehaviour
             //    Debug.Log("outer" + other.name + " " + other.gameObject.transform.parent.networkView.viewID.ToString().Split(' ').Last());
 
             if (other.gameObject.name.Contains("player_replying_to") &&
-                other.gameObject.name.Contains("MissileRadar(Clone)") &&
+                //other.gameObject.name.Contains("MissileRadar(Clone)") &&
                 other.gameObject.transform.parent.networkView.viewID.ToString().Equals(thisMissile.PrimaryTarget.TargetID.ToString()))
             {
                 //Debug.Log("Recieving reply");
@@ -136,6 +133,7 @@ public class MissileLauncher : MonoBehaviour
 
                 if (other.gameObject.transform.position != thisMissile.PrimaryTarget.TargetPosition)
                 {
+                    // Calculate the targets realtime velocity
                     timeNow = Time.realtimeSinceStartup;
                     thisMissile.oldTargetPosition = thisMissile.PrimaryTarget.TargetPosition;
                     thisMissile.PrimaryTarget.TargetPosition = other.gameObject.transform.position;

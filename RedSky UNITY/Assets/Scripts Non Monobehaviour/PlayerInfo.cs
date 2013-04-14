@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class PlayerInfo
 {
+    private string playerName;
+    private NetworkViewID viewID;
+
     public PlayerInfo()
     {
 
@@ -16,10 +19,7 @@ public class PlayerInfo
     {
         this.playerName = playerName;
         this.viewID = viewID;
-    }
-
-    string playerName;
-    NetworkViewID viewID;
+    }        
 
     public string PlayerName
     {

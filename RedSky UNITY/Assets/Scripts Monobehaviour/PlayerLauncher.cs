@@ -69,14 +69,11 @@ public class PlayerLauncher : MonoBehaviour
             sweeper = (GameObject)Instantiate(sweeper, playerCraft.Position, playerCraft.Rotation);
             sweeper.transform.parent = playerCraft.EntityObj.transform;
 
-        }
-
-
-
+        }               
 
         playerCraft.Velocity = Vector3.zero;
 
-        playerCraft.ThrustValue = 600f;
+        playerCraft.ThrustValue = 1200f;
 
         playerCraft.DecelerationValue = 300f;
 
@@ -100,10 +97,9 @@ public class PlayerLauncher : MonoBehaviour
     {
         if (networkView.isMine)
         {
+            // Continue to spin the radar sweeper
             sweeper.transform.RotateAround(this.transform.position, this.transform.up, sweepAngleRate * Time.deltaTime);
-
-            //playerCraft.FindAllTargetsByTag("enemy");
-
+            
             playerCraft.Acceleration = Vector3.zero;
 
             CheckForUserInput();
@@ -112,7 +108,7 @@ public class PlayerLauncher : MonoBehaviour
 
             PrimeMissile();
 
-            //Clean the target list
+            //Clean the target list to ensure that the list stays fresh
             listCleanTimer++;
 
             if (listCleanTimer > 200)
@@ -200,8 +196,9 @@ public class PlayerLauncher : MonoBehaviour
     private void PrimeMissile()
     {
         if (playerCraft.PrimaryTarget != null && playerCraft.PrimaryTarget.IsPrimary && playerCraft.MissileSelection < playerCraft.MissileStock.Length)
-        { //check that target still exists
-
+        {
+            //If a target is selected set/update the selected missile with info such as target position so that
+            //target velocity can continuosly be maintained and missile is ready to launch.
 
             playerCraft.MissileStock[playerCraft.MissileSelection].PrimaryTarget.TargetPosition = playerCraft.PrimaryTarget.TargetPosition;
 
@@ -213,7 +210,8 @@ public class PlayerLauncher : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F) && networkView.isMine)
             {
-
+                // If the user has a target selected and hits the F key instantiate the missile and launch
+                // The server is responsible for all the logic, the client mearly sees the result of the logic
                 if (coolDown <= 0)
                 {
                     if (networkView.isMine && Network.isClient)
@@ -280,6 +278,7 @@ public class PlayerLauncher : MonoBehaviour
     {
         //Debug.Log(other.transform.name);
 
+        // Read the reply/pong from a radar ping
         if (other.gameObject.name.Contains("reply") && other.gameObject.name.Contains("player"))
         {
 
@@ -313,7 +312,7 @@ public class PlayerLauncher : MonoBehaviour
             }
         }
 
-
+        // If I am hit with a radar sweep, generate a pong/reply
         if (other.gameObject.name.Contains("RadarSweep(Clone)") && !other.gameObject.name.Contains("reply"))
         {
             //Debug.Log("Reply to sweep " + other.gameObject.name);
@@ -335,6 +334,7 @@ public class PlayerLauncher : MonoBehaviour
             }
         }
 
+        // Have I been hit by a missile?
         if (Network.isServer &&
             other.gameObject.name.Contains("Aim9") &&
             other.gameObject.transform.parent == null
