@@ -16,16 +16,17 @@ using System;
 public class NetworkManagerSplashScreen : MonoBehaviour
 {
 
-    public GameObject playerPrefab, spawnPointsPrefab;
+    public GameObject playerPrefab, spawnPointsPrefab;    
     public static List<PlayerInfo> playerInfoList;
     public static List<GameObject> spawnPoints;
+    public static List<MissileInTheAir> hotMissileList;
     private float btnX, btnY, btnW, btnH, textfieldH, textfieldW, textfieldX, textfieldY, playerNameLabelX, playerNameLabelY, playerNameLabelH, playerNameLabelW;
     private string gameName = "RedSky", password = "Openup", playerName = string.Empty;
     private bool waitForServerResponse;
     private List<HostData> hostdata;
     private bool startServerCalled = false;
-    private volatile bool listen = false, iamserver = false, iamclient = false;
-    private volatile List<string> lanHosts;
+    private bool listen = false, iamserver = false, iamclient = false;
+    private List<string> lanHosts;
     private int maxNumOfPlayers = 4;
     private int port = 25001;
     private Thread thread;
@@ -46,13 +47,15 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
         playerInfoList = new List<PlayerInfo>();
         spawnPoints = new List<GameObject>();
+        hotMissileList = new List<MissileInTheAir>();
 
         foreach (Transform child in spawnPointsPrefab.transform)
         {
             spawnPoints.Add(child.gameObject);
         }
 
-        DontDestroyOnLoad(this); // This game object needs to stay alive to maintain the network view records
+        // This game object (the object which this script is attached to) needs to stay alive after a scene change to maintain the network view records
+        DontDestroyOnLoad(this); 
 
         playerNameLabelX = Screen.width * 0.05f;
         playerNameLabelY = Screen.width * 0.05f;
@@ -332,7 +335,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             if (MasterServer.PollHostList().Length > 0)
             {
                 waitForServerResponse = false;
-                Debug.Log(MasterServer.PollHostList().Length);
+                
                 hostdata = new List<HostData>(MasterServer.PollHostList());
             }
         }

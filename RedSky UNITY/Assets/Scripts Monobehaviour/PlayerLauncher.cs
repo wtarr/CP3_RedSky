@@ -73,7 +73,7 @@ public class PlayerLauncher : MonoBehaviour
 
         playerCraft.Velocity = Vector3.zero;
 
-        playerCraft.ThrustValue = 1200f;
+        playerCraft.ThrustValue = 5000f;
 
         playerCraft.DecelerationValue = 300f;
 
@@ -139,49 +139,49 @@ public class PlayerLauncher : MonoBehaviour
 
     private void CheckForUserInput()
     {
-        if (Input.GetKey(KeyCode.Keypad7)) // forward
+        if (Input.GetKey(KeyCode.W)) // forward
         {
             playerCraft.Accelerate();
 
         }
 
-        if (Input.GetKey(KeyCode.Keypad8)) // pitch up
+        if (Input.GetKey(KeyCode.Q)) // pitch up
         {
             playerCraft.PitchUp();
 
         }
 
-        if (Input.GetKey(KeyCode.Keypad2)) // pitch down
+        if (Input.GetKey(KeyCode.E)) // pitch down
         {
             playerCraft.PitchDown();
 
         }
 
-        if (Input.GetKey(KeyCode.Keypad9)) // break/reverse
+        if (Input.GetKey(KeyCode.S)) // break/reverse
         {
             playerCraft.Decelerate();
 
         }
 
-        if (Input.GetKey(KeyCode.Keypad6)) // yaw left
+        if (Input.GetKey(KeyCode.A)) // yaw left
         {
             playerCraft.YawLeft();
 
         }
 
-        if (Input.GetKey(KeyCode.Keypad4)) // yaw right
+        if (Input.GetKey(KeyCode.D)) // yaw right
         {
             playerCraft.YawRight();
 
         }
 
-        if (Input.GetKey(KeyCode.Keypad1)) // Roll left
+        if (Input.GetKey(KeyCode.Z)) // Roll left
         {
             playerCraft.RollLeft();
 
         }
 
-        if (Input.GetKey(KeyCode.Keypad3)) // Roll right
+        if (Input.GetKey(KeyCode.X)) // Roll right
         {
             playerCraft.RollRight();
 
@@ -208,18 +208,21 @@ public class PlayerLauncher : MonoBehaviour
                 playerCraft.MissileStock[playerCraft.MissileSelection].PrimaryTarget.TargetPosition,
                 Time.deltaTime); // who should do this the players craft or the missile???
 
-            if (Input.GetKey(KeyCode.F) && networkView.isMine)
+            if (Input.GetKey(KeyCode.F) && networkView.isMine && playerCraft.PrimaryTarget != null)
             {
                 // If the user has a target selected and hits the F key instantiate the missile and launch
                 // The server is responsible for all the logic, the client mearly sees the result of the logic
                 if (coolDown <= 0)
-                {
-                    if (networkView.isMine && Network.isClient)
-                        networkView.RPC("PreLaunchInitialize", RPCMode.Server, playerCraft.PrimaryTarget.TargetID, playerCraft.PrimaryTarget.TargetPosition);
-                    if (networkView.isMine && Network.isServer)
-                        PreLaunchInitialize(playerCraft.PrimaryTarget.TargetID, playerCraft.PrimaryTarget.TargetPosition);
+                {                    
+                    
+                    //RPC calls only handle certain arguments - strings, vectors, Net veiw ids ...
+                    //if (Network.isClient)
+                    //networkView.RPC("PreLaunchInitialize", RPCMode.AllBuffered, playerCraft.PrimaryTarget.TargetID, playerCraft.PrimaryTarget.TargetPosition);
+                    //else
+                    PreLaunchInitialize(playerCraft.PrimaryTarget.TargetID, playerCraft.PrimaryTarget.TargetPosition);
 
                     playerCraft.MissileSelection++; // next missile on the rack
+                    
 
                     coolDown = 30;
                 }
@@ -235,23 +238,32 @@ public class PlayerLauncher : MonoBehaviour
     }
 
     [RPC]
-    private void PreLaunchInitialize(NetworkViewID primTarget, Vector3 primPosition)
+    private void PreLaunchInitialize(NetworkViewID viewID, Vector3 position)
     {
         // Go for launch!
-        Debug.Log(primTarget + " " + primPosition);
+        //Debug.Log("Primary " + primaryTargetInfo.TargetID + " " + primaryTargetInfo.TargetPosition);
         // Check that it can hit the target first by checking for a zero vector!!!!!
-        Debug.Log("who is seeing this?");
+        //Debug.Log("who is seeing this?");
         //Missile preflight initialisation
 
         playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj = (GameObject)Network.Instantiate(missilePrefab, playerCraft.Position, playerCraft.Rotation, 0);
         Debug.Log(playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj.networkView.viewID);
         playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj.GetComponent<MissileLauncher>().ThisMissile = playerCraft.MissileStock[playerCraft.MissileSelection];
-        playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj.GetComponent<MissileLauncher>().ThisMissile.PrimaryTarget = new TargetInfo(primTarget, primPosition);
+        playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj.GetComponent<MissileLauncher>().ThisMissile.PrimaryTarget = new TargetInfo(viewID, position);
         playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj.GetComponent<MissileLauncher>().Owner = gameObject;
+        //NetworkManagerSplashScreen.hotMissileList.Add(new MissileInTheAir(playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj.networkView.viewID, viewID, networkView.viewID));
+        
+        //networkView.RPC("AddToHotMissileList", RPCMode.AllBuffered, playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj.networkView.viewID, viewID, networkView.viewID);
+        AddToHotMissileList(playerCraft.MissileStock[playerCraft.MissileSelection].EntityObj.networkView.viewID, viewID, networkView.viewID);
+        
+        
 
     }
-
-
+        
+    private void AddToHotMissileList(NetworkViewID missile, NetworkViewID target, NetworkViewID launcher)
+    {
+        NetworkManagerSplashScreen.hotMissileList.Add(new MissileInTheAir(missile, target, launcher));
+    }
 
     private void ToggleTarget()
     {
@@ -324,7 +336,7 @@ public class PlayerLauncher : MonoBehaviour
             }
         }
 
-        if (Network.isServer && other.gameObject.name.Contains("MissileRadar(Clone)") && !other.gameObject.name.Contains("reply"))
+        if (networkView.isMine && other.gameObject.name.Contains("MissileRadar(Clone)") && !other.gameObject.name.Contains("reply"))
         {
             if (ThisPlayersNumber > 0)
             {
@@ -335,8 +347,7 @@ public class PlayerLauncher : MonoBehaviour
         }
 
         // Have I been hit by a missile?
-        if (Network.isServer &&
-            other.gameObject.name.Contains("Aim9") &&
+        if (other.gameObject.name.Contains("Aim9") &&
             other.gameObject.transform.parent == null
             && other.gameObject.GetComponent<MissileLauncher>().Owner.transform.networkView.viewID != networkView.viewID) // dont blow myself up :-o
         {
@@ -376,19 +387,48 @@ public class PlayerLauncher : MonoBehaviour
         }
     
     }
-
-    [RPC]
+        
     void DestroyTarget(Collider other)
     {        
         Network.Instantiate(explosionPrefab, playerCraft.Position, playerCraft.Rotation, 0);
         networkView.RPC("ShouldRespawn", RPCMode.All);
 
-        if (Network.isServer)
+        Debug.Log("Destroy " + other.gameObject.name);
+
+        List<NetworkViewID> destroyList = new List<NetworkViewID>();
+        
+        Debug.Log("number in list " + NetworkManagerSplashScreen.hotMissileList.Count.ToString());
+
+        Debug.Log("The colliding missiles pTarget " + other.gameObject.GetComponent<MissileLauncher>().ThisMissile.PrimaryTarget.TargetID.ToString() + " the Owner of the missile " + other.gameObject.GetComponent<MissileLauncher>().Owner.networkView.viewID);
+
+        foreach (var item in NetworkManagerSplashScreen.hotMissileList)
         {
-            Debug.Log("Destroy " + other.gameObject.name);
-            Network.Destroy(other.networkView.viewID);
+             Debug.Log(" mID" + item.TheMissileId.ToString() + " tID " + item.TheTargetId.ToString() +
+                " lID " + item.TheLaunchersId.ToString());
         }
+
+        for (int i = 0; i < NetworkManagerSplashScreen.hotMissileList.Count; i++)
+        {
+           
+
+            if (NetworkManagerSplashScreen.hotMissileList[i].TheTargetId == other.gameObject.GetComponent<MissileLauncher>().ThisMissile.PrimaryTarget.TargetID && NetworkManagerSplashScreen.hotMissileList[i].TheLaunchersId == other.gameObject.GetComponent<MissileLauncher>().Owner.networkView.viewID)
+            {
+                destroyList.Add(NetworkManagerSplashScreen.hotMissileList[i].TheMissileId);                
+            }
+        }
+
+        Debug.Log("Destroy list " + destroyList.Count.ToString());
+
+        foreach (var item in destroyList)
+        {
+            //networkView.RPC
+            NetworkManagerSplashScreen.hotMissileList.RemoveAll(o => o.TheMissileId == item);
+
+            Network.Destroy(item);
+        }
+ 
     }
+
 
     [RPC]
     void ShouldRespawn()

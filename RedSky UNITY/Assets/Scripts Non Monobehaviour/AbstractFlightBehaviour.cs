@@ -176,12 +176,12 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
 
     public void YawLeft()
     {
-        EntityObj.transform.RotateAround(EntityObj.transform.up, YawAngle);
+        EntityObj.transform.RotateAround(EntityObj.transform.up, (YawAngle * -1));
     }
 
     public void YawRight()
     {
-        EntityObj.transform.RotateAround(EntityObj.transform.up, (YawAngle * -1));
+        EntityObj.transform.RotateAround(EntityObj.transform.up, YawAngle);
     }
 
 

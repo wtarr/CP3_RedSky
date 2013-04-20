@@ -17,8 +17,8 @@ public class MissileLauncher : MonoBehaviour
     private bool locked = false;
     private Vector3 launched;    
     private float timeOfLastCall;
-    private float timeNow;
-    
+    private float timeNow;   
+
     public Missile ThisMissile
     {
         get { return thisMissile; }
@@ -35,8 +35,9 @@ public class MissileLauncher : MonoBehaviour
     void Start()
     {
 
-        if (Network.isServer)
-        {
+        if (networkView.isMine)
+        {            
+
             missileRadar = (GameObject)Instantiate(missileRadarPrefab, transform.position, transform.rotation);
             missileRadar.transform.parent = transform;
 
@@ -70,8 +71,9 @@ public class MissileLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Network.isServer)
+        if (networkView.isMine)
         {
+
             //Start sweeping
             missileRadar.transform.RotateAround(this.transform.position, this.transform.up, sweepAngleRate * Time.deltaTime);
 
@@ -104,22 +106,23 @@ public class MissileLauncher : MonoBehaviour
 
                 }
 
+                thisMissile.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
+                thisMissile.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
+
             }
 
-            //Debug.Log(missileVelocityVectorToIntercept);
-            thisMissile.EntityObj.transform.forward = Vector3.Normalize(missileVelocityVectorToIntercept);
-            thisMissile.EntityObj.transform.position += missileVelocityVectorToIntercept * Time.deltaTime;
+          
             
 
-        }
+        }                
         
-        
-        
-    }          
+    }
+
+    
 
     void OnTriggerEnter(Collider other)
     {
-        if (Network.isServer)
+        if (networkView.isMine)
         {
             //if (other.transform.parent != null)
             //    Debug.Log("outer" + other.name + " " + other.gameObject.transform.parent.networkView.viewID.ToString().Split(' ').Last());

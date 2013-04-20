@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class RadarHUD : MonoBehaviour
 {    
     public Texture radarScreenImage, friendlyImage, targetImage, rotateBeamSpriteSheet, targetHighlight, primaryTargetHighlighter;
+    public GUIStyle textStyle;
+    private Texture2D missileTexture2d;
     private PlayerCraft playerCraft; // pointer to the owner
     private Camera cam;
 
@@ -35,9 +37,21 @@ public class RadarHUD : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //Going to create a incode texture to display missiles
+        //Fill the custom missile texture2d with color
+        missileTexture2d = new Texture2D(10, 30);
+        var textureArray = missileTexture2d.GetPixels();
+        for (int i = 0; i < textureArray.Length; i++)
+        {
+            textureArray[i] = new Color(255, 180, 0); // orangey
+        }
+        missileTexture2d.SetPixels(textureArray);
+        missileTexture2d.Apply();
 
+        // Find the main camera
         cam = GameObject.FindGameObjectWithTag("MainCamera").camera;
 
+        // set up variables such as widths and padding offsets
         radarScreenTextureHeightWidth = 200;
         targetHUDHighlight = 100;
         targetRadarBlip = 100;
@@ -66,8 +80,16 @@ public class RadarHUD : MonoBehaviour
         GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), rotateBeamSpriteSheet, new Rect(offset * cycle, 0, offset, 1));
         
         //Missiles remaining
-        GUI.Label(new Rect(10, 10, 200, 20), string.Format("Missiles Remaining: {0}", playerCraft.MissileTotal - playerCraft.MissileSelection));
-                
+        GUI.Box(new Rect(10, 10, 150, 70), "");
+        
+        GUI.Label(new Rect(15, 10, 200, 20), "Missiles Remaining", textStyle);
+
+        for (int i = 0; i  < (playerCraft.MissileTotal - playerCraft.MissileSelection); i ++)
+        {
+            GUI.DrawTexture(new Rect(15 + (2 * (i * padding)), 30, missileTexture2d.width, missileTexture2d.height), missileTexture2d); 
+        }
+        
+
         if (playerCraft.Targets.Count > 0)
         {
             foreach (TargetInfo tar in playerCraft.Targets)
