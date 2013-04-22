@@ -38,6 +38,10 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     private string myIPPrivateAddress;
 
 
+    public bool returntrue()
+    {
+        return true;
+    }
 
     // Use this for initialization
     void Start()
@@ -242,8 +246,8 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             }
         }
         catch (Exception ex)
-        { 
-        
+        {
+            Debug.Log(ex.ToString());
         }
     }
 

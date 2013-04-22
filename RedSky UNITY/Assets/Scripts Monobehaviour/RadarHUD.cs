@@ -37,7 +37,8 @@ public class RadarHUD : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //Going to create a incode texture to display missiles
+        //Going to create a incode texture rather importing a texture to display missiles
+
         //Fill the custom missile texture2d with color
         missileTexture2d = new Texture2D(10, 30);
         var textureArray = missileTexture2d.GetPixels();
@@ -89,7 +90,7 @@ public class RadarHUD : MonoBehaviour
             GUI.DrawTexture(new Rect(15 + (2 * (i * padding)), 30, missileTexture2d.width, missileTexture2d.height), missileTexture2d); 
         }
         
-
+        // Display the Radar Screen with target blips.  Also display the target highlighter
         if (playerCraft.Targets.Count > 0)
         {
             foreach (TargetInfo tar in playerCraft.Targets)
@@ -106,7 +107,7 @@ public class RadarHUD : MonoBehaviour
 
                     //check that we are facing the target
                     Vector3 meToTarget = tar.TargetPosition - playerCraft.Position;
-
+                    // Do Dot product check to ensure that player is facing the target before painting the highligther on screen
                     if (Vector3.Dot(meToTarget, playerCraft.EntityObj.transform.forward) > 0)
                     {
 
