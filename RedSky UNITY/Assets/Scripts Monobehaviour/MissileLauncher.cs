@@ -1,12 +1,21 @@
+/********************************************
+ * Class which inherits from monobehaviour 
+ * and is responsible for the management
+ * of the Missiles behaviours
+ * ******************************************/
+
+#region Using Statements
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using System.Linq;
+using System.Linq; 
+#endregion
 
 public class MissileLauncher : MonoBehaviour
 {
-    public GameObject missileRadarPrefab, explosionPrefab;   
+    #region Class State
+    public GameObject missileRadarPrefab, explosionPrefab;
     private GameObject missileRadar;
     private Missile thisMissile;
     private GameObject owner;
@@ -15,28 +24,32 @@ public class MissileLauncher : MonoBehaviour
     private Vector3 commonInterceptVector;
     private float sweepAngleRate = 1000;
     private bool locked = false;
-    private Vector3 launched;    
+    private Vector3 launched;
     private float timeOfLastCall;
-    private float timeNow;   
+    private float timeNow;    
+    #endregion
 
+    #region Properties
     public Missile ThisMissile
     {
         get { return thisMissile; }
         set { thisMissile = value; }
-    }   
+    }
 
     public GameObject Owner
     {
         get { return owner; }
         set { owner = value; }
-    }
-  
+    } 
+    #endregion
+
+    #region Start Method
     // Use this for initialization
     void Start()
     {
 
         if (networkView.isMine)
-        {            
+        {
 
             missileRadar = (GameObject)Instantiate(missileRadarPrefab, transform.position, transform.rotation);
             missileRadar.transform.parent = transform;
@@ -58,7 +71,7 @@ public class MissileLauncher : MonoBehaviour
 
             sc.radius = 0.5f; //set its intital det range
             sc.isTrigger = true;
-            
+
 
             thisMissile.EntityObj.rigidbody.useGravity = false;
             thisMissile.EntityObj.rigidbody.angularDrag = 0;
@@ -66,8 +79,10 @@ public class MissileLauncher : MonoBehaviour
 
         }
 
-    }
+    } 
+    #endregion
 
+    #region Update Method
     // Update is called once per frame
     void Update()
     {
@@ -111,15 +126,15 @@ public class MissileLauncher : MonoBehaviour
 
             }
 
-          
-            
 
-        }                
-        
-    }
 
-    
 
+        }
+
+    } 
+    #endregion    
+
+    #region OnTriggerEnter method
     void OnTriggerEnter(Collider other)
     {
         if (networkView.isMine)
@@ -138,10 +153,10 @@ public class MissileLauncher : MonoBehaviour
                 {
                     // Calculate the targets realtime velocity
                     timeNow = Time.realtimeSinceStartup;
-                    thisMissile.oldTargetPosition = thisMissile.PrimaryTarget.TargetPosition;
+                    thisMissile.OldTargetPosition = thisMissile.PrimaryTarget.TargetPosition;
                     thisMissile.PrimaryTarget.TargetPosition = other.gameObject.transform.position;
                     if (timeNow > 0 && timeOfLastCall > 0)
-                        thisMissile.TargetVelocityVector = thisMissile.CalculateVelocityVector(thisMissile.oldTargetPosition, thisMissile.PrimaryTarget.TargetPosition, (timeNow - timeOfLastCall));
+                        thisMissile.TargetVelocityVector = thisMissile.CalculateVelocityVector(thisMissile.OldTargetPosition, thisMissile.PrimaryTarget.TargetPosition, (timeNow - timeOfLastCall));
                     //Debug.Log("Vel" + thisMissile.TargetVelocityVector);
                     timeOfLastCall = timeNow;
                 }
@@ -154,13 +169,8 @@ public class MissileLauncher : MonoBehaviour
             }
         }
 
-    }
-
-    
-
-
-
-
+    } 
+    #endregion
 
 }
 

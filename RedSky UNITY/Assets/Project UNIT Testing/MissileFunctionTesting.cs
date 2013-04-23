@@ -37,12 +37,12 @@ namespace RedSkyProjectTesting
 			Vector3 actualTargetVelVector;
             TargetInfo test = new TargetInfo(new NetworkViewID(), new Vector3(0, 1, 0));
             
-            m.oldTargetPosition = new Vector3(0, 1, 0); // old
+            m.OldTargetPosition = new Vector3(0, 1, 0); // old
             
             m.PrimaryTarget.TargetPosition = new Vector3(3, 1, 0); // new
             
 
-           	actualTargetVelVector = m.CalculateVelocityVector(m.oldTargetPosition, m.PrimaryTarget.TargetPosition, 1);
+           	actualTargetVelVector = m.CalculateVelocityVector(m.OldTargetPosition, m.PrimaryTarget.TargetPosition, 1);
 
             Assert.AreEqual(targetVectorExpected, actualTargetVelVector);
             

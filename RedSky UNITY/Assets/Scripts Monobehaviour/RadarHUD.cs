@@ -1,9 +1,16 @@
+/************************************************
+ * Class responsible for the players Heads Up
+ * Display, radar screen, ammunition availability
+ * and target highlighting 
+ * **********************************************/
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class RadarHUD : MonoBehaviour
-{    
+{
+    #region  Class State
     public Texture radarScreenImage, friendlyImage, targetImage, rotateBeamSpriteSheet, targetHighlight, primaryTargetHighlighter;
     public GUIStyle textStyle;
     private Texture2D missileTexture2d;
@@ -25,7 +32,8 @@ public class RadarHUD : MonoBehaviour
         delay,
         cycle;
 
-    private int scale = 5;
+    private int scale = 5; 
+    #endregion
 
     #region Properties
     public PlayerCraft PlayerCraft
@@ -34,6 +42,7 @@ public class RadarHUD : MonoBehaviour
     }
     #endregion
 
+    #region Start method
     // Use this for initialization
     void Start()
     {
@@ -69,9 +78,10 @@ public class RadarHUD : MonoBehaviour
 
         cycle = 1;
 
-    }
+    } 
+    #endregion
 
-
+    #region OnGUI method
     void OnGUI()
     {
         // Radar overlay
@@ -79,17 +89,17 @@ public class RadarHUD : MonoBehaviour
 
         //Radar sprite sheet
         GUI.DrawTextureWithTexCoords(new Rect(radarLeft, radarTop, radarScreenTextureHeightWidth, radarScreenTextureHeightWidth), rotateBeamSpriteSheet, new Rect(offset * cycle, 0, offset, 1));
-        
+
         //Missiles remaining
         GUI.Box(new Rect(10, 10, 150, 70), "");
-        
+
         GUI.Label(new Rect(15, 10, 200, 20), "Missiles Remaining", textStyle);
 
-        for (int i = 0; i  < (playerCraft.MissileTotal - playerCraft.MissileSelection); i ++)
+        for (int i = 0; i < (playerCraft.MissileTotal - playerCraft.MissileSelection); i++)
         {
-            GUI.DrawTexture(new Rect(15 + (2 * (i * padding)), 30, missileTexture2d.width, missileTexture2d.height), missileTexture2d); 
+            GUI.DrawTexture(new Rect(15 + (2 * (i * padding)), 30, missileTexture2d.width, missileTexture2d.height), missileTexture2d);
         }
-        
+
         // Display the Radar Screen with target blips.  Also display the target highlighter
         if (playerCraft.Targets.Count > 0)
         {
@@ -128,8 +138,10 @@ public class RadarHUD : MonoBehaviour
             }
         }
 
-    }
+    } 
+    #endregion
 
+    #region FixedUpdate Method
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -145,5 +157,6 @@ public class RadarHUD : MonoBehaviour
                 cycle = 1;
         }
 
-    }
+    } 
+    #endregion
 }

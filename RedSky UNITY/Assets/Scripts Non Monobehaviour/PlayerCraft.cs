@@ -1,8 +1,15 @@
-﻿using System;
+﻿/*************************************
+ * Player concrete class that inherits
+ * from the Abstract Flight Behaviour
+ * ***********************************/
+
+#region Using Statements
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
+using UnityEngine; 
+#endregion
 
 public class PlayerCraft : AbstractFlightBehaviour
 {
@@ -33,16 +40,17 @@ public class PlayerCraft : AbstractFlightBehaviour
     }
     #endregion
 
+    #region Constructor
     public PlayerCraft()
     {
         missileStock = new Missile[missileTotal];
 
         for (int i = 0; i < missileTotal; i++)
-        {            
+        {
             MissileStock[i] = new Missile();
         }
 
-    }
+    } 
+    #endregion
        
-
 }

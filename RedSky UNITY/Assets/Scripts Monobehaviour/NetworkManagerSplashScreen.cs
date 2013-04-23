@@ -1,3 +1,10 @@
+/**************************************************
+ * Class responsible for the establishing of a 
+ * network multiplayer game and the loading of 
+ * the game scene
+ **************************************************/
+
+#region Using Statements
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +13,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System;
+
+#endregion
 
 /*************************************************
  * Result of two tutorials
@@ -16,13 +25,15 @@ using System;
  *This tutorial was used to get familiar with UDP multicasting
  *
  * The threaded UDP listener is my own, taking what Ive learned from the above two tutorials and
- * merging them so that I can start/discover LAN games.
+ * merging them so that I can start/discover LAN games and not have to rely on the master server
+ * and network connectivity.
  *************************************************/
 
 public class NetworkManagerSplashScreen : MonoBehaviour
 {
 
-    public GameObject playerPrefab, spawnPointsPrefab;    
+    #region Class State
+    public GameObject playerPrefab, spawnPointsPrefab;
     public static List<PlayerInfo> playerInfoList;
     public static List<GameObject> spawnPoints;
     public static List<MissileInTheAir> hotMissileList;
@@ -41,10 +52,10 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     private IPAddress multiCastAddress;
     private int multiCastPort = 2225;
     private string multicastAddressAsString = "239.255.40.40";
-    private string myIPPrivateAddress;
-           
+    private string myIPPrivateAddress; 
+    #endregion
 
-    // Use this for initialization
+    #region Start method
     void Start()
     {
         myIPPrivateAddress = Network.player.ipAddress;
@@ -60,7 +71,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         }
 
         // This game object (the object which this script is attached to) needs to stay alive after a scene change to maintain the network view records
-        DontDestroyOnLoad(this); 
+        DontDestroyOnLoad(this);
 
         playerNameLabelX = Screen.width * 0.05f;
         playerNameLabelY = Screen.width * 0.05f;
@@ -76,15 +87,15 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         btnY = Screen.width * 0.12f;
         btnW = Screen.width * 0.2f;
         btnH = Screen.width * 0.05f;
-                
+
         // Intialise the multicast properties that will be common to both a (LAN) server and client.
         multiCastAddress = IPAddress.Parse(multicastAddressAsString);
         local_ipEP = new IPEndPoint(IPAddress.Any, multiCastPort);
         remote_ipEP = new IPEndPoint(multiCastAddress, multiCastPort);
+    } 
+    #endregion
 
-
-    }
-
+    #region On GUI method
     // Used for displaying GUI items such as buttons, labels, textfields....
     void OnGUI()
     {
@@ -135,39 +146,42 @@ public class NetworkManagerSplashScreen : MonoBehaviour
                         Network.Connect(item, password);
 
                     i++;
-                }                
+                }
             }
 
 
             // This will display a list of LAN hosts available if the (LAN) refresh is hit
             if (lanHosts.Count > 0)
-            {      
-                
+            {
+
                 int x = 0;
                 foreach (var item in lanHosts)
                 {
                     Debug.Log(item);
                     if (GUI.Button(new Rect((btnX * 1.5f + btnW), (btnY * 2f + (btnH * x)), btnW * 2f, btnH), item.ToString()) && playerName != string.Empty)
                     {
-                        string ipaddress = item.Split('_').GetValue(6).ToString();                        
+                        string ipaddress = item.Split('_').GetValue(6).ToString();
                         Network.Connect(ipaddress, port, password);
                     }
                 }
 
-            
+
             }
 
         }
-    }
-
-
+    } 
+    #endregion
+      
+    #region Refresh Host List method
     private void RefreshHostList()
     {
         MasterServer.RequestHostList(gameName);
         waitForServerResponse = true;
 
-    }
+    } 
+    #endregion
 
+    #region Start Server method
     private void StartServer()
     {
         if (!startServerCalled)
@@ -178,8 +192,10 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             Network.incomingPassword = password;
             MasterServer.RegisterHost(gameName, "RedSky Multiplayer Game", "This is a tutorial game");
         }
-    }
+    } 
+    #endregion
 
+    #region Start LAN Server method
     private void StartLANServer()
     {
         Network.InitializeServer(4, 25001, false);
@@ -189,11 +205,13 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
         thread = new Thread(new ThreadStart(UDPListen));
         thread.Start();
-    }
+    } 
+    #endregion
 
+    #region UDP Listen method
     void UDPListen()
     {
-        udpClient_listen = new UdpClient();              
+        udpClient_listen = new UdpClient();
 
         udpClient_listen.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
@@ -208,15 +226,15 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         {
             byte[] data = udpClient_listen.Receive(ref local_ipEP);
             string strData = Encoding.Unicode.GetString(data);
-            
+
             if (strData.Equals("game_request") && iamserver)
             {
                 Debug.Log(strData);
-                BroadcastMessage(string.Format("RedSky_ServerIP_hosted_by_{0}_at_{1}", playerName, myIPPrivateAddress), 10);               
+                BroadcastMessage(string.Format("RedSky_ServerIP_hosted_by_{0}_at_{1}", playerName, myIPPrivateAddress), 10);
             }
 
             if (strData.Contains("RedSky_ServerIP"))
-            {                
+            {
                 if (!lanHosts.Contains(strData))
                 {
                     Debug.Log("Recieved Reply");
@@ -225,10 +243,12 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             }
 
             Thread.Sleep(10);
-        }              
+        }
 
-    }
+    } 
+    #endregion
 
+    #region On Application Quit method
     void OnApplicationQuit()
     {
         // It is vital to release the UPDclient or game crashes will ensue if trying to restart the game
@@ -251,11 +271,12 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         {
             Debug.Log(ex.ToString());
         }
-    }
+    } 
+    #endregion
 
-
+    #region Search For LAN Servers method
     private void SearchForLANServers()
-    {       
+    {
 
         listen = true;
 
@@ -268,21 +289,23 @@ public class NetworkManagerSplashScreen : MonoBehaviour
         if (iamclient)
             BroadcastMessage("game_request", 10);
 
-    }
+    } 
+    #endregion
 
+    #region Broadcast Message method
     private void BroadcastMessage(string msg, int timestosend)
     {
         try
         {
             // from referenced UDP multicasting tutorial
             udpClient_broadcast = new UdpClient();
-            
+
             udpClient_broadcast.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            
+
             udpClient_broadcast.JoinMulticastGroup(multiCastAddress);
-            
+
             byte[] buffer = null;
-            
+
             for (int i = 0; i < timestosend; i++)
             {
                 buffer = Encoding.Unicode.GetBytes(msg);
@@ -296,8 +319,10 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             Debug.Log(e.ToString());
             udpClient_broadcast.Close();
         }
-    }
+    } 
+    #endregion
 
+    #region On Server Initialized method
     private void OnServerInitialized()
     {
         Debug.Log("Server initialized!");
@@ -307,19 +332,25 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             SpawnPlayer();
         }
 
-    }
+    } 
+    #endregion
 
+    #region Load Scene method
     private void LoadScene()
     {
         Application.LoadLevel(1);
-    }
+    } 
+    #endregion
 
+    #region Wait For Host List method
     private IEnumerator WaitForHostList(float seconds)
     {
         yield return new WaitForSeconds(seconds);
 
-    }
+    } 
+    #endregion
 
+    #region On Master Server Event method
     // Checks if the game has been registered with the master server
     private void OnMasterServerEvent(MasterServerEvent e)
     {
@@ -328,8 +359,10 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             Debug.Log("Server registered");
             Debug.Log("Master Server Info:" + MasterServer.ipAddress + ":" + MasterServer.port);
         }
-    }
+    } 
+    #endregion
 
+    #region Update method
     // Update is called once per frame
     void Update()
     {
@@ -339,21 +372,25 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             if (MasterServer.PollHostList().Length > 0)
             {
                 waitForServerResponse = false;
-                
+
                 hostdata = new List<HostData>(MasterServer.PollHostList());
             }
         }
-                
-    }
 
+    } 
+    #endregion
+
+    #region On Connected To Server method
     void OnConnectedToServer()
     {
 
         LoadScene();
         SpawnPlayer();
 
-    }
+    } 
+    #endregion
 
+    #region On Disconnected From Server method
     void OnDisconnectedFromServer(NetworkDisconnection info)
     {
         // From unity docs
@@ -364,15 +401,19 @@ public class NetworkManagerSplashScreen : MonoBehaviour
                 Debug.Log("Lost connection to the server");
             else
                 Debug.Log("Successfully diconnected from the server");
-    }
+    } 
+    #endregion
 
+    #region On Player Disconnected
     void OnPlayerDisconnected(NetworkPlayer player)
     {
         Debug.Log("Clean up after player " + player);
         Network.RemoveRPCs(player);
         Network.DestroyPlayerObjects(player);
-    }
+    } 
+    #endregion
 
+    #region Spawn Player method
     void SpawnPlayer()
     {
         // Pick a random spawn point
@@ -384,13 +425,16 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
         networkView.RPC("AddToPlayerList", RPCMode.AllBuffered, playerName, go.networkView.viewID);
 
-    }
+    } 
+    #endregion
 
+    #region [RPC] Add To Player List method
     [RPC]
     private void AddToPlayerList(string playerName, NetworkViewID viewID)
-    {        
+    {
         NetworkManagerSplashScreen.playerInfoList.Add(new PlayerInfo(playerName, viewID));
-    }
+    } 
+    #endregion
 
 
 }

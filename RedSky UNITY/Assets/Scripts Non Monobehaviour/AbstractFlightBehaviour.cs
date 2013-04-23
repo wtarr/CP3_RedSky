@@ -1,19 +1,24 @@
-﻿using System;
+﻿/******************************************
+ * This class is designed to hold common 
+ * states and behaviours that are relevant
+ * to all objects that employ any flight
+ * behaviour
+ *****************************************/
+
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
 public abstract class AbstractFlightBehaviour : IFlightBehaviour
 {
-
     #region Class State
-	private GameObject entityObj; // the almighty, bow before it
+	private GameObject entityObj; 
 	private TargetInfo primaryTarget;
 	private float health;
 	private Vector3 position;
 	private Quaternion rotation;
 	private Vector3 velocity;
 	private Vector3 acceleration;
-	//private Vector3 targetPosition;
     private Vector3 targetVelocityVector;    
     private float atmosphericDrag;
     private float currentSpeed;
@@ -30,7 +35,6 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
     #endregion
 
     #region Properties	
-
 	public GameObject EntityObj {
 		get {return this.entityObj;}
 		set {entityObj = value;}

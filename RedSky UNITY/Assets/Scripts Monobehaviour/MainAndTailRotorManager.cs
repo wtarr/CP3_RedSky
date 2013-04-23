@@ -1,20 +1,29 @@
+/********************************************
+ * Class that is responsible for the rotation
+ * of a aircrafts rotary lift system
+ ********************************************/
+
+#region Using Statements
 using UnityEngine;
-using System.Collections;
+using System.Collections; 
+#endregion
 
 public class MainAndTailRotorManager : MonoBehaviour {
 
+    #region Class State
     public GameObject mainRotor, tailRotor;
+    private Vector3 verticalAxis, horizontalAxis;
+    private float speedToRotate; 
+    #endregion
 
-    Vector3 verticalAxis, horizontalAxis;
-    float speedToRotate;
-
-    // Use this for initialization
+    #region Start method
     void Start()
     {
         speedToRotate = 2000f;
-    }
-
-    // Update is called once per frame
+    } 
+    #endregion
+    
+    #region Fixed Update method
     void FixedUpdate()
     {
 
@@ -22,5 +31,6 @@ public class MainAndTailRotorManager : MonoBehaviour {
         horizontalAxis = Vector3.Cross(transform.up, transform.forward);
         mainRotor.transform.RotateAround(mainRotor.transform.position, verticalAxis, speedToRotate * Time.deltaTime);
         tailRotor.transform.RotateAround(tailRotor.transform.position, transform.up, speedToRotate * Time.deltaTime);
-    }
+    } 
+    #endregion
 }
