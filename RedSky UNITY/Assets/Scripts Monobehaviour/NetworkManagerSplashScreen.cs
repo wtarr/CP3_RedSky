@@ -10,7 +10,13 @@ using System;
 /*************************************************
  * Result of two tutorials
  *http://cgcookie.com/unity/2011/12/20/introduction-to-networking-in-unity/ 
+ *The connecting to the master server and the button layout of hostdata was heavily influenced from the above tutorial.
+ * 
  *http://www.jarloo.com/c-udp-multicasting-tutorial/
+ *This tutorial was used to get familiar with UDP multicasting
+ *
+ * The threaded UDP listener is my own, taking what Ive learned from the above two tutorials and
+ * merging them so that I can start/discover LAN games.
  *************************************************/
 
 public class NetworkManagerSplashScreen : MonoBehaviour
@@ -36,12 +42,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     private int multiCastPort = 2225;
     private string multicastAddressAsString = "239.255.40.40";
     private string myIPPrivateAddress;
-
-
-    public bool returntrue()
-    {
-        return true;
-    }
+           
 
     // Use this for initialization
     void Start()
@@ -230,6 +231,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
     void OnApplicationQuit()
     {
+        // It is vital to release the UPDclient or game crashes will ensue if trying to restart the game
         try
         {
             if (thread != null)
@@ -253,9 +255,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
 
     private void SearchForLANServers()
-    {
-        //Network.Connect("192.168.1.2", port, password);
-        //throw new System.NotImplementedException();
+    {       
 
         listen = true;
 
@@ -274,7 +274,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     {
         try
         {
-
+            // from referenced UDP multicasting tutorial
             udpClient_broadcast = new UdpClient();
             
             udpClient_broadcast.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
@@ -333,7 +333,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // from referenced tutorial
         if (!Network.isServer && waitForServerResponse)
         {
             if (MasterServer.PollHostList().Length > 0)
@@ -356,6 +356,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
 
     void OnDisconnectedFromServer(NetworkDisconnection info)
     {
+        // From unity docs
         if (Network.isServer)
             Debug.Log("Local server connection disconnected");
         else

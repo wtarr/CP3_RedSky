@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class PlayerCraft : AbstractFlightBehaviour, IAircraftBehaviour
+public class PlayerCraft : AbstractFlightBehaviour
 {
     #region Class State
     private Missile[] missileStock;
@@ -43,25 +43,6 @@ public class PlayerCraft : AbstractFlightBehaviour, IAircraftBehaviour
         }
 
     }
-
-    public void AquireMissileLock()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void FireMissile()
-    {        
-        throw new NotImplementedException();
-    }
-
-    public void Radar()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void DeployDecoyFlare()
-    {
-        throw new NotImplementedException();
-    }
+       
 
 }

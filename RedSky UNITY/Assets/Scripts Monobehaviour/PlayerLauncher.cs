@@ -76,7 +76,7 @@ public class PlayerLauncher : MonoBehaviour
 
         playerCraft.Velocity = Vector3.zero;
 
-        playerCraft.ThrustValue = 5000f;
+        playerCraft.ThrustValue = 3000f;
 
         playerCraft.DecelerationValue = 300f;
 

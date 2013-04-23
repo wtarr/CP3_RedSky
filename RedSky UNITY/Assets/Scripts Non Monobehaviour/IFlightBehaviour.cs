@@ -12,7 +12,5 @@ public interface IFlightBehaviour
     void RollLeft();
     void RollRight();
     void YawLeft();
-    void YawRight();
-    void PredictTimeToLowFuel();
-    void UpdateFuelRemaining();
+    void YawRight();    
 }

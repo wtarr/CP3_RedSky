@@ -182,18 +182,7 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
     public void YawRight()
     {
         EntityObj.transform.RotateAround(EntityObj.transform.up, YawAngle);
-    }
-
-
-    public void PredictTimeToLowFuel()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void UpdateFuelRemaining()
-    {
-        throw new NotImplementedException();
-    }
+    }           
 	
 	public Vector3 CalculateVelocityVector(Vector3 posOld, Vector3 posNew, float delta)
     {

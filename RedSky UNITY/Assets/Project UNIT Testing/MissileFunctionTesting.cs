@@ -47,28 +47,7 @@ namespace RedSkyProjectTesting
             Assert.AreEqual(targetVectorExpected, actualTargetVelVector);
             
             
-        }
-               
-        
-        [Test]
-        public void Test_that_Missile_Can_Calculate_Fuel_Cost_Of_Taking_a_Route_To_Target()
-        {
-            //Based on a intercept path test if the missile can calculate the fuel it requires to travel that distance.
-            Assert.Ignore("Not yet implemented");
-        }
-
-        [Test]
-        public void Test_That_Missile_Is_Recording_Its_FuelLoad()
-        {
-            // The missiles fuel must be updated constantly
-            Assert.Ignore("Not yet implemented");
-        }
-		
-		[Test]
-        public void Test_If_Path_Viable()
-        {            
-            Assert.Ignore("Not yet implemented");
-        }
+        }       	
 
         [Test]
         public void Test_PredictIntercept()
@@ -156,14 +135,7 @@ namespace RedSkyProjectTesting
                 Vector3.Distance(missileMockPosition,
                 m.PrimaryTarget.TargetPosition)));
 
-        }
-
-        [Test]
-        public void Test_That_Low_Fuel_Function_is_Working_Correctly()
-        {
-           
-            Assert.Ignore("Not yet implemented");
-        }
+        }               
 
 
     }
