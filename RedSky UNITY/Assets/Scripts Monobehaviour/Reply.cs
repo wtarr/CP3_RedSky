@@ -16,15 +16,7 @@ public class Reply : MonoBehaviour
     private float tick;
     private Vector3 scale;
     public string message; 
-    #endregion
-
-    #region Properties
-    //public string Message
-    //{
-    //    get { return message; }
-    //    set { message = value; }
-    //}     
-    #endregion
+    #endregion      
 
     #region Start method
     // Use this for initialization
