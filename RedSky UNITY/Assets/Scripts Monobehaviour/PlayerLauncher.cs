@@ -345,7 +345,7 @@ public class PlayerLauncher : MonoBehaviour
             //Debug.Log("Reply to sweep " + other.gameObject.name);
             if (ThisPlayersNumber > 0)
             {
-                pingReplyPrefab.GetComponent<Reply>().Message = string.Format("{0}_player_replying_to_{1}", ThisPlayersNumber, other.gameObject.name);
+                pingReplyPrefab.GetComponent<Reply>().message = string.Format("{0}_player_replying_to_{1}", ThisPlayersNumber, other.gameObject.name);
                 GameObject temp = (GameObject)Instantiate(pingReplyPrefab, transform.position, playerCraft.Rotation);
                 temp.transform.parent = playerCraft.EntityObj.transform;
             }
@@ -355,7 +355,7 @@ public class PlayerLauncher : MonoBehaviour
         {
             if (ThisPlayersNumber > 0)
             {
-                pingReplyPrefab.GetComponent<Reply>().Message = string.Format("{0}_player_replying_to_{1}", ThisPlayersNumber, other.gameObject.name);
+                pingReplyPrefab.GetComponent<Reply>().message = string.Format("{0}_player_replying_to_{1}", ThisPlayersNumber, other.gameObject.name);
                 GameObject temp = (GameObject)Instantiate(pingReplyPrefab, transform.position, playerCraft.Rotation);
                 temp.transform.parent = playerCraft.EntityObj.transform;
             }

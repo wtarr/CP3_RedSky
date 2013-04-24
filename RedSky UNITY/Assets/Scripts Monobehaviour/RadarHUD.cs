@@ -99,7 +99,7 @@ public class RadarHUD : MonoBehaviour
         {
             GUI.DrawTexture(new Rect(15 + (2 * (i * padding)), 30, missileTexture2d.width, missileTexture2d.height), missileTexture2d);
         }
-
+                
         // Display the Radar Screen with target blips.  Also display the target highlighter
         if (playerCraft.Targets.Count > 0)
         {

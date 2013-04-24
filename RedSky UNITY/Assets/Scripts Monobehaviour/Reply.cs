@@ -15,15 +15,15 @@ public class Reply : MonoBehaviour
     private int TTL = 10;
     private float tick;
     private Vector3 scale;
-    private string message; 
+    public string message; 
     #endregion
 
     #region Properties
-    public string Message
-    {
-        get { return message; }
-        set { message = value; }
-    }     
+    //public string Message
+    //{
+    //    get { return message; }
+    //    set { message = value; }
+    //}     
     #endregion
 
     #region Start method

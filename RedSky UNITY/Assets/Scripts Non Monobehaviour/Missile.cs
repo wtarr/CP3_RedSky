@@ -12,7 +12,7 @@ using UnityEngine;
 public class Missile: AbstractFlightBehaviour
 {
     #region Class State
-    private Vector3 oldTargetPosition;
+    public Vector3 oldTargetPosition;
     private float detonationRange = 15f; 
     #endregion
 
