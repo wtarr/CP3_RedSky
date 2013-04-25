@@ -193,16 +193,5 @@ public abstract class AbstractFlightBehaviour : IFlightBehaviour
         return (posNew - posOld) / delta;  			
         
     }
-
-    public void Ping()
-    {
-
-    }
-
-    public void Reply()
-    {
-
-    }
-
-
+        
 }

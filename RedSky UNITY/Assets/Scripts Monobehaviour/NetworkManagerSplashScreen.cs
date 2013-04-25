@@ -18,15 +18,20 @@ using System;
 
 /*************************************************
  * Result of two tutorials
+ * 
+ * I am mentioning it here mainly because it is interspersed through out the whole
+ * class and is not used anywhere fully (in a block). But will comment where it is
+ * used explicitly.
+ * 
  *http://cgcookie.com/unity/2011/12/20/introduction-to-networking-in-unity/ 
  *The connecting to the master server and the button layout of hostdata was heavily influenced from the above tutorial.
  * 
  *http://www.jarloo.com/c-udp-multicasting-tutorial/
  *This tutorial was used to get familiar with UDP multicasting
  *
- * The threaded UDP listener is my own, taking what Ive learned from the above two tutorials and
+ * The threaded approach to UDP listener is my own, taking what Ive learned from the above two tutorials and
  * merging them so that I can start/discover LAN games and not have to rely on the master server
- * and network connectivity.
+ * and internet connectivity.
  *************************************************/
 
 public class NetworkManagerSplashScreen : MonoBehaviour
@@ -101,7 +106,10 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     {
         if (!Network.isClient && !Network.isServer) // Nobody is connected so display the options to the user
         {
-
+            // ************************************************************************************************
+            // The GUI layout here is heaily based on the same in the unity networking tutorial mentioned above 
+            // mainly because it works and I felt it wouldnt benefit from changing it
+            // ************************************************************************************************
             GUI.Label(new Rect(playerNameLabelX, playerNameLabelY, playerNameLabelW, playerNameLabelH), "Username *required");
             playerName = GUI.TextField(new Rect(textfieldX, textfieldY, textfieldW, textfieldH), playerName);
 
@@ -190,7 +198,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
             bool shouldUseNAT = !Network.HavePublicAddress();
             Network.InitializeServer(maxNumOfPlayers, port, shouldUseNAT);
             Network.incomingPassword = password;
-            MasterServer.RegisterHost(gameName, "RedSky Multiplayer Game", "This is a tutorial game");
+            MasterServer.RegisterHost(gameName, "RedSky Multiplayer Game", "This is a third year project demonstration");
         }
     } 
     #endregion
@@ -211,6 +219,10 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     #region UDP Listen method
     void UDPListen()
     {
+        // ***********************************************************************
+        // UPD multicast is based on the tutorial mentioned at the top of the page
+        // ***********************************************************************
+
         udpClient_listen = new UdpClient();
 
         udpClient_listen.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
@@ -295,6 +307,9 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     #region Broadcast Message method
     private void BroadcastMessage(string msg, int timestosend)
     {
+        // ***********************************************************************
+        // UPD multicast is based on the tutorial mentioned at the top of the page
+        // ***********************************************************************
         try
         {
             // from referenced UDP multicasting tutorial
@@ -432,6 +447,7 @@ public class NetworkManagerSplashScreen : MonoBehaviour
     [RPC]
     private void AddToPlayerList(string playerName, NetworkViewID viewID)
     {
+        // Need all games to maintain a list of players
         NetworkManagerSplashScreen.playerInfoList.Add(new PlayerInfo(playerName, viewID));
     } 
     #endregion
