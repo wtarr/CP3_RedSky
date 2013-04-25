@@ -35,8 +35,7 @@ public class PlayerCraft : AbstractFlightBehaviour
 
     public int MissileTotal
     {
-        get { return missileTotal; }
-        set { missileTotal = value; }
+        get { return missileTotal; }        
     }
     #endregion
 
