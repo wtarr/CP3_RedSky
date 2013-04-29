@@ -138,15 +138,11 @@ public class MissileLauncher : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (networkView.isMine)
-        {
-            //if (other.transform.parent != null)
-            //    Debug.Log("outer" + other.name + " " + other.gameObject.transform.parent.networkView.viewID.ToString().Split(' ').Last());
+        {            
 
-            if (other.gameObject.name.Contains("player_replying_to") &&
-                //other.gameObject.name.Contains("MissileRadar(Clone)") &&
+            if (other.gameObject.name.Contains("player_replying_to") &&                
                 other.gameObject.transform.parent.networkView.viewID.ToString().Equals(thisMissile.PrimaryTarget.TargetID.ToString()))
-            {
-                //Debug.Log("Recieving reply");
+            {                
                 locked = true;
 
                 if (other.gameObject.transform.position != thisMissile.PrimaryTarget.TargetPosition)
@@ -157,7 +153,7 @@ public class MissileLauncher : MonoBehaviour
                     thisMissile.PrimaryTarget.TargetPosition = other.gameObject.transform.position;
                     if (timeNow > 0 && timeOfLastCall > 0)
                         thisMissile.TargetVelocityVector = thisMissile.CalculateVelocityVector(thisMissile.OldTargetPosition, thisMissile.PrimaryTarget.TargetPosition, (timeNow - timeOfLastCall));
-                    //Debug.Log("Vel" + thisMissile.TargetVelocityVector);
+                    
                     timeOfLastCall = timeNow;
                 }
 
